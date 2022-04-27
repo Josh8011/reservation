@@ -1,0 +1,17 @@
+.Link{
+    background-color: lightblue;
+    color: Black;
+    margin: 30px;
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.SelectedLink{
+    background-color: lightcoral;
+    color: Black;
+    margin: 30px;
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+}
