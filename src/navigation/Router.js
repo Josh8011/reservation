@@ -1,7 +1,6 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import {Home } from '../Pages/Index'
-
+import {Home} from '../Pages'
 export function Router(){
     return(
         <Routes>
