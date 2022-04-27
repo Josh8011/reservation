@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import {Router} from './navigation'
+import {Router} from './Navigation/Index'
 
 function App() {
   return (
