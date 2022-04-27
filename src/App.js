@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import {Router} from './Navigation'
 import {Header} from './Components'
+import { FetchApi } from './Services'
 
 function App() {
 
@@ -32,9 +33,7 @@ function App() {
     setReservationInfo(newInfo);
   }
 
-
-
-  const  ReservationFunctions = {ChangePeople,ChangeDate, ChangeDetails, ChangeSitting}
+  const ReservationFunctions = {ChangePeople,ChangeDate, ChangeDetails, ChangeSitting}
 
   return (
     <div className="App">
