@@ -21,7 +21,7 @@ export function People(props){
 
     return(
         <div className='PeopleBody'>
-            People
+            Number of Guest
             <div className='PeopleSelectionContainer'>
             {peopleLinks}
             </div>
