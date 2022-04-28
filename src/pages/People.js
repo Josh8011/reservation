@@ -8,13 +8,15 @@ export function People(props){
 
     var ResInfo = props.ResInfo
     var ChangePeople = props.ResFunctions.ChangePeople
+    var SelectPage = props.SelectPage
+
 
 
     var peopleLinks = []
 
     for(let i =1; i < 13; i++)
     {
-        peopleLinks.push(<PeopleSelectionLink key={i} ChangePeople={ChangePeople}  Qty={i}/>)
+        peopleLinks.push(<PeopleSelectionLink key={i} ChangePeople={ChangePeople} SelectPage={SelectPage}  Qty={i}/>)
     }
 
     return(
