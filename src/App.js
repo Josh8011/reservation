@@ -14,7 +14,7 @@ function App() {
   useEffect(()=>{
 
     (async()=>{
-        await fetchApi.sittings.getAvailable(2022, 4, 28)
+        await fetchApi.sittings.getDistinctAvailable(5)
           .then(data => {
             setSittings(...[data]);
           });
