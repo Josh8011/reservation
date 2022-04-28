@@ -1,7 +1,7 @@
 import { postReservation } from './reservations'
-import { getAll, getAvailable } from './sittings'
+import { getAll, getAvailable, getDistinctAvailable } from './sittings'
 
-const sittings = { getAll, getAvailable };
+const sittings = { getAll, getAvailable, getDistinctAvailable };
 const reservations = { postReservation };
 
 const fetchApi = {reservations, sittings};

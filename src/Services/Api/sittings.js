@@ -8,9 +8,14 @@ const getAll = async () =>
 // Gets next four weeks of sitting
 const getAvailable = async (year, month, day) =>
 {
-    debugger;
     return await fetch(`${baseUrl}/available/${year}-${month}-${day}`)
     .then( response => response.json());
 };
 
-export { getAll, getAvailable };
+const getDistinctAvailable = async (month) =>
+{
+    return await fetch(`${baseUrl}/distinct-available/${month}`)
+    .then( response => response.json());
+};
+
+export { getAll, getAvailable, getDistinctAvailable };
