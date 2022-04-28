@@ -3,6 +3,7 @@ import './App.css';
 import {Router} from './Navigation'
 import {Header} from './Components'
 import { FetchApi } from './Services'
+import { Button } from 'react-bootstrap';
 
 function App() {
   
@@ -13,17 +14,14 @@ function App() {
   useEffect(()=>{
 
     (async()=>{
-
         await FetchApi.getSittings()
           .then(data => {
             debugger;
-            let updated = {...reservationInfo, data};
-            setSittings(updated);
+            setSittings(...data);
           });
-
     })();
 
-  } , []  );
+  } ,[]);
 
   function ChangePeople(numOfPeople){
     let newInfo = reservationInfo
@@ -59,7 +57,6 @@ function App() {
     newSelected[name] = true;
     setSelected(newSelected)
 }
-
 
   return (
     <div className="App">
