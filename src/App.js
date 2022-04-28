@@ -16,8 +16,7 @@ function App() {
     (async()=>{
         await FetchApi.getSittings()
           .then(data => {
-            debugger;
-            setSittings(...data);
+            setSittings(...[data]);
           });
     })();
 
@@ -55,6 +54,7 @@ function App() {
 }
 
   return (
+    
     <div className="App">
       <Header ResFunctions={ReservationFunctions} ResInfo={reservationInfo} Selected={selected} SelectPage={SelectPage}/>
       <Router ResFunctions={ReservationFunctions} ResInfo={reservationInfo} SelectPage={SelectPage} Sittings={sittings}/>
