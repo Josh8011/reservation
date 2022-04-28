@@ -21,14 +21,20 @@ export function DatePage(props){
     }
 
     var currentDate = new Date();
-    
 
+    var MonthBtns = []
+
+    for(let i = 0; i < 6; i++)
+    {
+        console.log(currentDate.getMonth);
+        MonthBtns.push( <MonthSelectBtn key={i} month={currentDate.setMonth(currentDate.getMonth + i) }/>)
+    }
 
 
     return(
         <div>
             Date
-            <MonthSelectBtn/>
+            {MonthBtns}
     
         </div>
     );

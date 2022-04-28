@@ -6,3 +6,12 @@
     width:10%;
     height:20px;
 }
+
+.MonthSelectBtn:hover{
+    padding:10px;
+    background-color: rgb(2, 171, 173);
+    margin:5px;
+    border-radius: 5px;
+    width:10%;
+    height:20px;
+}
