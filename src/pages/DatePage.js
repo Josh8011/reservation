@@ -1,9 +1,9 @@
 import React from 'react';
-import { MonthSelectBtn } from '../Components';
+import { MonthSelectBtn , Header} from '../Components';
 
 
 
-export function Date(props){
+export function DatePage(props){
 
     var Sittings = props.Sittings
 
@@ -20,7 +20,8 @@ export function Date(props){
         console.log(distinctDayByMonth)
     }
 
-
+    var currentDate = new Date();
+    
 
 
 
@@ -28,6 +29,7 @@ export function Date(props){
         <div>
             Date
             <MonthSelectBtn/>
+    
         </div>
     );
 }
@@ -38,8 +40,6 @@ function SortSittingsByMonth(Sittings){
     var AllSittingsByMonth = []
     var MonthSittings = []
     var CurrentMonth = Sittings[0].month;
-    
-
  
     for(let i = 0; i < Sittings.length; i++){
         

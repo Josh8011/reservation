@@ -1,11 +1,17 @@
-import React from 'react';
 
+import "./Css/MonthSelectBtn.css"
 
-var currentDate = `${new Date().getFullYear}/${new Date().getMonth + 1}/${new Date().getDate}`;
-
-export function MonthSelectBtn()
+export function MonthSelectBtn(props)
 {
-   <div>{currentDate}sdfsdafsdafsadf</div>
+
+
+    function MonthButtonOnClick(){
+
+    }
+
+    return(
+        <div className="MonthSelectBtn" onClick={MonthButtonOnClick}></div>
+    );
 }
 
 

@@ -15,6 +15,6 @@ export function  PeopleSelectionLink(props) {
     }
 
     return(
-        <Link className='PeopleSelectionLink' onClick={onClickLink}  to={"/Date"}>{Qty}</Link>
+        <Link className='PeopleSelectionLink' onClick={onClickLink}  to={"/DatePage"}>{Qty}</Link>
     );
 }
