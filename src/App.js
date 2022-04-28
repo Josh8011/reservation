@@ -7,7 +7,23 @@ import { FetchApi } from './Services'
 
 function App() {
 
+  const [sittings, setSittings] = useState([]);
   const [reservationInfo , setReservationInfo]= useState({People: null, Date: null, Sitting: null, Details:null })
+
+  useEffect(()=>{
+
+    (async()=>{
+
+        await FetchApi.getSittings()
+          .then(data => {
+            debugger;
+            let updated = {...reservationInfo, data};
+            setSittings(updated);
+          });
+
+    })();
+
+  } , []  );
 
   function ChangePeople(numOfPeople){
     let newInfo = reservationInfo

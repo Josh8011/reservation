@@ -1,17 +1,11 @@
 let baseUrl = "https://localhost:7271/api/reservation"; // For Reservation Api Controller
 
 //RETURNS sittings and SETS state
-const getSittings = async (reservationInfo, setReservationInfo) =>
+const getSittings = async () =>
 {
     //https://devtrium.com/posts/async-functions-useeffect
-    await fetch(baseUrl)
-    .then( response => response.json())
-    .then(data => {
-        let newInfo = reservationInfo;
-        newInfo["Sitting"] = data;
-        // console.log(newInfo)
-        setReservationInfo(newInfo);
-    });
+    return await fetch(baseUrl)
+    .then( response => response.json());
 };
 
 //REQUIRES (obj with following properties): customerNotes, noOfGuests, sittingId, reservationOriginId, firstName, lastName, email, phoneNumber, restaurantId

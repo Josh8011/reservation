@@ -10,7 +10,7 @@ export function Header(props) {
 
     let ResInfo = props.ResInfo
 
-    console.log(ResInfo.People)
+    // console.log(ResInfo.People)
 
     function OnLinkClick(name){
         let newSelected = { People: false, Date: false, Sitting: false, Details: false}
