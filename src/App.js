@@ -16,8 +16,7 @@ function App() {
 
         await FetchApi.getSittings()
           .then(data => {
-            debugger;
-            let updated = {...reservationInfo, data};
+            let updated = {...sittings,Sittings: data};
             setSittings(updated);
           });
 
@@ -26,26 +25,22 @@ function App() {
   } , []  );
 
   function ChangePeople(numOfPeople){
-    let newInfo = reservationInfo
-    newInfo["People"] = numOfPeople;
+    let newInfo = {...reservationInfo ,People:numOfPeople}
     setReservationInfo(newInfo);
   }
 
   function ChangeDate(newDate){
-    let newInfo = reservationInfo
-    newInfo["Date"] = newDate;
+    let newInfo = {...reservationInfo, Date:newDate}
     setReservationInfo(newInfo);
   }
 
   function ChangeSitting(selectedSitting){
-    let newInfo = reservationInfo
-    newInfo["Sitting"] = selectedSitting;
+    let newInfo = {...reservationInfo, Sitting:selectedSitting}
     setReservationInfo(newInfo);
   }
 
   function ChangeDetails(newDetails){
-    let newInfo = reservationInfo
-    newInfo["Details"] = newDetails;
+    let newInfo = {...reservationInfo, Details:newDetails}
     setReservationInfo(newInfo);
   }
 
@@ -64,7 +59,7 @@ function App() {
   return (
     <div className="App">
       <Header ResFunctions={ReservationFunctions} ResInfo={reservationInfo} Selected={selected} SelectPage={SelectPage}/>
-      <Router ResFunctions={ReservationFunctions} ResInfo={reservationInfo} SelectPage={SelectPage}/>
+      <Router ResFunctions={ReservationFunctions} ResInfo={reservationInfo} SelectPage={SelectPage} Sittings={sittings}/>
     </div>
   );
 }

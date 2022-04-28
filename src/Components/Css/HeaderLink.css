@@ -1,4 +1,4 @@
-.Link{
+.HeaderLink-Link{
     background-color: lightblue;
     color: Black;
     margin: 30px;
@@ -7,7 +7,7 @@
     text-decoration: none;
 }
 
-.SelectedLink{
+.HeaderLink-Highlighted{
     background-color: lightcoral;
     color: Black;
     margin: 30px;
