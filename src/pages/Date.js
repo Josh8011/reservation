@@ -1,49 +1,62 @@
-import { findByPlaceholderText } from '@testing-library/dom';
 import React from 'react';
+import { MonthSelectBtn } from '../Components';
 
 
 
 export function Date(props){
 
-
-    var Sittings = props.Sittings.Sittings
-    var SittingsStart= []
-    var SittingsByMonth = []
+    var Sittings = props.Sittings
 
 
-    if(Sittings)
-    {
+    if(Sittings[0]){
+        var SittingsByMonth = SortSittingsByMonth(Sittings);
+        var distinctMonths = [...new Set(Sittings.map(x => x.month))];
+        var distinctDayByMonth = []
 
-        for(let i = 0; i < Sittings.length; i++){
-            SittingsStart.push( new Date(Sittings[i].start))
+        for(let i =0; i < distinctMonths.length; i++){
+            distinctDayByMonth.push([...new Set(SittingsByMonth[i].map(x => x.day))])
         }
-        console.log(Sittings)
- 
-        // for(let i = 0; i < Sittings.length; i++){
-        //     console.log(Sittings[i].start)
-        //     newDateObject =  new Date(Sittings[i].start)
-        //     Sittings[i].start = newDateObject
-        // }
 
-
-    
-        // for(let i = 0; i < Sittings.length; i++){
-        //     console.log(Sittings[i].start)
-        //     console.log(Sittings[i].start.Date)    
-        //     // if(i=0)
-        //     // {
-        //     //     Sittings[i].start.
-        //     // }
-
-        // }
-
+        console.log(distinctDayByMonth)
     }
+
+
 
 
 
     return(
         <div>
-            
+            Date
+            <MonthSelectBtn/>
         </div>
     );
+}
+
+
+
+function SortSittingsByMonth(Sittings){
+    var AllSittingsByMonth = []
+    var MonthSittings = []
+    var CurrentMonth = Sittings[0].month;
+    
+
+ 
+    for(let i = 0; i < Sittings.length; i++){
+        
+        if(Sittings[i].month == CurrentMonth)
+        {
+            MonthSittings.push(Sittings[i])
+        }
+        if(Sittings[i].month != CurrentMonth){
+            CurrentMonth = Sittings[i].month
+            AllSittingsByMonth.push(MonthSittings)
+            MonthSittings = []
+        }
+        if(i == Sittings.length-1)
+        {
+            AllSittingsByMonth.push(MonthSittings)
+        }           
+    }
+
+    return AllSittingsByMonth;
 }
