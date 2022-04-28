@@ -1,5 +1,8 @@
-import { postReservation } from './reservation'
-import { getSittings } from './sitting'
+import { postReservation } from './reservations'
+import { getAll, getAvailable } from './sittings'
 
-const FetchApi = {postReservation, getSittings};
-export { FetchApi };
+const sittings = { getAll, getAvailable };
+const reservations = { postReservation };
+
+const fetchApi = {reservations, sittings};
+export { fetchApi };

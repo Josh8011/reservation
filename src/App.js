@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import {Router} from './Navigation'
 import {Header} from './Components'
-import { FetchApi } from './Services'
+import { fetchApi } from './Services'
 import { Button } from 'react-bootstrap';
 
 function App() {
@@ -14,9 +14,8 @@ function App() {
   useEffect(()=>{
 
     (async()=>{
-        await FetchApi.getSittings()
+        await fetchApi.sittings.getAvailable(2022, 4, 28)
           .then(data => {
-            debugger;
             setSittings(...data);
           });
     })();
