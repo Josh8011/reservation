@@ -12,9 +12,8 @@ function App() {
   const [reservationInfo , setReservationInfo]= useState({People: null, Date: null, Sitting: null, Details:null })
 
   useEffect(()=>{
-
     (async()=>{
-        await fetchApi.sittings.getDistinctAvailable(5)
+        await fetchApi.sittings.getAvailable(new Date(2022, 3, 7))
           .then(data => {
             setSittings(...[data]);
           });
