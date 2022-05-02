@@ -18,7 +18,7 @@ export function HeaderLink(props) {
 
     return(
         <div>
-            <Link onClick={() => props.SelectedFunction(Path)} className={linkType} to={{pathname:`/${Path}`}} >{Name}</Link>
+            <Link onClick={() => props.SelectedFunction(Name)} className={linkType} to={{pathname:`/${Path}`}} >{Name}</Link>
         </div>
     );
 }

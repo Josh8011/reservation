@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import {Router} from './Navigation'
+import {Router} from './navigation'
 import {Header} from './Components'
 import { fetchApi } from './Services'
 import { Button } from 'react-bootstrap';

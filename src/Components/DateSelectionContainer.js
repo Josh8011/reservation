@@ -6,6 +6,7 @@ export function DateSelectionContainer(props){
     const [message, setMessage] = useState("Please Select a Month")
     let SelectedMonthDates =  props.SelectedMonthDates
     let SelectedMonth = props.SelectedMonth
+  
 
     if(SelectedMonth && !SelectedMonth){
         setMessage("Please Select");
