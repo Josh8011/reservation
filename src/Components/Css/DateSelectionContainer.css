@@ -1,0 +1,9 @@
+.DateSelectionContainer{
+    border: black solid 1px;
+    width: 400px;
+    justify-content: center;
+    align-items: center;
+}
+.DateSelectionMessage{
+    color: gold;
+}

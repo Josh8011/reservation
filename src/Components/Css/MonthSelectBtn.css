@@ -3,8 +3,9 @@
     background-color: darkturquoise;
     margin:5px;
     border-radius: 5px;
-    width:10%;
+    width:100px;
     height:20px;
+
 }
 
 .MonthSelectBtn:hover{
@@ -12,6 +13,6 @@
     background-color: rgb(2, 171, 173);
     margin:5px;
     border-radius: 5px;
-    width:10%;
+    width:100px;
     height:20px;
 }

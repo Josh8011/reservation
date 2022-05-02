@@ -1,6 +1,7 @@
 import React from 'react';
-import { MonthSelectBtn , Header} from '../Components';
-
+import { isCompositeComponent } from 'react-dom/test-utils';
+import { MonthSelectBtn , DateSelectionContainer} from '../Components';
+import "./Css/DatePage.css"
 
 
 export function DatePage(props){
@@ -20,24 +21,31 @@ export function DatePage(props){
         console.log(distinctDayByMonth)
     }
 
-    var currentDate = new Date();
-
-    var MonthBtns = []
-
-    for(let i = 0; i < 6; i++)
-    {
-        console.log(currentDate.getMonth);
-        MonthBtns.push( <MonthSelectBtn key={i} month={currentDate.setMonth(currentDate.getMonth + i) }/>)
-    }
-
+    var MonthBtns = CreateMonthBtns(6);
+   
 
     return(
-        <div>
-            Date
+        <div className="DatePageContainer">
+            <div>
             {MonthBtns}
-    
+            </div>
+            <div>
+            {<DateSelectionContainer/>}
+            </div>
         </div>
     );
+}
+
+function CreateMonthBtns(NumberOfBtns){
+    var currentDate = new Date();
+    var MonthBtns = [];
+    for(let i = 0; i < NumberOfBtns; i++)
+    {
+        MonthBtns.push( <MonthSelectBtn key={i} MonthNumber={currentDate.getMonth()}  Month={currentDate.toLocaleString('default', { month: 'long' })}/>)
+        currentDate.setMonth(currentDate.getMonth()+1)
+    }
+
+    return(MonthBtns)
 }
 
 
