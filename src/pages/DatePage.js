@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { MonthSelectBtn , DateSelectionContainer} from '../Components';
 import "./Css/DatePage.css"
 
@@ -13,8 +13,8 @@ export function DatePage(props){
     var monthBtns = CreateMonthBtns(6,currentDate, ChangeSelectedMonth);
     currentDate = new Date();
     // do we want this to defaul to the current month or do we want it to be selected.
-    const [selectedMonth, setSelectedMonth] = useState(currentDate.getMonth()+1); 
-    const [selectedMonthDates, setSelectedMonthDates] = useState("No Seleted Date Info");
+    const [selectedMonth, setSelectedMonth] = useState(currentDate.getMonth()); 
+    const [selectedMonthDates, setSelectedMonthDates] = useState([]);
     //if Data
     //Manage Data 
     if(Sittings[0]){
@@ -30,11 +30,32 @@ export function DatePage(props){
         // console.log(distinctDayByMonth)
     }
     
+    useEffect(()=>{
+        if(Sittings[0]){
+            let isDays = false;
+            for(let i=0; i< distinctMonths.length; i++)
+            {
+                if(selectedMonth == distinctMonths[i])
+                {
+                    setSelectedMonthDates(distinctDayByMonth[i])
+                    isDays = true;
+                }
+            }
+            if(!isDays)
+            {
+                setSelectedMonthDates(null)
+            }
+        }
+    },[selectedMonth])
+
+
+
+
     function ChangeSelectedMonth(MonthToBeSelected)
     {
         setSelectedMonth(MonthToBeSelected);
     }
-    
+
     return(
         <div className="DatePageContainer">
             <div>
@@ -54,7 +75,7 @@ function CreateMonthBtns(NumberOfBtns, currentDate, setSelectedMonth){
     {
         MonthBtns.push( 
             <MonthSelectBtn key={i}
-             SelectedMonthNumber={currentDate.getMonth() + 1}
+             SelectedMonthNumber={currentDate.getMonth() }
              Month={currentDate.toLocaleString('default', { month: 'long' })}
              SetSelectedMonth={setSelectedMonth}
              />)
