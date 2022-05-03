@@ -5,14 +5,14 @@ export function MonthSelectBtn(props)
 {
     // console.log(props.Month)
     let Month = props.Month;
-    let MonthNumber = props.MonthNumber;
+    let MonthNumber = props.SelectedMonthNumber;
+    let SetSelectedMonth = props.SetSelectedMonth
 
     function MonthButtonOnClick(){
-
+        SetSelectedMonth(MonthNumber);
     }
 
 
-    console.log(MonthNumber);
     return(
         <div className="MonthSelectBtn" onClick={MonthButtonOnClick}> {Month}</div>
     );

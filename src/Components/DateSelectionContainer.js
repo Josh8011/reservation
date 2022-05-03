@@ -7,14 +7,11 @@ export function DateSelectionContainer(props){
     let SelectedMonthDates =  props.SelectedMonthDates
     let SelectedMonth = props.SelectedMonth
   
+    if(SelectedMonth){
 
-    if(SelectedMonth && !SelectedMonth){
-        setMessage("Please Select");
-    }else if(SelectedMonthDates && SelectedMonth){
-        setMessage("Please Select a Date");
     }
 
-
+    
     return(
         <div className="DateSelectionContainer">
             <div className="DateSelectionMessage">{message}</div>
@@ -23,3 +20,4 @@ export function DateSelectionContainer(props){
         </div>
     );
 }
+

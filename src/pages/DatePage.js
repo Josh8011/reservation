@@ -6,14 +6,16 @@ import "./Css/DatePage.css"
 export function DatePage(props){
 
     var Sittings = props.Sittings
+    var ChangeDate = props.ResFunctions.ChangeDate;
     var currentDate = new Date();
+
     //Create Month buttons array 
-    var monthBtns = CreateMonthBtns(6,currentDate);
-    // do we want this to defaul to the current month or do we want it to be selected. I like default ###################
-    const [selectedMonth, setSelectedMonth] = useState(); 
-
-    
-
+    var monthBtns = CreateMonthBtns(6,currentDate, ChangeSelectedMonth);
+    currentDate = new Date();
+    // do we want this to defaul to the current month or do we want it to be selected.
+    const [selectedMonth, setSelectedMonth] = useState(currentDate.getMonth()+1); 
+    const [selectedMonthDates, setSelectedMonthDates] = useState("No Seleted Date Info");
+    //if Data
     //Manage Data 
     if(Sittings[0]){
         var sittingsByMonth = SortSittingsByMonth(Sittings);
@@ -23,43 +25,44 @@ export function DatePage(props){
         for(let i =0; i < distinctMonths.length; i++){
             distinctDayByMonth.push([...new Set(sittingsByMonth[i].map(x => x.day))])
         }
-
-
-        
-        console.log(distinctDayByMonth)
+        // console.log(Sittings)
+        // console.log(sittingsByMonth)
+        // console.log(distinctDayByMonth)
     }
     
-    function CreateMonthBtns(NumberOfBtns, currentDate){
-        var MonthBtns = [];
-        for(let i = 0; i < NumberOfBtns; i++)
-        {
-            MonthBtns.push( 
-                <MonthSelectBtn key={i}
-                 SelectedMonthNumber={currentDate.getMonth() + 1}
-                 Month={currentDate.toLocaleString('default', { month: 'long' })}
-                 />)
-    
-            currentDate.setMonth(currentDate.getMonth()+1)
-        }
-    
-        return(MonthBtns)
+    function ChangeSelectedMonth(MonthToBeSelected)
+    {
+        setSelectedMonth(MonthToBeSelected);
     }
     
-
     return(
         <div className="DatePageContainer">
             <div>
             {monthBtns}
             </div>
             <div>
-            {<DateSelectionContainer SelectedMonth={selectedMonth} />}
+            {<DateSelectionContainer SelectedMonth={selectedMonth} SelectedMonthDates={selectedMonthDates} />}
             </div>
         </div>
     );
 }
 
 
+function CreateMonthBtns(NumberOfBtns, currentDate, setSelectedMonth){
+    var MonthBtns = [];
+    for(let i = 0; i < NumberOfBtns; i++)
+    {
+        MonthBtns.push( 
+            <MonthSelectBtn key={i}
+             SelectedMonthNumber={currentDate.getMonth() + 1}
+             Month={currentDate.toLocaleString('default', { month: 'long' })}
+             SetSelectedMonth={setSelectedMonth}
+             />)
 
+        currentDate.setMonth(currentDate.getMonth()+1)
+    }
+    return(MonthBtns)
+}
 
 function SortSittingsByMonth(Sittings){
     var AllSittingsByMonth = []
