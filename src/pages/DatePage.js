@@ -7,6 +7,7 @@ export function DatePage(props){
 
     var Sittings = props.Sittings
     var ChangeDate = props.ResFunctions.ChangeDate;
+    var SelectPage = props.SelectPage
     var currentDate = new Date();
 
     //Create Month buttons array 
@@ -64,11 +65,7 @@ export function DatePage(props){
             {monthBtns}
             </div>
             <div>
-            {<DateSelectionContainer 
-            SelectedMonth={selectedMonth}
-            SelectedMonthDates={selectedMonthDates}
-            ChangeDate={ChangeDate}
-            />}
+            {<DateSelectionContainer SelectedMonth={selectedMonth} SelectedMonthDates={selectedMonthDates} ChangeDate={ChangeDate} SelectPage={SelectPage}/>}
             </div>
         </div>
     );

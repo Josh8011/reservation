@@ -5,11 +5,13 @@ import './Css/DateSelectionContainer.css'
 export function DateSelectionContainer(props){
 
     const [message, setMessage] = useState("Please Select a Month")
-    let SelectedMonthDates =  props.SelectedMonthDates
-    let SelectedMonth = props.SelectedMonth
-  
+    var SelectedMonthDates =  props.SelectedMonthDates
+    var SelectedMonth = props.SelectedMonth
 
-    let DateSelectionBtns =  CreateDateSelectionBtns(SelectedMonthDates)
+    var ChangeDate = props.ChangeDate
+    var SelectPage = props.SelectPage
+
+    var DateSelectionBtns =  CreateDateSelectionBtns(SelectedMonthDates, ChangeDate, SelectPage, SelectedMonth)
 
     useEffect(()=>{
         if(SelectedMonthDates)
@@ -31,11 +33,12 @@ export function DateSelectionContainer(props){
     );
 }
 
-function CreateDateSelectionBtns(SelectedMonthDates){
+function CreateDateSelectionBtns(SelectedMonthDates, ChangeDate , SelectPage, SelectedMonth){
     let  DateSelectionBtns = []
     if(SelectedMonthDates){
         SelectedMonthDates.forEach(date => {
-            DateSelectionBtns.push(<DateSelectionBtn key={date} number={date}/> )
+            DateSelectionBtns.push(
+            <DateSelectionBtn key={date} number={date} ChangeDate={ChangeDate} SelectPage={SelectPage} SelectedMonth={SelectedMonth}/> )
         });        
     }
 
