@@ -2,8 +2,14 @@
     margin-top: 100px;
     align-items: center;
     justify-content: center;
-    
+    border: green 1px solid;  
+    text-align: center;
 }
 .PeopleSelectionContainer{
-    padding-top: 30px;
+    display: flex;
+    border: black 1px solid;
+    width: 400px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 }
