@@ -2,8 +2,8 @@ let baseUrl = "https://localhost:7271/api/reservations";
 
 //REQUIRES (obj with following properties): customerNotes, noOfGuests, sittingId, reservationOriginId, firstName, lastName, email, phoneNumber, restaurantId
 //API RETURNS: new reservation object that is created (Not currently utilised in this fetch).
-const postReservation = async (reservationDto) => {
-
+const create = async (reservationDto) => {
+    debugger;
     return await fetch(baseUrl, {
         method: "POST",
         headers: {
@@ -15,7 +15,7 @@ const postReservation = async (reservationDto) => {
     .then(response => response.json());
 };
 
-export { postReservation };
+export { create };
 
 
 //DUMMY DATA BELOW
