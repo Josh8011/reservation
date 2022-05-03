@@ -1,9 +1,28 @@
 import React from 'react';
 import { Row, Form, Container, Col, FloatingLabel, Button } from 'react-bootstrap';
+import { fetchApi } from '../Services/Api'
+
+//HACK: hardcoded data, should be refactored to take argument & pass that to api
+const onSubmit = (e) => {
+    //var temp = e.target.value;
+    debugger;
+    fetchApi.reservations.create(new {
+        CustomerNotes: "",
+        NoOfGuests : 3,
+        SittingId: 1,
+        ReservationOriginId: 1,
+        ReservationStatusId: 1,
+        FirstName: "John",
+        LastName: "Smith",
+        Email: "JohnSmith@gmail.com",
+        PhoneNumber: "0412456789",
+        RestaurantId: 1
+    });
+};
 
 export function Details(props){
     return(
-        <Container>
+        <Container onSubmit={onSubmit}>
             <Row>
                 <Col sm={12}>
                     <Form action="https://localhost:7271/api/reservations">

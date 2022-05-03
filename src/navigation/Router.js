@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { People, DatePage, Sitting, Details} from '../pages'
+import { People, DatePage, Sitting, Details} from '../Pages'
 
 
 
