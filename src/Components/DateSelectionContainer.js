@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect} from 'react';
+import { DateSelectionBtn } from '../Components';
 
 import './Css/DateSelectionContainer.css'
 export function DateSelectionContainer(props){
@@ -7,17 +8,36 @@ export function DateSelectionContainer(props){
     let SelectedMonthDates =  props.SelectedMonthDates
     let SelectedMonth = props.SelectedMonth
   
-    if(SelectedMonth){
 
-    }
+    let DateSelectionBtns =  CreateDateSelectionBtns(SelectedMonthDates)
 
-    
+    useEffect(()=>{
+        if(SelectedMonthDates)
+        {
+            setMessage()
+        }else
+        {
+            setMessage("Please call the resturant 03215151532 to make a reservation")
+        }
+
+    },[SelectedMonthDates])
+
+
     return(
         <div className="DateSelectionContainer">
             <div className="DateSelectionMessage">{message}</div>
-            <div>{SelectedMonth}</div>
-            <div>{SelectedMonthDates}</div>
+            {DateSelectionBtns}
         </div>
     );
 }
 
+function CreateDateSelectionBtns(SelectedMonthDates){
+    let  DateSelectionBtns = []
+    if(SelectedMonthDates){
+        SelectedMonthDates.forEach(date => {
+            DateSelectionBtns.push(<DateSelectionBtn key={date} number={date}/> )
+        });        
+    }
+
+    return DateSelectionBtns
+}

@@ -10,7 +10,7 @@ export function DatePage(props){
     var currentDate = new Date();
 
     //Create Month buttons array 
-    var monthBtns = CreateMonthBtns(6,currentDate, ChangeSelectedMonth);
+    var monthBtns = CreateMonthBtns(3,currentDate, ChangeSelectedMonth);
     currentDate = new Date();
     // do we want this to defaul to the current month or do we want it to be selected.
     const [selectedMonth, setSelectedMonth] = useState(currentDate.getMonth()); 
@@ -26,8 +26,10 @@ export function DatePage(props){
             distinctDayByMonth.push([...new Set(sittingsByMonth[i].map(x => x.day))])
         }
         // console.log(Sittings)
-        // console.log(sittingsByMonth)
-        // console.log(distinctDayByMonth)
+        console.log(distinctMonths)
+        console.log(sittingsByMonth)
+
+        console.log(distinctDayByMonth)
     }
     
     useEffect(()=>{
@@ -62,7 +64,11 @@ export function DatePage(props){
             {monthBtns}
             </div>
             <div>
-            {<DateSelectionContainer SelectedMonth={selectedMonth} SelectedMonthDates={selectedMonthDates} />}
+            {<DateSelectionContainer 
+            SelectedMonth={selectedMonth}
+            SelectedMonthDates={selectedMonthDates}
+            ChangeDate={ChangeDate}
+            />}
             </div>
         </div>
     );
