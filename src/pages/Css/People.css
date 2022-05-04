@@ -1,13 +1,13 @@
 .PeopleBody{
+    display: flex;
+    flex-direction: column;
     margin-top: 100px;
     align-items: center;
     justify-content: center;
-    border: green 1px solid;  
     text-align: center;
 }
 .PeopleSelectionContainer{
     display: flex;
-    border: black 1px solid;
     width: 400px;
     justify-content: center;
     align-items: center;
