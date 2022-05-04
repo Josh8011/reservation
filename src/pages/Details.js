@@ -1,31 +1,42 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Row, Form, Container, Col, FloatingLabel, Button } from 'react-bootstrap';
-import { fetchApi } from '../Services/Api'
-
-//HACK: hardcoded data, should be refactored to take argument & pass that to api
-const onSubmit = (e) => {
-    //var temp = e.target.value;
-    debugger;
-    fetchApi.reservations.create(new {
-        CustomerNotes: "",
-        NoOfGuests : 3,
-        SittingId: 1,
-        ReservationOriginId: 1,
-        ReservationStatusId: 1,
-        FirstName: "John",
-        LastName: "Smith",
-        Email: "JohnSmith@gmail.com",
-        PhoneNumber: "0412456789",
-        RestaurantId: 1
-    });
-};
+import { fetchApi } from '../Services/Api';
 
 export function Details(props){
+
+    const navigate = useNavigate();
+    //HACK: hardcoded data, should be refactored to take argument & pass that to api
+    const onSubmit = (event) => {
+        //var temp = e.target.value;
+        event.preventDefault();
+        event.stopPropagation();
+        var reservationDto = {
+            CustomerNotes: "",
+            NoOfGuests : 3,
+            SittingId: 1,
+            ReservationOriginId: 1,
+            ReservationStatusId: 1,
+            FirstName: "John",
+            LastName: "Smith",
+            Email: "JohnSmith@gmail.com",
+            PhoneNumber: "0412456789",
+            RestaurantId: 1
+        };
+        
+        var newReservation = fetchApi.reservations.create(reservationDto);
+
+        newReservation.then(data => {
+            debugger; 
+            navigate("/Confirmation", { state: { newRes: data } });
+        })              
+    };
+
     return(
-        <Container onSubmit={onSubmit}>
+        <Container>
             <Row>
                 <Col sm={12}>
-                    <Form action="https://localhost:7271/api/reservations">
+                    <Form onSubmit={onSubmit}>
                         <FloatingLabel
                             controlId="floatingInput"
                             label="First Name"
@@ -82,4 +93,5 @@ export function Details(props){
             </Row>
         </Container>
     );
+
 }

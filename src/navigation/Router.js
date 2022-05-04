@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { People, DatePage, Sitting, Details} from '../Pages'
+import { People, DatePage, Sitting, Details, Confirmation } from '../Pages'
 
 
 
@@ -20,6 +20,7 @@ export function Router(props){
             <Route path='/DatePage' element={<DatePage ResFunctions={ResFunctions} ResInfo={ResInfo} SelectPage={SelectPage} Sittings={Sittings} />}></Route>
             <Route path='/Sitting' element={<Sitting ResFunctions={ResFunctions} ResInfo={ResInfo} SelectPage={SelectPage} />}></Route>
             <Route path='/Details' element={<Details rResFunctions={ResFunctions} ResInfo={ResInfo} SelectPage={SelectPage} />}></Route>
+            <Route path='/Confirmation' element={<Confirmation />}></Route>
         </Routes>
     )
 }

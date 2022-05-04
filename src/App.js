@@ -14,7 +14,6 @@ function App() {
 
     fetchApi.sittings.getAvailable(new Date(2022, 3, 7))
       .then(data => {
-        debugger;
         setSittings(...[data]);
       });
 
