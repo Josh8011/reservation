@@ -26,11 +26,11 @@ export function DatePage(props){
         for(let i =0; i < distinctMonths.length; i++){
             distinctDayByMonth.push([...new Set(sittingsByMonth[i].map(x => x.day))])
         }
-        // console.log(Sittings)
-        console.log(distinctMonths)
-        console.log(sittingsByMonth)
+        console.log(Sittings)
+        // console.log(distinctMonths)
+        // console.log(sittingsByMonth)
 
-        console.log(distinctDayByMonth)
+        // console.log(distinctDayByMonth)
     }
     
     useEffect(()=>{
