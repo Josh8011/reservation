@@ -29,7 +29,8 @@ export function Sitting() {
             for(let i = 0; i < duration; i+=interval)
             {
                 time.setMinutes(time.getMinutes() + interval)
-                btns.push(<SittingTimeBtn key={i} Time={`${time.getHours()}:${time.getMinutes().toString().length == 1? `${time.getMinutes()}${+0}`: time.getMinutes()}`} />)
+                btns.push(<SittingTimeBtn key={i}
+                 Time={`${time.getHours()}:${time.getMinutes().toString().length == 1? `${time.getMinutes()}${+0}`: time.getMinutes()}`} />)
             }
             setSittingTimeBtns(btns);
         }
