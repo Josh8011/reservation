@@ -1,0 +1,16 @@
+.SittingTimeBtn{
+    background-color: lightcoral;
+    margin: 5px;
+    padding:5px;
+    border-radius: 5px;
+    width: 80px; 
+}
+
+.SittingTimeBtn:hover{
+    background-color: rgb(175, 92, 92);
+    margin: 5px;
+    padding:5px;
+    border-radius: 5px;
+    width: 80px; 
+    cursor: pointer;
+}
