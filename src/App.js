@@ -18,34 +18,18 @@ function App() {
             setSittings(...[data]);
           });
           //Get reservation info from session storage or create new
-          if(!Storage.getSessionItem('reservationInfo',null)){
-            Storage.setSessionItem('reservationInfo', {people: null, date: null, sitting: null, details:null})
-          }
+          let tempResInfo = Storage.getSessionItem('reservationInfo', {people: null, date: null, sitting: null, details:null});
+          Storage.setSessionItem('reservationInfo', tempResInfo);
+          setReservationInfo(tempResInfo);
     })();
 
   } ,[]);
 
-  function ChangePeople(numOfPeople){
-    let newInfo = {...reservationInfo ,People:numOfPeople}
+  function UpdateReservationInfo(propertyAsString, newValue){
+    let newInfo = {...reservationInfo, [propertyAsString]:newValue};
     setReservationInfo(newInfo);
+    Storage.setSessionItem('reservationInfo', newInfo);
   }
-
-  function ChangeDate(newDate){
-    let newInfo = {...reservationInfo, Date:newDate}
-    setReservationInfo(newInfo);
-  }
-
-  function ChangeSitting(selectedSitting){
-    let newInfo = {...reservationInfo, Sitting:selectedSitting}
-    setReservationInfo(newInfo);
-  }
-
-  function ChangeDetails(newDetails){
-    let newInfo = {...reservationInfo, Details:newDetails}
-    setReservationInfo(newInfo);
-  }
-
-  const ReservationFunctions = {ChangePeople,ChangeDate, ChangeDetails, ChangeSitting}
 
   //Link state 
   const [selected , setSelected] = useState({people: null, date: null, sitting: null, details:null});
@@ -56,11 +40,13 @@ function App() {
     setSelected(newSelected)
 }
 
+  const ReservationFunctions = {reservationInfo, UpdateReservationInfo, SelectPage}
+
   return (
     
     <div className="App">
-      <Header ResFunctions={ReservationFunctions} ResInfo={reservationInfo} Selected={selected} SelectPage={SelectPage}/>
-      <Router ResFunctions={ReservationFunctions} ResInfo={reservationInfo} SelectPage={SelectPage} Sittings={sittings}/>
+      <Header ResFunctions={ReservationFunctions} Selected={selected}/>
+      <Router ResFunctions={ReservationFunctions} Sittings={sittings}/>
     </div>
   );
 }

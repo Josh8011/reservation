@@ -8,17 +8,18 @@ import './Css/People.css'
 
 export function People(props){
     let navigate = useNavigate();
-    var ResInfo = props.ResInfo
-    var ChangePeople = props.ResFunctions.ChangePeople
-    var SelectPage = props.SelectPage
+    var ResInfo = props.ResFunctions.reservationInfo
+    var UpdatePeople = props.ResFunctions.UpdateReservationInfo
+    var SelectPage = props.ResFunctions.SelectPage
 
-    const [numberOfPeople, setNumberOfPeople] = useState(2);
+    const [numberOfPeople, setNumberOfPeople] = useState();
     //Configurable minimum total people, maximum total people, default people value
     const peopleInfo = {min:1, max:12, people:2};
 
     useEffect(()=>{
-        setNumberOfPeople(Storage.getSessionItem('reservationInfo',peopleInfo).people);
-    },[]);
+        setNumberOfPeople(ResInfo.people);
+        console.log(ResInfo.people)
+    },[ResInfo]);
 
 
     function onPeopleChange(event){
@@ -42,9 +43,8 @@ export function People(props){
 
     function onContinueClick()
     {
-        let reservationInfo = Storage.getSessionItem('reservationInfo', {people: null, date: null, sitting: null, details:null})
-        Storage.setSessionItem('reservationInfo',{...reservationInfo ,people:numberOfPeople})
-        SelectPage("Date");
+        UpdatePeople('people', numberOfPeople);
+        SelectPage("date");
         navigate("/DatePage");
     }
 
