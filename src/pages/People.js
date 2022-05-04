@@ -20,7 +20,7 @@ export function People(props){
         setNumberOfPeople(ResInfo.people?ResInfo.people:peopleInfo.default);
     },[ResInfo]);
 
-
+//Refresh saves displayed value, instead of stored
     function onPeopleChange(event){
         let total = Number(event.target.value);
             //if input = 0 default to people.min 
@@ -28,7 +28,6 @@ export function People(props){
             //else set to input value
         setNumberOfPeople(total===0 ? peopleInfo.default : total>peopleInfo.max ? peopleInfo.max : total)
     }
-
     function buttonIncrement(value){
         let tempPeople = Number(numberOfPeople);
         tempPeople+=value;
