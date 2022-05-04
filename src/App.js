@@ -40,6 +40,8 @@ function App() {
     setReservationInfo(newInfo);
   }
 
+  function SaveSessionInfo
+
   const ReservationFunctions = {ChangePeople,ChangeDate, ChangeDetails, ChangeSitting}
 
   //Link state 
