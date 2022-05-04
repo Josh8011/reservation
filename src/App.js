@@ -25,9 +25,15 @@ function App() {
   } ,[]);
 
   function UpdateReservationInfo(propertyAsString, newValue){
-    let newInfo = {...reservationInfo, [propertyAsString]:newValue};
-    setReservationInfo(newInfo);
-    Storage.setSessionItem('reservationInfo', newInfo);
+  //checks if object contains passsed property
+    if(reservationInfo.hasOwnProperty(propertyAsString)){
+      let newInfo = {...reservationInfo, [propertyAsString.toLowerCase()]:newValue};
+      setReservationInfo(newInfo);
+      Storage.setSessionItem('reservationInfo', newInfo);
+    }
+    else{
+      console.log(`reservationInfo object does not contain the property '${propertyAsString}'`)
+    }
   }
 
   //Link state 

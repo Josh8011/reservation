@@ -26,7 +26,7 @@ export function People(props){
             //if input = 0 default to people.min 
             //else if input > max default to max
             //else set to input value
-        setNumberOfPeople(total===0 ? peopleInfo.min : total>peopleInfo.max ? peopleInfo.max : total)
+        setNumberOfPeople(total===0 ? peopleInfo.default : total>peopleInfo.max ? peopleInfo.max : total)
     }
 
     function buttonIncrement(value){
