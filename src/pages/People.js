@@ -14,11 +14,10 @@ export function People(props){
 
     const [numberOfPeople, setNumberOfPeople] = useState();
     //Configurable minimum total people, maximum total people, default people value
-    const peopleInfo = {min:1, max:12, people:2};
+    const peopleInfo = {min:1, max:12, default:2};
 
     useEffect(()=>{
-        setNumberOfPeople(ResInfo.people);
-        console.log(ResInfo.people)
+        setNumberOfPeople(ResInfo.people?ResInfo.people:peopleInfo.default);
     },[ResInfo]);
 
 
