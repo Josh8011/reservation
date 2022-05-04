@@ -23,9 +23,8 @@ export function Sitting() {
 
     if(info)
     {
-        var SittingTypeBtns = []
-        info.forEach(s => SittingTypeBtns.push())
-        console.log(sittingTimeBtns)
+        var sittingTypeBtns = []
+        info.forEach(s => sittingTypeBtns.push(<SittingTypeBtn type={s.type}/>))
     }
 
     
@@ -35,7 +34,7 @@ export function Sitting() {
     return(
         <div className='SittingBody'>
             <div className='SittingTypeContainer'>
-        asdfasdf    
+                {sittingTypeBtns}
             </div>
             <div className='SittingTimeContainer'>
                 aasdf

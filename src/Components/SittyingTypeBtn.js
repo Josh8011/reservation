@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 
 
 
-export  function SittingTypeBtn (){
+export  function SittingTypeBtn (props){
     
-
+    var type = props.Type 
     return (
         
-        <div></div>
+        <div> {type}</div>
     );
 }
