@@ -17,7 +17,6 @@ function App() {
             setSittings(...[data]);
           });
     })();
-
   } ,[]);
 
   function ChangePeople(numOfPeople){
