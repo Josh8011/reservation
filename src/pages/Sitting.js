@@ -20,17 +20,16 @@ export function Sitting() {
             let btns = [];
             let index = selectedSitting.index;
             let start = info[index].start
-            let cutOff = 0;
+            let cutOff = 20;
             let duration = info[index].duration - cutOff
             let interval = 15;
             let time = new Date();
             time.setHours(start.slice(0,2),start.slice(3,5))
 
-
             for(let i = 0; i < duration; i+=interval)
             {
                 time.setMinutes(time.getMinutes() + interval)
-                btns.push(<SittingTimeBtn key={i} Time={`${time.getHours()}:${time.getMinutes() == 0? `${time.getMinutes()}${+0}`: time.getMinutes()}`} />)
+                btns.push(<SittingTimeBtn key={i} Time={`${time.getHours()}:${time.getMinutes().toString().length == 1? `${time.getMinutes()}${+0}`: time.getMinutes()}`} />)
             }
             setSittingTimeBtns(btns);
         }
