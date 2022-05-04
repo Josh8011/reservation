@@ -1,5 +1,5 @@
 import React, { useState , useEffect} from 'react';
-import { DateSelectionBtn } from '../Components';
+import { DateSelectionBtn } from '.';
 
 import './Css/DateSelectionContainer.css'
 export function DateSelectionContainer(props){
