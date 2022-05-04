@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
+import Storage from './Services/storage';
 import {Router} from './Navigation'
 import {Header} from './Components'
 import { fetchApi } from './Services'
@@ -8,7 +9,7 @@ function App() {
   
   const [sittings, setSittings] = useState([]);
   //information state storage and functions
-  const [reservationInfo , setReservationInfo]= useState({People: null, Date: null, Sitting: null, Details:null })
+  const [reservationInfo , setReservationInfo]= useState({})
 
   useEffect(()=>{
     (async()=>{
@@ -16,6 +17,10 @@ function App() {
           .then(data => {
             setSittings(...[data]);
           });
+          //Get reservation info from session storage or create new
+          if(!Storage.getSessionItem('reservationInfo',null)){
+            Storage.setSessionItem('reservationInfo', {people: null, date: null, sitting: null, details:null})
+          }
     })();
 
   } ,[]);
@@ -40,15 +45,13 @@ function App() {
     setReservationInfo(newInfo);
   }
 
-  function SaveSessionInfo
-
   const ReservationFunctions = {ChangePeople,ChangeDate, ChangeDetails, ChangeSitting}
 
   //Link state 
-  const [selected , setSelected] = useState({ People: true, Date: false, Sitting: false, Details: false});
+  const [selected , setSelected] = useState({people: null, date: null, sitting: null, details:null});
 
   function SelectPage(name){
-    let newSelected = { People: false, Date: false, Sitting: false, Details: false}
+    let newSelected = {people: null, date: null, sitting: null, details:null}
     newSelected[name] = true;
     setSelected(newSelected)
 }

@@ -1,5 +1,6 @@
 import {React, useEffect, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
+import Storage from '../Services/storage';
 import {PeopleSelectionLink} from '../Components';
 import './Css/People.css'
 
@@ -12,10 +13,11 @@ export function People(props){
     var SelectPage = props.SelectPage
 
     const [numberOfPeople, setNumberOfPeople] = useState(2);
-    const people = {min:1, max:12};
+    //Configurable minimum total people, maximum total people, default people value
+    const peopleInfo = {min:1, max:12, people:2};
 
     useEffect(()=>{
-        setNumberOfPeople(ResInfo.People?ResInfo.People:2);
+        setNumberOfPeople(Storage.getSessionItem('reservationInfo',peopleInfo).people);
     },[]);
 
 
@@ -24,23 +26,24 @@ export function People(props){
             //if input = 0 default to people.min 
             //else if input > max default to max
             //else set to input value
-        setNumberOfPeople(total===0 ? people.min : total>people.max ? people.max : total)
+        setNumberOfPeople(total===0 ? peopleInfo.min : total>peopleInfo.max ? peopleInfo.max : total)
     }
 
     function buttonIncrement(value){
         let tempPeople = Number(numberOfPeople);
         tempPeople+=value;
-        if(tempPeople>=people.min && tempPeople<people.max){
+        if(tempPeople>=peopleInfo.min && tempPeople<peopleInfo.max){
             setNumberOfPeople(tempPeople);
         }
         else{
-            setNumberOfPeople(tempPeople<people.min?people.min:people.max);
+            setNumberOfPeople(tempPeople<peopleInfo.min?peopleInfo.min:peopleInfo.max);
         }
     }
 
     function onContinueClick()
     {
-        ChangePeople(numberOfPeople);
+        let reservationInfo = Storage.getSessionItem('reservationInfo', {people: null, date: null, sitting: null, details:null})
+        Storage.setSessionItem('reservationInfo',{...reservationInfo ,people:numberOfPeople})
         SelectPage("Date");
         navigate("/DatePage");
     }
@@ -57,8 +60,8 @@ export function People(props){
             </div>
             
 
-            {numberOfPeople===people.max?
-            <div>If you wish to make a reservation for more than {people.max} people please contact the restaurant (LINK TO CONTACT PAGE)</div>
+            {numberOfPeople===peopleInfo.max?
+            <div>If you wish to make a reservation for more than {peopleInfo.max} people please contact the restaurant (LINK TO CONTACT PAGE)</div>
             :<div><br/></div>}
 
             <div className="input-group row w-75 pt-2">
