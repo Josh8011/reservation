@@ -64,7 +64,7 @@ export function People(props){
             :<div><br/></div>}
 
             <div className="input-group row w-75 pt-2">
-                <button type="button" class="btn btn-primary btn-lg" onClick={onContinueClick} >Continue</button>
+                <button type="button" className="btn btn-primary btn-lg" onClick={onContinueClick} >Continue</button>
             </div>
 
             </div>
