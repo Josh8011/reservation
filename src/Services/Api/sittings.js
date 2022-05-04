@@ -15,10 +15,18 @@ const getAvailable = async (startDate, endDate) =>
     }
 };
 
+const getDayTypes = async (date) =>
+{
+    let dateIso = new Date(date).toISOString();
+
+    return await fetch(`${baseUrl}/day-types/${dateIso}`)
+                    .then( response => response.json());
+};
+
 const getDistinctAvailable = async (month) =>
 {
     return await fetch(`${baseUrl}/distinct-available/${month}`)
                     .then( response => response.json());
 };
 
-export { getAvailable, getDistinctAvailable };
+export { getAvailable, getDistinctAvailable, getDayTypes };
