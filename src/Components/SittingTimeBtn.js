@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-function SittingTimeBtn () {  
+import './Css/SittingTimeBtn.css'
 
+export function SittingTimeBtn (props) {  
+
+    var Time = props.Time
     return(
-        <div></div>    
+        <div className='SittingTimeBtn' >{Time}</div>    
     );
 }

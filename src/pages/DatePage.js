@@ -34,7 +34,6 @@ export function DatePage(props){
     }
     
     useEffect(()=>{
-        debugger;
         if(Sittings[0]){
             let isDays = false;
             for(let i=0; i< distinctMonths.length; i++)
