@@ -1,28 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import { MonthSelectBtn , DateSelectionContainer} from '../Components';
 import "./Css/DatePage.css"
+import { fetchApi } from '../Services/Api'
+
 
 
 export function DatePage(props){
+                            //remove the date later
+    const currentDate = new Date(2022,4,1);
+    //How many months ahead to display
+    const totalMonthsIncluded = 12;
+    const [availableDates, setAvailableDates] = useState({});
 
-    var Sittings = props.Sittings
-    var ChangeDate = props.ResFunctions.ChangeDate;
-    var SelectPage = props.SelectPage
-    var currentDate = new Date();
+    useEffect(()=>{
+        (async()=>{
+            await fetchApi.sittings.getDistinctAvailable(currentDate, currentDate.setMonth(currentDate.getMonth()+totalMonthsIncluded))
+              .then(data => {
+                setAvailableDates(...[data]);
+                console.log(data);
+              });
+        })();
+      } ,[]);
+
+
+
 
     //Create Month buttons array 
-    var monthBtns = CreateMonthBtns(3,currentDate, ChangeSelectedMonth);
+    var monthBtns = CreateMonthBtns(totalMonthsIncluded,currentDate, ChangeSelectedMonth);
     currentDate = new Date();
     // do we want this to defaul to the current month or do we want it to be selected.
     const [selectedMonth, setSelectedMonth] = useState(currentDate.getMonth()); 
     const [selectedMonthDates, setSelectedMonthDates] = useState([]);
-
-
-    
-    
-
-
-
 
     function ChangeSelectedMonth(MonthToBeSelected)
     {
