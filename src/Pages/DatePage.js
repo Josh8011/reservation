@@ -29,18 +29,6 @@ export function DatePage(props){
 
 
 
-    //Create Month buttons array 
-    var monthBtns = CreateMonthBtns(totalMonthsIncluded,currentDate, ChangeSelectedMonth);
-    currentDate = new Date();
-    // do we want this to defaul to the current month or do we want it to be selected.
-    const [selectedMonth, setSelectedMonth] = useState(currentDate.getMonth()); 
-    const [selectedMonthDates, setSelectedMonthDates] = useState([]);
-
-    function ChangeSelectedMonth(MonthToBeSelected)
-    {
-        setSelectedMonth(MonthToBeSelected);
-    }
-
     return(
         <div className="DatePageContainer">
       
@@ -49,18 +37,30 @@ export function DatePage(props){
 }
 
 
-function CreateMonthBtns(NumberOfBtns, currentDate, setSelectedMonth){
-    var MonthBtns = [];
-    for(let i = 0; i < NumberOfBtns; i++)
-    {
-        MonthBtns.push( 
-            <MonthSelectBtn key={i}
-             SelectedMonthNumber={currentDate.getMonth() }
-             Month={currentDate.toLocaleString('default', { month: 'long' })}
-             SetSelectedMonth={setSelectedMonth}
-             />)
 
-        currentDate.setMonth(currentDate.getMonth()+1)
-    }
-    return(MonthBtns)
-}
+    // //Create Month buttons array 
+    // var monthBtns = CreateMonthBtns(totalMonthsIncluded,currentDate, ChangeSelectedMonth);
+    // // do we want this to defaul to the current month or do we want it to be selected.
+    // const [selectedMonth, setSelectedMonth] = useState(currentDate.getMonth()); 
+    // const [selectedMonthDates, setSelectedMonthDates] = useState([]);
+
+    // function ChangeSelectedMonth(MonthToBeSelected)
+    // {
+    //     setSelectedMonth(MonthToBeSelected);
+    // }
+
+// function CreateMonthBtns(NumberOfBtns, currentDate, setSelectedMonth){
+//     var MonthBtns = [];
+//     for(let i = 0; i < NumberOfBtns; i++)
+//     {
+//         MonthBtns.push( 
+//             <MonthSelectBtn key={i}
+//              SelectedMonthNumber={currentDate.getMonth() }
+//              Month={currentDate.toLocaleString('default', { month: 'long' })}
+//              SetSelectedMonth={setSelectedMonth}
+//              />)
+
+//         currentDate.setMonth(currentDate.getMonth()+1)
+//     }
+//     return(MonthBtns)
+// }
