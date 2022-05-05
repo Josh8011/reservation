@@ -1,17 +1,18 @@
 .HeaderLink-Link{
-    background-color: lightblue;
+    background-color: #C7CFD9;
     color: Black;
-    margin: 30px;
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-left: 5vw;
+    margin-right: 5vw;
+}
+
+.HeaderLink-Highlighted{
+    background-color: #594432;
+    color: white;
     padding: 10px;
     border-radius: 5px;
     text-decoration: none;
 }
 
-.HeaderLink-Highlighted{
-    background-color: lightcoral;
-    color: Black;
-    margin: 30px;
-    padding: 10px;
-    border-radius: 5px;
-    text-decoration: none;
-}

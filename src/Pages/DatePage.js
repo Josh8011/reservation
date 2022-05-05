@@ -61,10 +61,6 @@ export function DatePage(props){
         console.log(input)
       }
 
-
-
-
-
     return(
         <div className="DatePageContainer">
             <div className="DateSelectionContainer">
@@ -76,17 +72,4 @@ export function DatePage(props){
         </div>
     );
 }
-
-
-
-    // //Create Month buttons array 
-    // var monthBtns = CreateMonthBtns(totalMonthsIncluded,currentDate, ChangeSelectedMonth);
-    // // do we want this to defaul to the current month or do we want it to be selected.
-    // const [selectedMonth, setSelectedMonth] = useState(currentDate.getMonth()); 
-    // const [selectedMonthDates, setSelectedMonthDates] = useState([]);
-
-    // function ChangeSelectedMonth(MonthToBeSelected)
-    // {
-    //     setSelectedMonth(MonthToBeSelected);
-    // }
 
