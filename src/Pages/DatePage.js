@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { MonthSelectBtn } from '../Components';
+import { DateSelectionBtn, MonthSelectBtn } from '../Components';
 import "./Css/DatePage.css"
 import { fetchApi } from '../Services/Api'
-
 
 
 export function DatePage(props){
     //How many months ahead to display
     const totalMonthsIncluded = 12;
     // //remove the date later
-    const currentDate = new Date(2022,4,1);
+    const currentDate = new Date(2022,3,1);
     const endDate = new Date(currentDate).setMonth(currentDate.getMonth()+totalMonthsIncluded)
     
-    const [availableDates, setAvailableDates] = useState({});
+    const [availableDates, setAvailableDates] = useState();
+    let MonthSelectBtns = []
+    const [dateSelectionBtns, setDateSelectionBtns ] = useState();
 
     useEffect(()=>{
         (async()=>{
@@ -23,25 +24,55 @@ export function DatePage(props){
         })();
       } ,[]);
 
+      const [selectedMonth, setSelectedMonth] = useState(); 
+
+      if(availableDates)
+      {
+        for(let month in availableDates)
+        {
+            let dateObject = new Date()
+            dateObject.setMonth(month - 1)
+
+            MonthSelectBtns.push(
+            <MonthSelectBtn
+            key={month}
+            Month={dateObject.toLocaleString('default', { month: 'long'})}
+            setSelectedMonth={() => setSelectedMonth(dateObject.getMonth())}
+            />)
+        }
+      }
 
 
-    //   console.log(availableDates)
-    // //Create Month buttons array 
-   
-    // currentDate = new Date();
+      useEffect(()=> {
+          if(availableDates)
+          {
+            setDateSelectionBtns(availableDates[selectedMonth + 1].map( d => 
+                <DateSelectionBtn
+                key={d}
+                date={d}
+                SubmitDate={() =>SubmitDate("test")}
+                />
+              ));
+          }
 
-    // const [selectedMonth, setSelectedMonth] = useState(currentDate.getMonth()); 
-    // const [selectedMonthDates, setSelectedMonthDates] = useState([]);
+      },[selectedMonth])
 
- 
+      
+      function SubmitDate(input){
+        console.log(input)
+      }
+
+
+
+
 
     return(
         <div className="DatePageContainer">
             <div className="DateSelectionContainer">
-
+                {MonthSelectBtns}
             </div>
-            <div className="CalenderContainer">
-
+            <div className="DateDayContainer">
+                {dateSelectionBtns}
             </div>
         </div>
     );
@@ -60,18 +91,3 @@ export function DatePage(props){
     //     setSelectedMonth(MonthToBeSelected);
     // }
 
-// function CreateMonthBtns(NumberOfBtns, currentDate, setSelectedMonth){
-//     var MonthBtns = [];
-//     for(let i = 0; i < NumberOfBtns; i++)
-//     {
-//         MonthBtns.push( 
-//             <MonthSelectBtn key={i}
-//              SelectedMonthNumber={currentDate.getMonth() }
-//              Month={currentDate.toLocaleString('default', { month: 'long' })}
-//              SetSelectedMonth={setSelectedMonth}
-//              />)
-
-//         currentDate.setMonth(currentDate.getMonth()+1)
-//     }
-//     return(MonthBtns)
-// }

@@ -17,7 +17,6 @@ export function Sitting(props) {
         fetchApi.sittings.getDayTypes(new Date(2022,3,9))
           .then(data => {
               setInfo(data)
-              console.log(data)
             });
     },[])
     const[sittingTimeBtns, setSittingTimeBtns] = useState("Please Select a Sitting");

@@ -2,4 +2,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border: red solid 1px;
 };
+
+.DateSelectionContainer{
+    border:black 1px solid;
+}
+
+
+.DateDayContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 40%;
+    justify-content: center;
+}
