@@ -10,7 +10,8 @@ function App() {
 
   useEffect(()=>{
           //Get reservation info from session storage or create new
-          let tempResInfo = Storage.getSessionItem('reservationInfo', {people: null, date: null, sitting: null, details:null});
+          let newdate = new Date(2022-4-1);
+          let tempResInfo = Storage.getSessionItem('reservationInfo', {people: null, date: null, sitting: null, details: null});
           Storage.setSessionItem('reservationInfo', tempResInfo);
           setReservationInfo(tempResInfo);
   } ,[]);
