@@ -6,19 +6,23 @@ import { fetchApi } from '../Services/Api'
 
 
 export function DatePage(props){
-                            //remove the date later
-    const currentDate = new Date(2022,4,1);
     //How many months ahead to display
     const totalMonthsIncluded = 12;
+                            //remove the date later
+    const currentDate = new Date(2022,4,1);
+    const endDate = new Date(currentDate).setMonth(currentDate.getMonth()+totalMonthsIncluded)
+    
     const [availableDates, setAvailableDates] = useState({});
 
     useEffect(()=>{
         (async()=>{
-            await fetchApi.sittings.getDistinctAvailable(currentDate, currentDate.setMonth(currentDate.getMonth()+totalMonthsIncluded))
+            //
+            await fetchApi.sittings.getDistinctAvailable(currentDate, endDate)
               .then(data => {
                 setAvailableDates(...[data]);
                 console.log(data);
               });
+            debugger
         })();
       } ,[]);
 
