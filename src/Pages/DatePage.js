@@ -57,7 +57,6 @@ export function DatePage(props){
 
       },[selectedMonth])
 
-      
       function SubmitDate(input){
         console.log(input)
       }

@@ -8,21 +8,54 @@ export function Sitting(props) {
     //add seleected date here and put it in the call below
 
     var selectedDate = []
+    var ResInfo = props.ResFunctions.reservationInfo
     var UpdateSitting = props.ResFunctions.UpdateReservationInfo
     var SelectPage = props.ResFunctions.SelectPage
     const navigate = useNavigate();
-
+    const[sittingTimeBtns, setSittingTimeBtns] = useState("Please Select a Sitting");
+    const [selectedSitting, setSelectedSitting] = useState();
     const[info, setInfo] =  useState();
+    
     useEffect(()=> {
+
         fetchApi.sittings.getDayTypes(new Date(2022,3,9))
           .then(data => {
               setInfo(data)
             });
-    },[])
-    const[sittingTimeBtns, setSittingTimeBtns] = useState("Please Select a Sitting");
-    const [selectedSitting, setSelectedSitting] = useState();
 
-  
+
+    },[])
+
+    useEffect(()=>{
+            if(ResInfo.sitting){
+                let index = null
+                for(let sit in info)
+                {
+                    if(info[sit].id == ResInfo.sitting.Id)
+                    {
+                    index = sit;
+                    }
+                }
+
+                if(index)
+                {
+                    setSelectedSitting({index: index, id: ResInfo.sitting.Id})
+                }
+            }
+    },[info])
+
+    //if sitting is selected reder sitting type btns
+    if(info)
+    {
+        var sittingTypeBtns = []
+        info.forEach((s, index) => sittingTypeBtns.push(
+            <SittingTypeBtn 
+            key={s.id}
+            Type={s.type}
+            SetSelectedSitting={() =>setSelectedSitting({ index: index, id:s.id } )}/>))
+    }
+
+
     useEffect(()=>{
         if(selectedSitting){
             let btns = [];
@@ -54,28 +87,11 @@ export function Sitting(props) {
     
 
     function SubmitTime(id, start , type ){
-        console.log(id)
-        console.log(start)
         SelectPage("details")
         UpdateSitting('sitting', {Start: start, Id: id, Type: type})
         navigate('/Details')
 
     }   
-   
-
-
-    //if sitting is selected reder sitting type btns
-    if(info)
-    {
-        var sittingTypeBtns = []
-        info.forEach((s, index) => sittingTypeBtns.push(
-            <SittingTypeBtn 
-            key={s.id}
-            Type={s.type}
-            SetSelectedSitting={() =>setSelectedSitting({ index: index, id:s.id } )}/>))
-    }
- 
-    
 
     return(
         <div className='SittingBody'>
