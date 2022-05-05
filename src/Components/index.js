@@ -1,6 +1,5 @@
 export * from './Header'
 export * from './HeaderLink'
-export * from './PeopleSelectionLink'
 export * from './MonthSelectBtn'
 export * from './DateSelectionContainer'
 export * from './DateSelectionBtn'
