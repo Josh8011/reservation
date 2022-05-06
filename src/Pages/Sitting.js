@@ -2,12 +2,23 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import { SittingTypeBtn, SittingTimeBtn } from '../Components';
 import { fetchApi } from '../Services';
+import { useLocation } from 'react-router-dom';
+
 import './Css/Sittings.css'
 
 export function Sitting(props) {
     //add seleected date here and put it in the call below
 
-    var selectedDate = []
+
+    const location = useLocation();
+
+    if(location.state)
+    {
+        var selectedDate = location.state.Date
+    }
+
+
+
     var ResInfo = props.ResFunctions.reservationInfo
     var UpdateSitting = props.ResFunctions.UpdateReservationInfo
     var SelectPage = props.ResFunctions.SelectPage
@@ -15,12 +26,13 @@ export function Sitting(props) {
     const[sittingTimeBtns, setSittingTimeBtns] = useState("Please Select a Sitting");
     const [selectedSitting, setSelectedSitting] = useState();
     const[info, setInfo] =  useState();
-    
+
     useEffect(()=> {
 
-        fetchApi.sittings.getDayTypes(new Date(2022,3,9))
+        fetchApi.sittings.getDayTypes(new Date(selectedDate))
           .then(data => {
               setInfo(data)
+              console.log(data)
             });
 
 

@@ -14,7 +14,7 @@ export function Header(props) {
         <div className='Body'>
             
             <HeaderLink selected={selected.People} SelectedFunction={SelectPage} Name={ResInfo.people? ResInfo.people: "People" } Path="People"/>
-            <HeaderLink selected={selected.Date} SelectedFunction={SelectPage} Name="Date" Path="DatePage"/>
+            <HeaderLink selected={selected.Date} SelectedFunction={SelectPage} Name={ResInfo.date? ResInfo.date: 'Date'} Path="DatePage"/>
             <HeaderLink selected={selected.Sitting} SelectedFunction={SelectPage} Name={ResInfo.sitting? ResInfo.sitting.Start :"Sitting"} Path="Sitting"/>
             <HeaderLink selected={selected.Details} SelectedFunction={SelectPage} Name="Details" Path="Details"/>       
 
