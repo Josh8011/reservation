@@ -32,7 +32,6 @@ export function Sitting(props) {
         fetchApi.sittings.getDayTypes(new Date(selectedDate))
           .then(data => {
               setInfo(data)
-              console.log(data)
             });
 
 
