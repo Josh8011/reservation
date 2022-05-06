@@ -30,9 +30,10 @@ export function Sitting(props) {
           .then(data => {
               setInfo(data)
             });
+        
+            
 
-
-    },[])
+    },[ResInfo])
 
     useEffect(()=>{
             if(ResInfo.sitting){

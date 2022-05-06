@@ -9,12 +9,18 @@ function App() {
   const [reservationInfo , setReservationInfo]= useState({})
 
   useEffect(()=>{
-          //Get reservation info from session storage or create new
-          let newdate = new Date(2022-4-1);
-          let tempResInfo = Storage.getSessionItem('reservationInfo', {people: null, date: null, sitting: null, details: null});
-          Storage.setSessionItem('reservationInfo', tempResInfo);
-          setReservationInfo(tempResInfo);
+    (async()=>{
+        await loadReservationInfo();
+    })();
   } ,[]);
+
+  function loadReservationInfo(){
+      //Get reservation info from session storage or create new
+      let tempResInfo = Storage.getSessionItem('reservationInfo', {people: null, date: null, sitting: null, details: null});
+      tempResInfo.date = tempResInfo.date? new Date(tempResInfo.date) : null
+      Storage.setSessionItem('reservationInfo', tempResInfo);
+      setReservationInfo(tempResInfo);
+  }
 
   function UpdateReservationInfo(propertyAsString, newValue){
   //checks if object contains passsed property

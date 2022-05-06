@@ -79,7 +79,6 @@ export function DatePage(props){
 
       function SubmitDate(Year, Month, Day){
         let reservationDate = new Date(Year, Month, Day);
-        debugger;
         SelectPage("sitting");
         UpdateDate("date", reservationDate)
         navigate("/Sitting")

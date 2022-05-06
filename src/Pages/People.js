@@ -9,7 +9,7 @@ export function People(props){
     var UpdatePeople = props.ResFunctions.UpdateReservationInfo
     var SelectPage = props.ResFunctions.SelectPage
 
-    const [numberOfPeople, setNumberOfPeople] = useState();
+    const [numberOfPeople, setNumberOfPeople] = useState('');
     const [peopleError, setPeopleError] = useState(false);
     //Configurable minimum total people, maximum total people, default people value
     const peopleInfo = {min:1, max:12, default:2};
