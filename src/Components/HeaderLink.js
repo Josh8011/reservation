@@ -6,19 +6,13 @@ import './Css/HeaderLink.css';
 export function HeaderLink(props) {
 
     let Name = props.Name
-    let selected = props.selected
     let Path = props.Path
-    let linkType = "HeaderLink-Link"
-
-    if(selected)
-    {
-        linkType="HeaderLink-Highlighted"
-    }
+    let linkType = props.selected? "HeaderLink-Highlighted": "HeaderLink-Link"
 
 
     return(
         <div>
-            <Link onClick={() => props.SelectedFunction(Name)} className={linkType} to={{pathname:`/${Path}`}} >{Name}</Link>
+            <Link onClick={props.SelectedFunction} className={linkType} to={{pathname:`/${Path}`}} >{Name}</Link>
         </div>
     );
 }
