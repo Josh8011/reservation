@@ -1,9 +1,6 @@
 import {React, useEffect, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
-import Storage from '../Services/storage';
-import {PeopleSelectionLink} from '../Components';
 import './Css/People.css'
-
 
 
 export function People(props){
@@ -24,13 +21,11 @@ export function People(props){
 //Refresh saves displayed value, instead of stored
     function onPeopleChange(event){
         let input = event.target.value
-        console.log(input);
         if(input!==''){
-            let total = Math.trunc(Math.abs(Number(input)));
-                //if input = 0 default to people.min 
+                //if input < min default to people.min 
                 //else if input > max default to max
                 //else set to input value
-            total = total===0 ? peopleInfo.default : total>peopleInfo.max ? peopleInfo.max : total
+            let total = input<peopleInfo.min ? peopleInfo.min : input>peopleInfo.max ? peopleInfo.max : Math.trunc(Math.abs(Number(input)))
             setNumberOfPeople(total);
             UpdatePeople('people', total);
             if(peopleError){
