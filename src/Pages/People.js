@@ -42,7 +42,7 @@ export function People(props){
         if(tempPeople>=peopleInfo.min && tempPeople<=peopleInfo.max){
         }
         else{
-            tempPeople=tempPeople<peopleInfo.min?peopleInfo.min:peopleInfo.max
+            tempPeople=tempPeople<peopleInfo.min?peopleInfo.min:peopleInfo.max;
         }
             setNumberOfPeople(tempPeople);
             UpdatePeople('people', tempPeople);
@@ -56,6 +56,9 @@ export function People(props){
         if(numberOfPeople>=peopleInfo.min&&numberOfPeople<=peopleInfo.max){
             SelectPage("date");
             navigate("/DatePage");
+            if(!ResInfo.people){
+                UpdatePeople('people', numberOfPeople);
+            }
         }
         else{
             setPeopleError(true);
