@@ -35,10 +35,10 @@ function App() {
   }
 
   //Link state 
-  const [selected , setSelected] = useState({people: null, date: null, sitting: null, details:null});
+  const [selected , setSelected] = useState({people: false, date: false, sitting: false, details: false});
 
   function SelectPage(name){
-    let newSelected = {people: null, date: null, sitting: null, details:null}
+    let newSelected = {people: false, date: false, sitting: false, details: false}
     newSelected[name] = true;
     setSelected(newSelected)
 }
