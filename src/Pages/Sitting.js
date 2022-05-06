@@ -9,14 +9,11 @@ import './Css/Sittings.css'
 export function Sitting(props) {
     //add seleected date here and put it in the call below
 
-
-    const location = useLocation();
-
-    if(location.state)
-    {
-        var selectedDate = location.state.Date
-    }
-
+    //const location = useLocation();
+    // if(location.state)
+    // {
+    //     var selectedDate = location.state.Date
+    // }
 
 
     var ResInfo = props.ResFunctions.reservationInfo
@@ -28,8 +25,8 @@ export function Sitting(props) {
     const[info, setInfo] =  useState();
 
     useEffect(()=> {
-
-        fetchApi.sittings.getDayTypes(new Date(selectedDate))
+    
+        fetchApi.sittings.getDayTypes(ResInfo.date)
           .then(data => {
               setInfo(data)
             });
@@ -39,20 +36,15 @@ export function Sitting(props) {
 
     useEffect(()=>{
             if(ResInfo.sitting){
-                let index = null
                 for(let sit in info)
                 {
                     if(info[sit].id == ResInfo.sitting.Id)
                     {
-                    index = sit;
+                    setSelectedSitting({index: sit, id: ResInfo.sitting.Id})
                     }
                 }
-
-                if(index)
-                {
-                    setSelectedSitting({index: index, id: ResInfo.sitting.Id})
-                }
             }
+
     },[info])
 
     //if sitting is selected reder sitting type btns

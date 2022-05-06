@@ -32,6 +32,7 @@ export function DatePage(props){
                 setAvailableDates(...[data]);
               });
         })();
+
       } ,[]);
 
 
@@ -69,18 +70,20 @@ export function DatePage(props){
                 <DateSelectionBtn
                 key={d}
                 date={d}
-                SubmitDate={() =>SubmitDate(selectedMonth.Year, currentMonth, d)}
+                SubmitDate={() =>SubmitDate(selectedMonth.Year, selectedMonth.Month, d)}
                 />
               ));
           }
 
       },[selectedMonth])
 
-      function SubmitDate(Year, Month, Date){
-        
+      function SubmitDate(Year, Month, Day){
+        let reservationDate = new Date(Year, Month, Day);
+        debugger;
         SelectPage("sitting");
-        UpdateDate("date", `${Year}/${Month}/${Date}`)
-        navigate("/Sitting", { state: { Date: `${Year}/${Month}/${Date}` } })
+        UpdateDate("date", reservationDate)
+        navigate("/Sitting")
+        //navigate("/Sitting", { state: { Date: `${Year}/${Month}/${Day}` } })
       }
 
     return(
