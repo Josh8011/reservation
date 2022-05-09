@@ -17,11 +17,11 @@ export function Header(props) {
     return(
         <div className='Body'>
             
-            <HeaderLink selected={selected.people} SelectedFunction={()=>SelectPage('people')} Name={ResInfo.people? ResInfo.people: "People" } Path="People"/>
-            <HeaderLink selected={selected.date} SelectedFunction={()=>SelectPage('date')} Name={ResInfo.date?
+            <HeaderLink selected={selected.People} SelectedFunction={SelectPage} Name={ResInfo.people? ResInfo.people: "People" } Path="People"/>
+            <HeaderLink selected={selected.DatePage} SelectedFunction={SelectPage} Name={ResInfo.date?
                 `${addPadding(ResInfo.date.getDate())}/${addPadding(ResInfo.date.getMonth()+1)}/${ResInfo.date.getFullYear()}`: 'Date'} Path="DatePage"/>
-            <HeaderLink selected={selected.sitting} SelectedFunction={()=>SelectPage('sitting')} Name={ResInfo.sitting? ResInfo.sitting.Start :"Sitting"} Path="Sitting"/>
-            <HeaderLink selected={selected.details} SelectedFunction={()=>SelectPage('details')} Name="Details" Path="Details"/>       
+            <HeaderLink selected={selected.Sitting} SelectedFunction={SelectPage} Name={ResInfo.sitting? ResInfo.sitting.Start :"Sitting"} Path="Sitting"/>
+            <HeaderLink selected={selected.Details} SelectedFunction={SelectPage} Name="Details" Path="Details"/>       
 
         </div>
     );

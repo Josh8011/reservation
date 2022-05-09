@@ -13,7 +13,7 @@ export function HeaderLink(props) {
 
     return(
         <div>
-            <Link onClick={SelectedFunction} className={linkType} to={{pathname:`/${Path}`}} >{Name}</Link>
+            <Link onClick={()=>SelectedFunction(Path)} className={linkType} to={{pathname:`/${Path}`}} >{Name}</Link>
         </div>
     );
 }

@@ -3,15 +3,21 @@ import './App.css';
 import Storage from './Services/storage';
 import {Router} from './Navigation'
 import {Header} from './Components'
+import {useLocation} from 'react-router-dom'
 
 function App() {
   //information state storage and functions
   const [reservationInfo , setReservationInfo]= useState({})
+  //Link state 
+  const [selected , setSelected] = useState({People: false, DatePage: false, Sitting: false, Details: false});
+  const location = useLocation();
 
   useEffect(()=>{
     (async()=>{
         await loadReservationInfo();
     })();
+    debugger;
+    SelectPage(location.pathname.replace(/\//g,''));
   } ,[]);
 
   function loadReservationInfo(){
@@ -34,11 +40,9 @@ function App() {
     }
   }
 
-  //Link state 
-  const [selected , setSelected] = useState({people: false, date: false, sitting: false, details: false});
 
   function SelectPage(name){
-    let newSelected = {people: false, date: false, sitting: false, details: false}
+    let newSelected = {People: false, DatePage: false, Sitting: false, Details: false}
     newSelected[name] = true;
     setSelected(newSelected)
 }
