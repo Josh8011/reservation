@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { DateSelectionBtn, MonthSelectBtn , DateYearContainer} from '../Components';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation} from 'react-router-dom';
 import "./Css/DatePage.css"
 import { fetchApi } from '../Services/Api'
 
 
+
 export function DatePage(props){
 
-    var SelectPage = props.ResFunctions.SelectPage
+    const navigate = useNavigate();
+    const location = useLocation();
+    var setSelected = props.ResFunctions.setSelected
     var UpdateDate = props.ResFunctions.UpdateReservationInfo
     var ResInfo = props.ResFunctions.reservationInfo
-    var navigate = useNavigate();
 
 
     //How many months ahead to display
@@ -32,9 +34,11 @@ export function DatePage(props){
                 setAvailableDates(...[data]);
               });
         })();
-
+      setSelected(location.pathname.replace(/\//g,''))
       } ,[]);
 
+useEffect(()=>{
+},[]);
 
 
       if(availableDates)
@@ -79,9 +83,9 @@ export function DatePage(props){
 
       function SubmitDate(Year, Month, Day){
         let reservationDate = new Date(Year, Month, Day);
-        SelectPage("sitting");
+        //SelectPage("sitting");
         UpdateDate("date", reservationDate)
-        navigate("/Sitting")
+        navigate("/sitting")
         //navigate("/Sitting", { state: { Date: `${Year}/${Month}/${Day}` } })
       }
 

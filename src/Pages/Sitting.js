@@ -1,28 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router';
+import { useNavigate, useLocation} from 'react-router-dom';
 import { SittingTypeBtn, SittingTimeBtn } from '../Components';
 import { fetchApi } from '../Services';
-import { useLocation } from 'react-router-dom';
 
 import './Css/Sittings.css'
 
 export function Sitting(props) {
-    //add seleected date here and put it in the call below
-
-    //const location = useLocation();
-    // if(location.state)
-    // {
-    //     var selectedDate = location.state.Date
-    // }
-
 
     var ResInfo = props.ResFunctions.reservationInfo
     var UpdateSitting = props.ResFunctions.UpdateReservationInfo
-    var SelectPage = props.ResFunctions.SelectPage
+    var setSelected = props.ResFunctions.setSelected
+    const location = useLocation();
     const navigate = useNavigate();
     const[sittingTimeBtns, setSittingTimeBtns] = useState("Please Select a Sitting");
     const [selectedSitting, setSelectedSitting] = useState();
     const[info, setInfo] =  useState();
+
+    useEffect(()=>{
+      setSelected(location.pathname.replace(/\//g,''))
+      } ,[]);
 
     useEffect(()=> {
     
@@ -91,9 +87,9 @@ export function Sitting(props) {
     
 
     function SubmitTime(id, start , type ){
-        SelectPage("details")
+        //SelectPage("details")
         UpdateSitting('sitting', {Start: start, Id: id, Type: type})
-        navigate('/Details')
+        navigate('/details')
 
     }   
 

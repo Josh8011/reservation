@@ -1,18 +1,23 @@
 import {React, useEffect, useState} from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation} from 'react-router-dom';
 import './Css/People.css'
 
 
 export function People(props){
-    let navigate = useNavigate();
+    const navigate = useNavigate();
+    const location = useLocation();
     var ResInfo = props.ResFunctions.reservationInfo
     var UpdatePeople = props.ResFunctions.UpdateReservationInfo
-    var SelectPage = props.ResFunctions.SelectPage
+    var setSelected = props.ResFunctions.setSelected
 
     const [numberOfPeople, setNumberOfPeople] = useState('');
     const [peopleError, setPeopleError] = useState(false);
     //Configurable minimum total people, maximum total people, default people value
     const peopleInfo = {min:1, max:12, default:2};
+
+    useEffect(()=>{
+        setSelected(location.pathname.replace(/\//g,''))
+    },[]);
 
     useEffect(()=>{
         setNumberOfPeople(ResInfo.people?ResInfo.people:peopleInfo.default);
@@ -54,8 +59,8 @@ export function People(props){
     function onContinueClick()
     {
         if(numberOfPeople>=peopleInfo.min&&numberOfPeople<=peopleInfo.max){
-            SelectPage("date");
-            navigate("/DatePage");
+            //SelectPage("date");
+            navigate("/date");
             if(!ResInfo.people){
                 UpdatePeople('people', numberOfPeople);
             }

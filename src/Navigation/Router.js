@@ -14,7 +14,7 @@ export function Router(props){
         <Routes>
             <Route path='/' element={<People ResFunctions={ResFunctions}/>}></Route>
             <Route path='/People' element={<People ResFunctions={ResFunctions} />}></Route>
-            <Route path='/DatePage' element={<DatePage ResFunctions={ResFunctions} />}></Route>
+            <Route path='/Date' element={<DatePage ResFunctions={ResFunctions} />}></Route>
             <Route path='/Sitting' element={<Sitting ResFunctions={ResFunctions} />}></Route>
             <Route path='/Details' element={<Details ResFunctions={ResFunctions} />}></Route>
             <Route path='/Confirmation' element={<Confirmation ResFunctions={ResFunctions} />}></Route>

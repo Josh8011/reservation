@@ -1,11 +1,18 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation} from 'react-router-dom';
 import { Row, Form, Container, Col, FloatingLabel, Button } from 'react-bootstrap';
 import { fetchApi } from '../Services/Api';
 
 export function Details(props){
 
     const navigate = useNavigate();
+    const location = useLocation();
+    let setSelected = props.ResFunctions.setSelected;
+
+    useEffect(()=>{
+        setSelected(location.pathname.replace(/\//g,''))
+        } ,[]);
+
     //HACK: hardcoded data, should be refactored to take argument & pass that to api
     const onSubmit = (event) => {
         //var temp = e.target.value;
