@@ -5,19 +5,22 @@ import { useLocation } from 'react-router-dom';
 export function Confirmation(){
     const location = useLocation();
     const res = location.state.newRes;
+    const sitting = res.sitting;
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    const date = res.date.toLocaleDateString("en-US", options);
 
     useEffect(() => {
-        console.log(res);
+
     }, []);
   
     return(
         <Container>
             <Row>
-                <Col sm={12}>
-                    <div className='mt-3'>
+                <Col sm={12} className='mt-3'>
                         <h1>Thank you {res.firstName} {res.lastName}</h1>
                         <br />
-                        DateTime: N/A <br />
+                        DateTime: {date} <br />
+                        Sitting: {sitting.Start} {sitting.Type}<br />
                         Email: {res.email} <br />
                         Phone Number: {res.phoneNumber} <br />
                         Number of Guests: {res.noOfGuests} <br />
@@ -27,7 +30,6 @@ export function Confirmation(){
                         <br /> <br />
                         Reference Number: {res.referenceNo} <br />
                         Status: Pending (HARDCODED) <br />
-                    </div>
                 </Col>
             </Row>
         </Container>

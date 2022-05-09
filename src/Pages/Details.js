@@ -9,10 +9,11 @@ export function Details(props){
     const resInfo = props.ResFunctions.reservationInfo;
     const selectPage = props.ResFunctions.SelectPage;
     const noOfPeople = resInfo.people;
+    const date = resInfo.date;
+    const sitting = resInfo.sitting;
     const navigate = useNavigate();
 
     const onSubmit = (e) => {
-
         e.preventDefault();
         e.stopPropagation();
 
@@ -27,13 +28,13 @@ export function Details(props){
             Email: e.target.email.value,
             PhoneNumber: e.target.phoneNumber.value,
             RestaurantId: 1 // Bean Scene
-            //Reservation start time
         };
         
         var newReservation = fetchApi.reservations.create(reservationDto);
 
+        // Date not posted to server, only passed to /Confirmation for visual date confirmation
         newReservation.then(data => {
-            navigate("/Confirmation", { state: { newRes: data } });
+            navigate("/Confirmation", { state: { newRes: { ...data, date, sitting } } });
         })              
     };
 
