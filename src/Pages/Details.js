@@ -5,6 +5,12 @@ import { fetchApi } from '../Services/Api';
 
 export function Details(props){
 
+    const updateRes = props.ResFunctions.UpdateReservationInfo;
+    const resInfo = props.ResFunctions.reservationInfo;
+    const selectPage = props.ResFunctions.SelectPage;
+    const noOfPeople = resInfo.people;
+    const date = resInfo.date;
+    const sitting = resInfo.sitting;
     const navigate = useNavigate();
     const location = useLocation();
     let setSelected = props.ResFunctions.setSelected;
@@ -13,29 +19,28 @@ export function Details(props){
         setSelected(location.pathname.replace(/\//g,''))
         } ,[]);
 
-    //HACK: hardcoded data, should be refactored to take argument & pass that to api
-    const onSubmit = (event) => {
-        //var temp = e.target.value;
-        event.preventDefault();
-        event.stopPropagation();
-        var reservationDto = {
-            CustomerNotes: "",
-            NoOfGuests : 3,
+    const onSubmit = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        let reservationDto = {
+            CustomerNotes: e.target.customerNotes.value,
+            NoOfGuests : noOfPeople,
             SittingId: 1,
-            ReservationOriginId: 1,
-            ReservationStatusId: 1,
-            FirstName: "John",
-            LastName: "Smith",
-            Email: "JohnSmith@gmail.com",
-            PhoneNumber: "0412456789",
-            RestaurantId: 1
+            ReservationOriginId: 4, //Online
+            ReservationStatusId: 1, //Pending
+            FirstName: e.target.firstName.value,
+            LastName: e.target.lastName.value,
+            Email: e.target.email.value,
+            PhoneNumber: e.target.phoneNumber.value,
+            RestaurantId: 1 // Bean Scene
         };
         
         var newReservation = fetchApi.reservations.create(reservationDto);
 
+        // Date not posted to server, only passed to /Confirmation for visual date confirmation
         newReservation.then(data => {
-            debugger; 
-            navigate("/Confirmation", { state: { newRes: data } });
+            navigate("/Confirmation", { state: { newRes: { ...data, date, sitting } } });
         })              
     };
 
@@ -45,35 +50,35 @@ export function Details(props){
                 <Col sm={12}>
                     <Form onSubmit={onSubmit}>
                         <FloatingLabel
-                            controlId="floatingInput"
+                            controlId="firstName"
                             label="First Name"
                             className="my-3">
                             <Form.Control type="text" placeholder="John" />
                         </FloatingLabel>
 
                         <FloatingLabel
-                            controlId="floatingInput"
+                            controlId="lastName"
                             label="Last Name"
                             className="mb-3">
                             <Form.Control type="text" placeholder="Smith" />
                         </FloatingLabel>
 
                         <FloatingLabel
-                            controlId="floatingInput"
+                            controlId="phoneNumber"
                             label="Phone Number"
                             className="mb-3">
                             <Form.Control type="text" placeholder="04123456" />
                         </FloatingLabel>
 
                         <FloatingLabel
-                            controlId="floatingInput"
+                            controlId="email"
                             label="Email Address"
                             className="mb-3">
                             <Form.Control type="email" placeholder="name@example.com" />
                         </FloatingLabel>
 
                         <FloatingLabel
-                            controlId="floatingInput"
+                            controlId="customerNotes"
                             label="Notes"
                             className="mb-3">
                             <Form.Control 
