@@ -44,11 +44,11 @@ function App() {
   }
 
 
-  function SelectPage(name){
-    //let newSelected = {People: false, DatePage: false, Sitting: false, Details: false}
-    let newSelected = reservationArray.reduce((obj, key) => ({ ...obj, [`${key}Page`]: (name==key?true:false)}), {})
-    setSelected(newSelected)
-}
+  // function SelectPage(name){
+  //   //let newSelected = {People: false, DatePage: false, Sitting: false, Details: false}
+  //   let newSelected = reservationArray.reduce((obj, key) => ({ ...obj, [`${key}Page`]: (name==key?true:false)}), {})
+  //   setSelected(newSelected)
+  //}
 
   const ReservationFunctions = {reservationInfo, UpdateReservationInfo, setSelected}
 

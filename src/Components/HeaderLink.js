@@ -8,15 +8,25 @@ export function HeaderLink(props) {
     let navigate = useNavigate();
     let Name = props.Name;
     let Path = props.Path;
+
+    let IsFilled = props.IsFilled;
     let linkType = props.selected==Path? "HeaderLink-Highlighted": "HeaderLink-Link";
-    let SelectPage = props.SelectedFunction;
 
 
     return(
+        IsFilled?
         <div onClick={()=>navigate(`/${Path}`)} className={linkType}>{Name}</div>
+        :<div className={"HeaderLink-Unavailable"}>{Name}</div>
     );
 }
 
-//navigate("/Date");
 //<Link onClick={()=>SelectPage(Path)} className={linkType} to={{pathname:`/${Path}`}} >{Name}</Link>
+//
+// IsFilled?
+// <div onClick={()=>navigate(`/${Path}`)} className={linkType}>{Name}</div>
+// :<div className={}>{Name}</div>
 
+
+// highlighted?
+// <div onClick={()=>navigate(`/${Path}`)} className={"HeaderLink-Link"}>{Name}</div>
+// :<div className={linkType}>{Name}</div>

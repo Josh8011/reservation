@@ -31,4 +31,18 @@
     text-decoration: none;
     background-color: #594432;
     color: white;
+    cursor: pointer;
+}
+
+.HeaderLink-Unavailable{
+    display: flex;
+    background-color: #92969c;
+    color: Black;
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    width: 90px;
+    justify-content: center;
 }

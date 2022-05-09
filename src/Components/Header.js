@@ -7,7 +7,6 @@ export function Header(props) {
     
     let ResInfo = props.ResFunctions.reservationInfo
     let selected = props.Selected
-    let SelectPage = props.ResFunctions.setSelected
 
     function addPadding(num){
         return num.toString().padStart(2,'0');
@@ -17,11 +16,11 @@ export function Header(props) {
     return(
         <div className='Body'>
             
-            <HeaderLink selected={selected} SelectPage={SelectPage} Name={ResInfo.people? ResInfo.people: "People" } Path="people"/>
-            <HeaderLink selected={selected} SelectPage={SelectPage} Name={ResInfo.date?
-                `${addPadding(ResInfo.date.getDate())}/${addPadding(ResInfo.date.getMonth()+1)}/${ResInfo.date.getFullYear()}`: 'Date'} Path="date"/>
-            <HeaderLink selected={selected} SelectPage={SelectPage} Name={ResInfo.sitting? ResInfo.sitting.Start :"Sitting"} Path="sitting"/>
-            <HeaderLink selected={selected} SelectPage={SelectPage} Name="Details" Path="details"/>       
+            <HeaderLink selected={selected} Name={ResInfo.people? ResInfo.people: "People" } Path="people" IsFilled={ResInfo.people}/>
+            <HeaderLink selected={selected} Name={ResInfo.date?
+                `${addPadding(ResInfo.date.getDate())}/${addPadding(ResInfo.date.getMonth()+1)}/${ResInfo.date.getFullYear()}`: 'Date'} Path="date" IsFilled={ResInfo.date}/>
+            <HeaderLink selected={selected} Name={ResInfo.sitting? ResInfo.sitting.Start :"Sitting"} Path="sitting" IsFilled={ResInfo.sitting}/>
+            <HeaderLink selected={selected} Name="Details" Path="details" IsFilled={ResInfo.details}/>       
 
         </div>
     );
