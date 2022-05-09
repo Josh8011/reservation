@@ -1,114 +1,99 @@
 import React, { useState, useEffect } from 'react';
-import { MonthSelectBtn , DateSelectionContainer} from '../Components';
+import { DateSelectionBtn, MonthSelectBtn , DateYearContainer} from '../Components';
+import { useNavigate } from 'react-router-dom';
 import "./Css/DatePage.css"
+import { fetchApi } from '../Services/Api'
 
 
 export function DatePage(props){
 
-    var Sittings = props.Sittings
-    var ChangeDate = props.ResFunctions.ChangeDate;
-    var SelectPage = props.SelectPage
-    var currentDate = new Date();
+    var SelectPage = props.ResFunctions.SelectPage
+    var UpdateDate = props.ResFunctions.UpdateReservationInfo
+    var ResInfo = props.ResFunctions.reservationInfo
+    var navigate = useNavigate();
 
-    //Create Month buttons array 
-    var monthBtns = CreateMonthBtns(3,currentDate, ChangeSelectedMonth);
-    currentDate = new Date();
-    // do we want this to defaul to the current month or do we want it to be selected.
-    const [selectedMonth, setSelectedMonth] = useState(currentDate.getMonth()); 
-    const [selectedMonthDates, setSelectedMonthDates] = useState([]);
-    //if Data
-    //Manage Data 
-    if(Sittings[0]){
-        var sittingsByMonth = SortSittingsByMonth(Sittings);
-        var distinctMonths = [...new Set(Sittings.map(x => x.month))];
-        var distinctDayByMonth = []
 
-        for(let i =0; i < distinctMonths.length; i++){
-            distinctDayByMonth.push([...new Set(sittingsByMonth[i].map(x => x.day))])
-        }
-        console.log(Sittings)
-        // console.log(distinctMonths)
-        // console.log(sittingsByMonth)
-
-        // console.log(distinctDayByMonth)
-    }
+    //How many months ahead to display
+    const totalMonthsIncluded = 12;
+    //remove the date later
+    const currentDate = new Date(2022,1,1);
+    const endDate = new Date(currentDate).setMonth(currentDate.getMonth()+totalMonthsIncluded);
     
+    const [availableDates, setAvailableDates] = useState();
+    const [dateSelectionBtns, setDateSelectionBtns ] = useState();
+    const [selectedMonth, setSelectedMonth] = useState(); 
+    var DateYearContainers = [];
+    let MonthSelectBtns = [];
+
     useEffect(()=>{
-        if(Sittings[0]){
-            let isDays = false;
-            for(let i=0; i< distinctMonths.length; i++)
-            {
-                if(selectedMonth == distinctMonths[i])
-                {
-                    setSelectedMonthDates(distinctDayByMonth[i])
-                    isDays = true;
-                }
+        (async()=>{
+            await fetchApi.sittings.getDistinctAvailable(currentDate, endDate)
+              .then(data => {
+                setAvailableDates(...[data]);
+              });
+        })();
+
+      } ,[]);
+
+
+
+      if(availableDates)
+      {
+        for(let year in availableDates){
+          for(let month in availableDates[year])
+          {
+            let dateObject = new Date()
+            dateObject.setMonth(month - 1)
+            MonthSelectBtns.push(
+              <MonthSelectBtn
+              key={month}
+              Year={year}
+              Month={dateObject.toLocaleString('default', { month: 'long'})}
+              setSelectedMonth={() => setSelectedMonth({Month: dateObject.getMonth(), Year: year})}
+              />);
             }
-            if(!isDays)
-            {
-                setSelectedMonthDates(null)
-            }
+            DateYearContainers.push( <DateYearContainer
+            key={year}
+            Year={year}
+            MonthSelectBtns={MonthSelectBtns}
+            />)
+            MonthSelectBtns = [];
         }
-    },[selectedMonth])
+      }
 
+      useEffect(()=> {
+          if(availableDates)
+          {
+            let currentYearDates = availableDates[selectedMonth.Year];
+            let currentMonth = selectedMonth.Month + 1;
+            setDateSelectionBtns(currentYearDates[currentMonth].map( d => 
+                <DateSelectionBtn
+                key={d}
+                date={d}
+                SubmitDate={() =>SubmitDate(selectedMonth.Year, selectedMonth.Month, d)}
+                />
+              ));
+          }
 
+      },[selectedMonth])
 
-
-    function ChangeSelectedMonth(MonthToBeSelected)
-    {
-        setSelectedMonth(MonthToBeSelected);
-    }
+      function SubmitDate(Year, Month, Day){
+        let reservationDate = new Date(Year, Month, Day);
+        SelectPage("sitting");
+        UpdateDate("date", reservationDate)
+        navigate("/Sitting")
+        //navigate("/Sitting", { state: { Date: `${Year}/${Month}/${Day}` } })
+      }
 
     return(
         <div className="DatePageContainer">
-            <div>
-            {monthBtns}
+            <div className="DateSelectionContainer">
+                {DateYearContainers}
             </div>
-            <div>
-            {<DateSelectionContainer SelectedMonth={selectedMonth} SelectedMonthDates={selectedMonthDates} ChangeDate={ChangeDate} SelectPage={SelectPage}/>}
+            <div className="DateDayContainer">
+                {dateSelectionBtns}
             </div>
         </div>
     );
 }
 
-
-function CreateMonthBtns(NumberOfBtns, currentDate, setSelectedMonth){
-    var MonthBtns = [];
-    for(let i = 0; i < NumberOfBtns; i++)
-    {
-        MonthBtns.push( 
-            <MonthSelectBtn key={i}
-             SelectedMonthNumber={currentDate.getMonth() }
-             Month={currentDate.toLocaleString('default', { month: 'long' })}
-             SetSelectedMonth={setSelectedMonth}
-             />)
-
-        currentDate.setMonth(currentDate.getMonth()+1)
-    }
-    return(MonthBtns)
-}
-
-function SortSittingsByMonth(Sittings){
-    var AllSittingsByMonth = []
-    var MonthSittings = []
-    var CurrentMonth = Sittings[0].month;
- 
-    for(let i = 0; i < Sittings.length; i++){
-        
-        if(Sittings[i].month == CurrentMonth)
-        {
-            MonthSittings.push(Sittings[i])
-        }
-        if(Sittings[i].month != CurrentMonth){
-            CurrentMonth = Sittings[i].month
-            AllSittingsByMonth.push(MonthSittings)
-            MonthSittings = []
-        }
-        if(i == Sittings.length-1)
-        {
-            AllSittingsByMonth.push(MonthSittings)
-        }           
-    }
-
-    return AllSittingsByMonth;
-}
