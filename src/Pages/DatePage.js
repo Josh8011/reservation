@@ -3,6 +3,7 @@ import { DateSelectionBtn, MonthSelectBtn , DateYearContainer} from '../Componen
 import { useNavigate, useLocation} from 'react-router-dom';
 import "./Css/DatePage.css"
 import { fetchApi } from '../Services/Api'
+import * as moment from 'moment';
 
 
 
@@ -10,9 +11,9 @@ export function DatePage(props){
 
     const navigate = useNavigate();
     const location = useLocation();
-    var setSelected = props.ResFunctions.setSelected
-    var UpdateDate = props.ResFunctions.UpdateReservationInfo
-    var ResInfo = props.ResFunctions.reservationInfo
+    const setSelected = props.ResFunctions.setSelected
+    const UpdateDate = props.ResFunctions.UpdateReservationInfo
+    const ResInfo = props.ResFunctions.reservationInfo
 
 
     //How many months ahead to display
@@ -36,9 +37,6 @@ export function DatePage(props){
         })();
       setSelected(location.pathname.replace(/\//g,''))
       } ,[]);
-
-useEffect(()=>{
-},[]);
 
 
       if(availableDates)
@@ -74,7 +72,7 @@ useEffect(()=>{
                 <DateSelectionBtn
                 key={d}
                 date={d}
-                SubmitDate={() =>SubmitDate(selectedMonth.Year, selectedMonth.Month, d)}
+                SubmitDate={() =>SubmitDate(selectedMonth.Year, currentMonth, d)}
                 />
               ));
           }
@@ -82,7 +80,8 @@ useEffect(()=>{
       },[selectedMonth])
 
       function SubmitDate(Year, Month, Day){
-        let reservationDate = new Date(Year, Month, Day);
+        //let reservationDate = new Date(Year, Month, Day);
+        let reservationDate = {year: Year, month: Month, day: Day}
         //SelectPage("sitting");
         UpdateDate("date", reservationDate)
         navigate("/sitting")

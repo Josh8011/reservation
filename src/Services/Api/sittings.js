@@ -17,9 +17,7 @@ const getAvailable = async (startDate, endDate) =>
 
 const getDayTypes = async (date) =>
 {
-    let dateIso = new Date(date).toISOString();
-
-    return await fetch(`${baseUrl}/day-types/${dateIso}`)
+    return await fetch(`${baseUrl}/day-types/${date.year}/${date.month}/${date.day}`)
                     .then( response => response.json());
 };
 

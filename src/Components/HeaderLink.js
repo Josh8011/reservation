@@ -8,25 +8,31 @@ export function HeaderLink(props) {
     let navigate = useNavigate();
     let Name = props.Name;
     let Path = props.Path;
+    let ResInfo = props.ResInfo;
 
-    let IsFilled = props.IsFilled;
     let linkType = props.selected==Path? "HeaderLink-Highlighted": "HeaderLink-Link";
+
+    let keysArray = Object.keys(ResInfo);
+    let valueOfFirstNull = Object.values(ResInfo).indexOf(null);
+    let firstNull = valueOfFirstNull<0?keysArray.length:valueOfFirstNull
+    let poisitionOfKey = keysArray.indexOf(Path);
+    let isClickable = firstNull>=poisitionOfKey;
+
 
 
     return(
-        IsFilled?
+        isClickable?
         <div onClick={()=>navigate(`/${Path}`)} className={linkType}>{Name}</div>
         :<div className={"HeaderLink-Unavailable"}>{Name}</div>
     );
 }
 
-//<Link onClick={()=>SelectPage(Path)} className={linkType} to={{pathname:`/${Path}`}} >{Name}</Link>
-//
-// IsFilled?
-// <div onClick={()=>navigate(`/${Path}`)} className={linkType}>{Name}</div>
-// :<div className={}>{Name}</div>
+// let IsFilled = props.IsFilled;
+// let linkType = props.selected==Path? "HeaderLink-Highlighted": "HeaderLink-Link";
 
 
-// highlighted?
-// <div onClick={()=>navigate(`/${Path}`)} className={"HeaderLink-Link"}>{Name}</div>
-// :<div className={linkType}>{Name}</div>
+// return(
+//     IsFilled?
+//     <div onClick={()=>navigate(`/${Path}`)} className={linkType}>{Name}</div>
+//     :<div className={"HeaderLink-Unavailable"}>{Name}</div>
+// );

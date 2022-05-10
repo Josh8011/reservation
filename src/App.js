@@ -12,7 +12,7 @@ function App() {
   //information state storage and functions
   const [reservationInfo , setReservationInfo]= useState({})
   //page selection state
-  const [selected , setSelected] = useState({});
+  const [selected , setSelected] = useState();
 
   useEffect(()=>{
     (async()=>{
@@ -20,13 +20,13 @@ function App() {
     })();
     let onReloadPage = location.pathname.replace(/\//g,'')
     setSelected(onReloadPage?onReloadPage:"people");
-    //debugger;
+    
   } ,[]);
 
   function loadReservationInfo(){
       //Get reservation info from session storage or create new
       let tempResInfo = Storage.getSessionItem('reservationInfo', reservationArray.reduce((obj, key) => ({ ...obj, [key]: null}), {}));
-      tempResInfo.date = tempResInfo.date? new Date(tempResInfo.date) : null
+      //tempResInfo.date = tempResInfo.date? new Date(tempResInfo.date) : null
       Storage.setSessionItem('reservationInfo', tempResInfo);
       setReservationInfo(tempResInfo);
   }
@@ -35,8 +35,13 @@ function App() {
   //checks if object contains passsed property
     if(reservationInfo.hasOwnProperty(propertyAsString)){
       let newInfo = {...reservationInfo, [propertyAsString.toLowerCase()]:newValue};
+      
+      if(propertyAsString.toLowerCase()===reservationArray[1]){
+        newInfo[reservationArray[2]] = null;
+      }
       setReservationInfo(newInfo);
       Storage.setSessionItem('reservationInfo', newInfo);
+      
     }
     else{
       console.log(`reservationInfo object does not contain the property '${propertyAsString}'`)
