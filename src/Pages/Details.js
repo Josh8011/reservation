@@ -7,17 +7,30 @@ export function Details(props){
 
     const updateRes = props.ResFunctions.UpdateReservationInfo;
     const resInfo = props.ResFunctions.reservationInfo;
-    const selectPage = props.ResFunctions.SelectPage;
+    const setSelected = props.ResFunctions.setSelected;
     const noOfPeople = resInfo.people;
     const date = resInfo.date;
     const sitting = resInfo.sitting;
     const navigate = useNavigate();
     const location = useLocation();
-    let setSelected = props.ResFunctions.setSelected;
+
+    const [details, setDetails] = useState({firstName: "", lastName: "", phoneNumber: "", email: "", customerNotes: ""});
 
     useEffect(()=>{
         setSelected(location.pathname.replace(/\//g,''))
+        if(!resInfo.details){
+            updateRes('details',details)
+        }
+        else{
+            setDetails(resInfo.details)
+        }
         } ,[]);
+
+    function onDataChange(event){
+        let newDetails = {...details, [event.target.id]:event.target.value};
+        setDetails(newDetails);
+        updateRes('details',newDetails);
+    }
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -53,28 +66,28 @@ export function Details(props){
                             controlId="firstName"
                             label="First Name"
                             className="my-3">
-                            <Form.Control type="text" placeholder="John" />
+                            <Form.Control value={details.firstName} onInput={onDataChange} type="text" placeholder="John"/>
                         </FloatingLabel>
 
                         <FloatingLabel
                             controlId="lastName"
                             label="Last Name"
                             className="mb-3">
-                            <Form.Control type="text" placeholder="Smith" />
+                            <Form.Control value={details.lastName} onInput={onDataChange} type="text" placeholder="Smith" />
                         </FloatingLabel>
 
                         <FloatingLabel
                             controlId="phoneNumber"
                             label="Phone Number"
                             className="mb-3">
-                            <Form.Control type="text" placeholder="04123456" />
+                            <Form.Control value={details.phoneNumber} onInput={onDataChange} type="text" placeholder="04123456" />
                         </FloatingLabel>
 
                         <FloatingLabel
                             controlId="email"
                             label="Email Address"
                             className="mb-3">
-                            <Form.Control type="email" placeholder="name@example.com" />
+                            <Form.Control value={details.email} onInput={onDataChange} type="email" placeholder="name@example.com" />
                         </FloatingLabel>
 
                         <FloatingLabel
@@ -82,6 +95,8 @@ export function Details(props){
                             label="Notes"
                             className="mb-3">
                             <Form.Control 
+                                value={details.customerNotes} 
+                                onInput={onDataChange} 
                                 as="textarea"
                                 style={{ height: '100px' }}
                                 placeholder="E.g., One high chair please." 
