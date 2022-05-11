@@ -3,7 +3,6 @@ import { DateSelectionBtn, MonthSelectBtn , DateYearContainer} from '../Componen
 import { useNavigate, useLocation} from 'react-router-dom';
 import "./Css/DatePage.css"
 import { fetchApi } from '../Services/Api'
-import * as moment from 'moment';
 
 
 
