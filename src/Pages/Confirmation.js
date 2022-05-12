@@ -7,7 +7,8 @@ export function Confirmation(){
     const res = location.state.newRes;
     const sitting = res.sitting;
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    const date = res.date.toLocaleDateString("en-US", options);
+    let currentDate = res.date
+    const date =  `${currentDate.day}/${currentDate.month}/${currentDate.year}` ;
 
     useEffect(() => {
 
