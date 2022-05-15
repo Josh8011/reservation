@@ -1,0 +1,9 @@
+.DateCalendar{
+justify-content: center;
+}
+.Calendar{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 294px;
+}

@@ -1,0 +1,12 @@
+.DateCalendarDOW{
+    padding:10px;
+    background-color: #784011;
+    width:40px;
+    justify-content: center;
+    text-align: center;
+    font-weight: bold;
+    border: black 1px solid;
+    font-size: 10px;
+    color: white;
+    height:40px;
+}
