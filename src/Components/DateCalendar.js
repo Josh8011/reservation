@@ -22,6 +22,7 @@ export function DateCalendar (props){
         let lastDayThisMonth = new Date(year, month + 1 , 0).getDate()
         let ThisMonth = false; 
         var availableDatesIndex = [];
+
         for(let i = 0; i < 43; i++)
         {
             if(calendarDates[i] === 1 && i < 10)
@@ -48,45 +49,38 @@ export function DateCalendar (props){
                 }
             }
         }
-
         
-        // for(let i = 0; i < availableDatesIndex.length; i++)
-        // {   
-        //     if(typeof calendarDates[availableDatesIndex[i]] == "number"){
-        //         calendarDates[availableDatesIndex[i]] = <DateCalendarGreyButton
-        //         key={i + 400}
-        //         Number ={calendarDates[availableDatesIndex[i]]}/>
-        //     }
-        // }
-        
+        for(let i = 0; i < availableDatesIndex.length; i++)
+        {   
+            if(typeof calendarDates[availableDatesIndex[i]] == "number"){
+                calendarDates[availableDatesIndex[i]] = <DateCalendarGreyButton
+                key={i + 400}
+                Number ={calendarDates[availableDatesIndex[i]]}/>
+            }
+        }
         
         for(let i = 0; i < calendarDates.length; i++)
         {   
             if(typeof calendarDates[i] == "number"){
                 calendarDates[i] = <DateCalendarGreyButton
-                key={i + 400}
+                key={i + 800}
                 />
             }
         }
         
-        
         for(let i = 7 ; i > 0; i--)
         {
-            var date = new Date(2022,4,i);
+            let date = new Date(2022,4,i);
+            let day = date.toLocaleString('en-US',{weekday:'short'})
+
             calendarDates.unshift(
                 <DateCalendarDOW
-                Day={ date.toLocaleString('en-US',{weekday:'short'})}
+                Day={day}
+                key={day}
                 />
                 );
         }
-
-        
     }
-
-
-
-
-    
 
     return(
         <div className='DateCalendar'>
@@ -97,9 +91,6 @@ export function DateCalendar (props){
         </div>
     );
 }
-
-
-
 
 
 
