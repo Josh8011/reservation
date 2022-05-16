@@ -33,6 +33,7 @@ function App() {
 
   function UpdateReservationInfo(propertyAsString, newValue){
   //checks if object contains passsed property
+    
     if(reservationInfo.hasOwnProperty(propertyAsString)){
       let newInfo = {...reservationInfo, [propertyAsString.toLowerCase()]:newValue};
       

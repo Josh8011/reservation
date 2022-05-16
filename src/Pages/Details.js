@@ -31,15 +31,15 @@ export function Details(props){
         setDetails(newDetails);
         updateRes('details',newDetails);
     }
-
-    const onSubmit = (e) => {
+    
+        const onSubmit = (e) => {
         e.preventDefault();
         e.stopPropagation();
 
         let reservationDto = {
             CustomerNotes: e.target.customerNotes.value,
             NoOfGuests : noOfPeople,
-            SittingId: 1,
+            SittingId: sitting.Id,
             ReservationOriginId: 4, //Online
             ReservationStatusId: 1, //Pending
             FirstName: e.target.firstName.value,
