@@ -49,27 +49,26 @@ export function DateCalendar (props){
             }
         }
 
-
-        for(let i = 0; i < availableDatesIndex.length; i++)
-        {   
-            if(typeof calendarDates[availableDatesIndex[i]] == "number"){
-                calendarDates[availableDatesIndex[i]] = <DateCalendarGreyButton
-                key={i + 400}
-                Number ={calendarDates[availableDatesIndex[i]]}/>
-            }
-        }
+        
+        // for(let i = 0; i < availableDatesIndex.length; i++)
+        // {   
+        //     if(typeof calendarDates[availableDatesIndex[i]] == "number"){
+        //         calendarDates[availableDatesIndex[i]] = <DateCalendarGreyButton
+        //         key={i + 400}
+        //         Number ={calendarDates[availableDatesIndex[i]]}/>
+        //     }
+        // }
+        
         
         for(let i = 0; i < calendarDates.length; i++)
         {   
             if(typeof calendarDates[i] == "number"){
                 calendarDates[i] = <DateCalendarGreyButton
                 key={i + 400}
-               />
+                />
             }
         }
-
-      
-
+        
         
         for(let i = 7 ; i > 0; i--)
         {
@@ -80,6 +79,8 @@ export function DateCalendar (props){
                 />
                 );
         }
+
+        
     }
 
 
@@ -92,7 +93,6 @@ export function DateCalendar (props){
             {title}
             <div className='Calendar'>
             {calendarDates}
-
             </div>
         </div>
     );
