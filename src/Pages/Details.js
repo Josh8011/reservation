@@ -49,12 +49,17 @@ export function Details(props){
             RestaurantId: 1 // Bean Scene
         };
         
-        var newReservation = fetchApi.reservations.create(reservationDto);
+        var newReservation = fetchApi.reservations.create(reservationDto);         
 
         // Date not posted to server, only passed to /Confirmation for visual date confirmation
         newReservation.then(data => {
-            navigate("/Confirmation", { state: { newRes: { ...data, date, sitting } } });
-        })              
+            if(data.error){
+                navigate("/Contact");
+            }
+            else{
+                navigate("/Confirmation", { state: { newRes: { ...data, date, sitting } } });
+            }
+        });             
     };
 
     return(
