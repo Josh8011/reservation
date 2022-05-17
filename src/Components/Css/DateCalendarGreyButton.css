@@ -1,7 +1,8 @@
 .DateCalendarGreyButton{
     padding:10px;
     background-color: grey;
-    border: black 1px solid;
+    border: #B47C49 1px solid;
+    border-radius: 5px;
     width:40px;
     height:40px;
 }

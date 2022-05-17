@@ -4,6 +4,8 @@ justify-content: center;
 .Calendar{
     display: flex;
     flex-direction: row;
+    border-radius: 5px;
     flex-wrap: wrap;
-    width: 294px;
+    width: 280px;
+    background-color: #B47C49;
 }
