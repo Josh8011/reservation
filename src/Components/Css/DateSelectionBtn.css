@@ -5,11 +5,14 @@
     border-radius: 5px;
     width:40px;
     height:40px;
+    justify-content: center;
+    align-items: center;
 }
 
 .DateSelectionBtn:hover{
     padding:10px;
-    background-color: #D9C7B2;
+    background-color: #dbaa73;
+    border: #000000 1px solid;
     width:40px;
     height:40px;
     cursor: pointer;
