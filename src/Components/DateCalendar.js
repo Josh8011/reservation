@@ -7,22 +7,23 @@ export function DateCalendar (props){
     var selectedMonth = props.SelectedMonth 
     var dateSelectionBtns = props.DateSelectionBtns
     var title = "Please Select A month";
-
+    var month = null;
+    var year = null;
+    var calendarDates = null;
+    var availableDatesIndex = []
 
     if(selectedMonth)
     {
-        var month = selectedMonth.Month
-        var year = selectedMonth.Year
-        var calendarDates = getcalendarDates(year, month )
-        var title = new Date(year, month, 1).toLocaleString('default',{month: 'long'})
+        month = selectedMonth.Month
+        year = selectedMonth.Year
+        calendarDates = GetCalendarDates(year, month )
+        title = new Date(year, month, 1).toLocaleString('default',{month: 'long'})
     }
 
     if(calendarDates)
     {
         let lastDayThisMonth = new Date(year, month + 1 , 0).getDate()
         let ThisMonth = false; 
-        var availableDatesIndex = [];
-
         for(let i = 0; i < 43; i++)
         {
             if(calendarDates[i] === 1 && i < 10)
@@ -94,8 +95,7 @@ export function DateCalendar (props){
 
 
 
-
-function getcalendarDates(year, month)
+function GetCalendarDates(year, month)
 {
     let first = new Date(year, month, 1);
     let firstday = first.getDay();
