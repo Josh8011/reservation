@@ -11,7 +11,12 @@ const create = async (reservationDto) => {
         },
         body: JSON.stringify(reservationDto)
     })
-    .then(response => response.json());
+    .then(response => {       
+        if(response.ok){
+            return response.json();
+        }       
+        return {...response,error:true} ;              
+    });
 };
 
 export { create };
