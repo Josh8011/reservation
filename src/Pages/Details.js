@@ -8,6 +8,7 @@ export function Details(props){
     const updateRes = props.ResFunctions.UpdateReservationInfo;
     const resInfo = props.ResFunctions.reservationInfo;
     const setSelected = props.ResFunctions.setSelected;
+    const startDateTime = new Date(props.ResFunctions.reservationInfo.sitting.StartDateTime);
     const noOfPeople = resInfo.people;
     const date = resInfo.date;
     const sitting = resInfo.sitting;
@@ -35,18 +36,21 @@ export function Details(props){
     const onSubmit = (e) => {
         e.preventDefault();
         e.stopPropagation();
-
+            debugger;
+            let resStart = `${startDateTime.getFullYear()}-${addPadding(startDateTime.getMonth()+1)}-${addPadding(startDateTime.getDate())}T${addPadding(startDateTime.getHours())}:${addPadding(startDateTime.getMinutes())}`
         let reservationDto = {
             CustomerNotes: e.target.customerNotes.value,
             NoOfGuests : noOfPeople,
-            SittingId: 1,
+            SittingId: sitting.Id,
             ReservationOriginId: 4, //Online
             ReservationStatusId: 1, //Pending
             FirstName: e.target.firstName.value,
             LastName: e.target.lastName.value,
             Email: e.target.email.value,
             PhoneNumber: e.target.phoneNumber.value,
-            RestaurantId: 1 // Bean Scene
+            RestaurantId: 1, // Bean Scene
+            StartTime:  resStart
+            //"2022-04-08T12:30"
         };
         
         var newReservation = fetchApi.reservations.create(reservationDto);
@@ -56,6 +60,11 @@ export function Details(props){
             navigate("/Confirmation", { state: { newRes: { ...data, date, sitting } } });
         })              
     };
+
+    function addPadding(num){
+        //return num.toString().padStart(2,'0');
+        return num<10 ? '0'+num : num;
+    }
 
     return(
         <Container>

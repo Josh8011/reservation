@@ -64,9 +64,9 @@ export function Sitting(props) {
             let cutOff = 10;
             let duration = info[index].duration - cutOff
             let interval = 15;
-            let time = new Date();
+            let time = new Date(ResInfo.date.year,ResInfo.date.month-1,ResInfo.date.day);
             time.setHours(start.slice(0,2),start.slice(3,5))
-
+            
             if(cutOff< interval)
             {
                 duration = duration - interval 
@@ -76,9 +76,10 @@ export function Sitting(props) {
             {
                 time.setMinutes(time.getMinutes() + interval)
                 let timeOutput = `${time.getHours()}:${time.getMinutes().toString().length == 1? `${time.getMinutes()}${+0}`: time.getMinutes()}`
+                let timeString = time.toString();
                 btns.push(<SittingTimeBtn key={i}
                     Time={timeOutput}
-                    SubmitTime={() => SubmitTime( info[index].id, timeOutput , info[index].type )}
+                    SubmitTime={() => SubmitTime( info[index].id, timeOutput , info[index].type, timeString)}
                      />)
             }
             setSittingTimeBtns(btns);
@@ -86,9 +87,9 @@ export function Sitting(props) {
     },[selectedSitting])
     
 
-    function SubmitTime(id, start , type ){
+    function SubmitTime(id, start, type, startDateTime ){
         //SelectPage("details")
-        UpdateSitting('sitting', {Start: start, Id: id, Type: type})
+        UpdateSitting('sitting', {Start: start, Id: id, Type: type, StartDateTime: startDateTime})
         navigate('/details')
 
     }   
