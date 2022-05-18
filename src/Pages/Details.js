@@ -36,7 +36,6 @@ export function Details(props){
     const onSubmit = (e) => {
         e.preventDefault();
         e.stopPropagation();
-            debugger;
             let resStart = `${startDateTime.getFullYear()}-${addPadding(startDateTime.getMonth()+1)}-${addPadding(startDateTime.getDate())}T${addPadding(startDateTime.getHours())}:${addPadding(startDateTime.getMinutes())}`
         let reservationDto = {
             CustomerNotes: e.target.customerNotes.value,
