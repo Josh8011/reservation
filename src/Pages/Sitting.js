@@ -75,7 +75,7 @@ export function Sitting(props) {
             for(let i = 0; i <= duration; i+=interval)
             {
                 time.setMinutes(time.getMinutes() + interval)
-                let timeOutput = `${time.getHours()}:${time.getMinutes().toString().length == 1? `${time.getMinutes()}${+0}`: time.getMinutes()}`
+                let timeOutput = `${time.getHours()}:${time.getMinutes()<10 ? `0${time.getMinutes().toString()}`: time.getMinutes().toString()}`
                 btns.push(<SittingTimeBtn key={i}
                     Time={timeOutput}
                     SubmitTime={() => SubmitTime( info[index].id, timeOutput , info[index].type )}
