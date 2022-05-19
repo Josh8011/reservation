@@ -1,5 +1,10 @@
 .App {
   text-align: center;
+  background-image: url('Coffee.jpg');
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
 }
 
 .App-logo {
