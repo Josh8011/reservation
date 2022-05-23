@@ -1,18 +1,20 @@
 .DateSelectionBtn{
     padding:10px;
-    background-color: lightseagreen;
-    margin:5px;
+    background-color: #D9C7B2;
+    border: #B47C49 1px solid;
     border-radius: 5px;
     width:40px;
     height:40px;
+    justify-content: center;
+    align-items: center;
 }
 
 .DateSelectionBtn:hover{
     padding:10px;
-    background-color: rgb(25, 138, 132);
-    margin:5px;
-    border-radius: 5px;
+    background-color: #dbaa73;
+    border: #000000 1px solid;
     width:40px;
     height:40px;
     cursor: pointer;
 }
+

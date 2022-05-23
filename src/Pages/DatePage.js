@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { DateSelectionBtn, MonthSelectBtn , DateYearContainer} from '../Components';
+import { DateSelectionBtn, MonthSelectBtn , DateYearContainer , DateCalendar} from '../Components';
 import { useNavigate, useLocation} from 'react-router-dom';
 import "./Css/DatePage.css"
 import { fetchApi } from '../Services/Api'
@@ -12,7 +12,6 @@ export function DatePage(props){
     const location = useLocation();
     const setSelected = props.ResFunctions.setSelected
     const UpdateDate = props.ResFunctions.UpdateReservationInfo
-    const ResInfo = props.ResFunctions.reservationInfo
 
 
     //How many months ahead to display
@@ -24,6 +23,7 @@ export function DatePage(props){
     const [availableDates, setAvailableDates] = useState();
     const [dateSelectionBtns, setDateSelectionBtns ] = useState();
     const [selectedMonth, setSelectedMonth] = useState(); 
+    const [calendar, setCalendar] = useState();
     var DateYearContainers = [];
     let MonthSelectBtns = [];
 
@@ -76,26 +76,37 @@ export function DatePage(props){
               ));
           }
 
-      },[selectedMonth])
+        },[selectedMonth])
+        
+        function SubmitDate(Year, Month, Day){
+          let reservationDate = {year: Year, month: Month, day: Day}
+          UpdateDate("date", reservationDate)
+          navigate("/sitting")
+        }
+      
+        useEffect(() => { 
+          setCalendar(<DateCalendar
+            SelectedMonth={selectedMonth}
+            DateSelectionBtns={dateSelectionBtns}
 
-      function SubmitDate(Year, Month, Day){
-        //let reservationDate = new Date(Year, Month, Day);
-        let reservationDate = {year: Year, month: Month, day: Day}
-        //SelectPage("sitting");
-        UpdateDate("date", reservationDate)
-        navigate("/sitting")
-        //navigate("/Sitting", { state: { Date: `${Year}/${Month}/${Day}` } })
-      }
+          />)
 
-    return(
+
+        },[dateSelectionBtns])
+
+
+
+
+      return(
         <div className="DatePageContainer">
             <div className="DateSelectionContainer">
                 {DateYearContainers}
             </div>
             <div className="DateDayContainer">
-                {dateSelectionBtns}
+                {calendar}
             </div>
         </div>
     );
-}
-
+  }
+  
+  

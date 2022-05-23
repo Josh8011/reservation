@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation} from 'react-router-dom';
 import { Row, Form, Container, Col, FloatingLabel, Button } from 'react-bootstrap';
 import { fetchApi } from '../Services/Api';
+import Storage from '../Services/storage';
+
 
 export function Details(props){
 
@@ -19,21 +21,25 @@ export function Details(props){
 
     useEffect(()=>{
         setSelected(location.pathname.replace(/\//g,''))
-        if(!resInfo.details){
-            updateRes('details',details)
-        }
-        else{
-            setDetails(resInfo.details)
-        }
         } ,[]);
+
+        useEffect(()=>{
+            if(!resInfo.details){
+                updateRes('details', details)
+            }
+            else{
+                setDetails(resInfo.details)
+            }
+            } ,[resInfo]);
+    
 
     function onDataChange(event){
         let newDetails = {...details, [event.target.id]:event.target.value};
         setDetails(newDetails);
         updateRes('details',newDetails);
     }
-
-    const onSubmit = (e) => {
+    
+        const onSubmit = (e) => {
         e.preventDefault();
         e.stopPropagation();
             let resStart = `${startDateTime.getFullYear()}-${addPadding(startDateTime.getMonth()+1)}-${addPadding(startDateTime.getDate())}T${addPadding(startDateTime.getHours())}:${addPadding(startDateTime.getMinutes())}`
@@ -52,12 +58,17 @@ export function Details(props){
             //"2022-04-08T12:30"
         };
         
-        var newReservation = fetchApi.reservations.create(reservationDto);
+        var newReservation = fetchApi.reservations.create(reservationDto);         
 
         // Date not posted to server, only passed to /Confirmation for visual date confirmation
         newReservation.then(data => {
-            navigate("/Confirmation", { state: { newRes: { ...data, date, sitting } } });
-        })              
+            if(data.error){
+                navigate("/Contact");
+            }
+            else{
+                navigate("/Confirmation", { state: { newRes: { ...data, date, sitting } } });
+            }
+        });             
     };
 
     function addPadding(num){
