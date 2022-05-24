@@ -1,6 +1,7 @@
 .App {
   text-align: center;
-  background-image: url('Coffee.jpg');
+  /* background-image: url('Coffee.jpg'); */
+  background-color: #d4c5bc;
   position: absolute;
   width: 100%;
   height: 100%;
