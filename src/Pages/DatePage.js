@@ -85,12 +85,12 @@ export function DatePage(props){
         }
       
         useEffect(() => { 
+          console.log(calendar)
           setCalendar(<DateCalendar
             SelectedMonth={selectedMonth}
             DateSelectionBtns={dateSelectionBtns}
 
           />)
-
 
         },[dateSelectionBtns])
 
@@ -105,7 +105,9 @@ export function DatePage(props){
             </div>
 
             <div className='col-8'>
-                  {calendar}
+              {calendar}
+                  {/* {calendar?"a":"b"}
+                  {console.log(calendar.props)} NO*/}
             </div>
 
           </div>

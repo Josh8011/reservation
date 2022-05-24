@@ -12,7 +12,7 @@ export function Sitting(props) {
     var setSelected = props.ResFunctions.setSelected
     const location = useLocation();
     const navigate = useNavigate();
-    const[sittingTimeBtns, setSittingTimeBtns] = useState("Please Select a Sitting");
+    const[sittingTimeBtns, setSittingTimeBtns] = useState();
     const [selectedSitting, setSelectedSitting] = useState();
     const[info, setInfo] =  useState();
 
@@ -95,14 +95,37 @@ export function Sitting(props) {
     }   
 
     return(
-        <div className='SittingBody'>
-            <div className='SittingTypeContainer'>
-                {sittingTypeBtns}
+        // <div className='SittingBody'>
+        //     <div className='SittingTypeContainer'>
+        //         {sittingTypeBtns}
+        //     </div>
+        //     <div className='SittingTimeContainer'>
+        //         {sittingTimeBtns}
+        //     </div>
+        // </div>
+
+        
+    <div className='container d-flex'>
+
+        <div className='col-4'>
+            <div className='col-6'>
+                Sittings
             </div>
-            <div className='SittingTimeContainer'>
-                {sittingTimeBtns}
-            </div>
+            {sittingTypeBtns}
         </div>
+
+        <div className='col-8'>
+         <div className='SittingTimeContainer'>
+             <div className='col-12 d-flex justify-content-center'>
+                {sittingTimeBtns?"Times: ":"Please select a sitting"}
+             </div>
+             <div className='col-12 d-flex flex-wrap justify-content-start'>
+                {sittingTimeBtns}
+             </div>
+          </div>
+        </div>
+
+    </div>
 
     );
   }

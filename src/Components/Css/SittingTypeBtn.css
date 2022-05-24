@@ -1,16 +1,26 @@
 .SittingTypeBtn{
-    background-color: lightseagreen;
+    padding:8px;
+    background-color: #D9C7B2;
+    color: black;
+    margin:5px;
     border-radius: 5px;
-    padding: 5px; 
-    margin: 5px; 
+    border: 1px solid #B47C49;
+    width:50%;
+    height:40px;
+    min-width: 80px;
     
 }
 
 
 .SittingTypeBtn:hover{
-    background-color: rgb(24, 136, 130);
+    padding:8px;
+    background-color: #784011;
+    color: white;
+    margin:5px;
     border-radius: 5px;
-    padding: 5px; 
-    margin: 5px; 
+    border: 1px solid #B47C49;
+    width:50%;
+    height:40px;
+    min-width: 80px;
     cursor: pointer;
 }

@@ -1,17 +1,29 @@
 .SittingTimeBtn{
-    background-color: #C7CFD9;
-    margin: 5px;
-    padding:5px;
     border-radius: 5px;
-    width: 80px; 
+    width: 24%; 
+    background-color: #D9C7B2;
+    border: #B47C49 1px solid;
+    margin: 1px;
+
+    padding:10px;
+    border-radius: 5px;
+    height:40px;
+    justify-content: center;
+    align-items: center;
 }
 
 .SittingTimeBtn:hover{
-    background-color: #979ea7;
-    color: white;
-    margin: 5px;
-    padding:5px;
     border-radius: 5px;
-    width: 80px; 
+    width: 24%; 
+    background-color: #784011;
+    color: white;
+    border: #B47C49 1px solid;
+    margin: 1px;
+
+    padding:10px;
+    border-radius: 5px;
+    height:40px;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
 }

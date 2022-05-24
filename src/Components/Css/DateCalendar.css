@@ -6,7 +6,7 @@ justify-content: center;
     flex-direction: row;
     border-radius: 5px;
     flex-wrap: wrap;
-    border: #B47C49 2px solid;
+    padding: 2px;
     background-color: #B47C49;
     min-width: 220px;
 }

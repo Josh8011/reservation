@@ -1,7 +1,7 @@
 .DateSelectionBtn{
-    padding:10px;
+    padding-top:8px;
     background-color: #D9C7B2;
-    border: #B47C49 1px solid;
+    border: #B47C49 2px solid;
     border-radius: 5px;
     width: 14.285%;
     height:40px;
@@ -10,7 +10,7 @@
 }
 
 .DateSelectionBtn:hover{
-    padding:10px;
+    padding-top:8px;
     background-color: #dbaa73;
     border: #000000 1px solid;
     width: 14.285%;
