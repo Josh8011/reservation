@@ -1,7 +1,6 @@
 export * from './Header'
 export * from './HeaderLink'
 export * from './MonthSelectBtn'
-export * from './DateSelectionContainer'
 export * from './DateSelectionBtn'
 export * from './SittyingTypeBtn'
 export * from './SittingTimeBtn'

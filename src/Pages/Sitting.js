@@ -71,7 +71,6 @@ export function Sitting(props) {
             {
                 duration = duration - interval 
             }
-            debugger;
 
             for(let i = 0; i <= duration; i+=interval)
             {

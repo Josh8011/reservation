@@ -98,14 +98,17 @@ export function DatePage(props){
 
 
       return(
-        <div className="DatePageContainer">
-            <div className="DateSelectionContainer">
-                {DateYearContainers}
+          <div className='container d-flex'>
+
+            <div className='col-4'>
+                  {DateYearContainers}
             </div>
-            <div className="DateDayContainer">
-                {calendar}
+
+            <div className='col-8'>
+                  {calendar}
             </div>
-        </div>
+
+          </div>
     );
   }
   

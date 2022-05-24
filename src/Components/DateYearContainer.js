@@ -7,9 +7,9 @@ export function  DateYearContainer(props){
     var MonthSelectBtns = props.MonthSelectBtns
 
     return(
-        <div className='DateDayContainer'> 
-            <div className='YearTitle' >{Year}</div>
-            <div className='MonthBtnContainer'>
+        <div className='container'> 
+            <div className='col-7' >{Year}</div>
+            <div className='col-7'>
                 {MonthSelectBtns}    
             </div>
         </div>
