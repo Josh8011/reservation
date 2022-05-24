@@ -75,23 +75,23 @@ export function People(props){
             Number of Guests
             <div className='PeopleSelectionContainer'>
 
-            <div className="input-group w-75">
-                <input value={numberOfPeople} onInput={onPeopleChange} type="number" className="form-control text-center" placeholder="Guests" onKeyDown={(evt) => ["e", "E", "+", "-", "."].includes(evt.key) && evt.preventDefault()}/>
-                <button className="btn btn-outline-danger btn-lg" type="button" onClick={()=>buttonIncrement(-1)} >-</button>
-                <button className="btn btn-outline-success btn-lg" type="button" onClick={()=>buttonIncrement(1)} >+</button>
-            </div>
-            
+                <div className="input-group w-75">
+                    <input value={numberOfPeople} onInput={onPeopleChange} type="number" className="form-control text-center " placeholder="Guests" onKeyDown={(evt) => ["e", "E", "+", "-", "."].includes(evt.key) && evt.preventDefault()}/>
+                    <button className="btn btn-danger btn-lg" type="button" onClick={()=>buttonIncrement(-1)} >-</button>
+                    <button className="btn btn-success btn-lg" type="button" onClick={()=>buttonIncrement(1)} >+</button>
+                </div>
+                
 
-            {numberOfPeople===peopleInfo.max?
-            <div>If you wish to make a reservation for more than {peopleInfo.max} people please contact the restaurant (LINK TO CONTACT PAGE)</div>
-            :<div></div>}
-            {peopleError?
-            <div>Please enter a valid number of guests {peopleInfo.min}-{peopleInfo.max}.</div>
-            :<div></div>}
+                {numberOfPeople===peopleInfo.max?
+                <div>If you wish to make a reservation for more than {peopleInfo.max} people please contact the restaurant (LINK TO CONTACT PAGE)</div>
+                :<div></div>}
+                {peopleError?
+                <div>Please enter a valid number of guests {peopleInfo.min}-{peopleInfo.max}.</div>
+                :<div></div>}
 
-            <div className="input-group row w-75 pt-2">
-                <button type="button" className="btn btn-primary btn-lg" onClick={onContinueClick} >Continue</button>
-            </div>
+                <div className="input-group row w-75 pt-2">
+                    <button type="button" className="btn btn-primary btn-lg" onClick={onContinueClick} >Continue</button>
+                </div>
 
             </div>
         </div>
