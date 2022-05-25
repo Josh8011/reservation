@@ -5,10 +5,10 @@ export function MonthSelectBtn(props)
 {
     let Month = props.Month;
     let setSelectedMonth = props.setSelectedMonth
-
+    let isSelected = props.isSelected
 
     return(
-        <div className="MonthSelectBtn" onClick={setSelectedMonth}> {Month}</div>
+        <div className={isSelected?"MonthSelectedBtn":"MonthSelectBtn"} onClick={setSelectedMonth}> {Month}</div>
     );
 }
 
