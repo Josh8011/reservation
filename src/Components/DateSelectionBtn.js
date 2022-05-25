@@ -6,9 +6,12 @@ export function DateSelectionBtn(props){
  
     let date = props.date
     let Submit = props.SubmitDate
+    let selectedMonth = props.selectedMonth
+    let isSelected = props.isSelected
+
 
     return(
-        <div className="DateSelectionBtn" onClick={Submit} >
+        <div className={isSelected?"DateSelectedBtn":"DateSelectionBtn"} onClick={Submit} >
             {date}
         </div>
     );

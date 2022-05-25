@@ -13,6 +13,7 @@ export function DatePage(props){
     const location = useLocation();
     const setSelected = props.ResFunctions.setSelected
     const UpdateDate = props.ResFunctions.UpdateReservationInfo
+    const resInfo = props.ResFunctions.reservationInfo
 
 
     //How many months ahead to display
@@ -25,18 +26,22 @@ export function DatePage(props){
     const [dateSelectionBtns, setDateSelectionBtns ] = useState();
     const [selectedMonth, setSelectedMonth] = useState(); 
     const [calendar, setCalendar] = useState();
+    const [selectedDay, setSelectedDay] = useState();
     var DateYearContainers = [];
     let MonthSelectBtns = [];
 
     useEffect(()=>{
-        (async()=>{
-            await fetchApi.sittings.getDistinctAvailable(currentDate, endDate)
-              .then (data => {
-                 setAvailableDates(...[data]);
-              })
-        })();
-      setSelected(location.pathname.replace(/\//g,''));
-      } ,[]);
+      (async()=>{
+          await fetchApi.sittings.getDistinctAvailable(currentDate, endDate)
+            .then (data => {
+               setAvailableDates(...[data]);
+            })
+      })();
+    setSelected(location.pathname.replace(/\//g,''));
+    setSelectedMonth(resInfo.date?{Month: resInfo.date.month-1, Year: resInfo.date.year}:{Month: null, Year: null});
+    setSelectedDay(resInfo.date?resInfo.date.day:null);
+    } ,[]);
+
 
 
 
@@ -53,6 +58,7 @@ export function DatePage(props){
               Year={year}
               Month={dateObject.toLocaleString('default', { month: 'long'})}
               setSelectedMonth={() => setSelectedMonth({Month: dateObject.getMonth(), Year: year})}
+              isSelected = {year==selectedMonth.Year&&month-1==selectedMonth.Month?true:false}
               //Create an is selected prop with session storage to check if date is selected and change classname of btn component?
               />);
             }
@@ -66,7 +72,7 @@ export function DatePage(props){
       }
 
       useEffect(()=> {
-          if(availableDates)
+          if(availableDates&&selectedMonth.Month&&selectedMonth.Year)
           {
             let currentYearDates = availableDates[selectedMonth.Year];
             let currentMonth = selectedMonth.Month + 1;
@@ -75,11 +81,12 @@ export function DatePage(props){
                 key={d}
                 date={d}
                 SubmitDate={() =>SubmitDate(selectedMonth.Year, currentMonth, d)}
+                isSelected = {d==selectedDay?true:false}
                 />
               ));
           }
 
-        },[selectedMonth])
+        },[selectedMonth,availableDates])
         
         function SubmitDate(Year, Month, Day){
           let reservationDate = {year: Year, month: Month, day: Day}
@@ -101,7 +108,6 @@ export function DatePage(props){
 
       return(
           <div className='container d-flex'>
-
             <div className='col-12 col-sm-4 pt-2'>
               {DateYearContainers}
             </div>
