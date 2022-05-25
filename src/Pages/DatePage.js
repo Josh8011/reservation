@@ -39,7 +39,7 @@ export function DatePage(props){
       })();
     setSelected(location.pathname.replace(/\//g,''));
     setSelectedMonth(resInfo.date?{Month: resInfo.date.month-1, Year: resInfo.date.year}:{Month: null, Year: null});
-    setSelectedDay(resInfo.date?resInfo.date.day:null);
+    setSelectedDay(resInfo.date?resInfo.date:null);
     } ,[]);
 
 
@@ -81,7 +81,7 @@ export function DatePage(props){
                 key={d}
                 date={d}
                 SubmitDate={() =>SubmitDate(selectedMonth.Year, currentMonth, d)}
-                isSelected = {d==selectedDay?true:false}
+                isSelected = {d==selectedDay.day&&currentMonth==selectedDay.month&&selectedMonth.Year==selectedDay.year?true:false}
                 />
               ));
           }
