@@ -15,6 +15,7 @@ export function Sitting(props) {
     const[sittingTimeBtns, setSittingTimeBtns] = useState();
     const [selectedSitting, setSelectedSitting] = useState();
     const[info, setInfo] =  useState();
+    const[previousSelectedSitting, setpreviousSelectedSitting] =  useState();
 
     useEffect(()=>{
       setSelected(location.pathname.replace(/\//g,''))
@@ -26,8 +27,6 @@ export function Sitting(props) {
           .then(data => {
               setInfo(data)
             });
-        
-            
 
     },[ResInfo])
 
@@ -37,9 +36,11 @@ export function Sitting(props) {
                 {
                     if(info[sit].id == ResInfo.sitting.Id)
                     {
-                    setSelectedSitting({index: sit, id: ResInfo.sitting.Id})
+                    setSelectedSitting({index: sit, id: ResInfo.sitting.Id});
                     }
                 }
+                
+                setpreviousSelectedSitting(ResInfo.sitting);
             }
 
     },[info])
@@ -52,7 +53,9 @@ export function Sitting(props) {
             <SittingTypeBtn 
             key={s.id}
             Type={s.type}
-            SetSelectedSitting={() =>setSelectedSitting({ index: index, id:s.id } )}/>))
+            SetSelectedSitting={() =>setSelectedSitting({ index: index, id:s.id } )}
+            isSelected={selectedSitting?(index==selectedSitting.index&&s.id==selectedSitting.id?true:false):false}
+            />))
     }
 
 
@@ -74,13 +77,15 @@ export function Sitting(props) {
 
             for(let i = 0; i <= duration; i+=interval)
             {
-                time.setMinutes(time.getMinutes() + interval)
                 let timeOutput = `${time.getHours()}:${time.getMinutes().toString().length == 1? `${time.getMinutes()}${+0}`: time.getMinutes()}`
                 let timeString = time.toString();
                 btns.push(<SittingTimeBtn key={i}
                     Time={timeOutput}
                     SubmitTime={() => SubmitTime( info[index].id, timeOutput , info[index].type, timeString)}
+                    isSelected={previousSelectedSitting?(time==previousSelectedSitting.StartDateTime&&info[index].id==previousSelectedSitting.Id?
+                        true:false):false}
                      />)
+                time.setMinutes(time.getMinutes() + interval)
             }
             setSittingTimeBtns(btns);
         }

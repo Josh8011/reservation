@@ -107,7 +107,7 @@ export function DatePage(props){
 
 
       return(
-          <div className='container d-flex'>
+          <div className='container d-sm-flex'>
             <div className='col-12 col-sm-4 pt-2'>
               {DateYearContainers}
             </div>
