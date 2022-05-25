@@ -8,6 +8,7 @@
     width:50%;
     height:40px;
     min-width: 80px;
+    transition: background 0.3s ease-in-out, color 0.3s ease-in-out, border 0.3s ease-in-out;
     
 }
 
@@ -18,7 +19,7 @@
     color: white;
     margin:5px;
     border-radius: 5px;
-    border: 1px solid #B47C49;
+    border: 1px solid #000000;
     width:50%;
     height:40px;
     min-width: 80px;

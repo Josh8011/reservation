@@ -10,6 +10,7 @@
     height:40px;
     justify-content: center;
     align-items: center;
+    transition: background 0.3s ease-in-out, color 0.3s ease-in-out, border 0.3s ease-in-out;
 }
 
 .SittingTimeBtn:hover{
@@ -17,7 +18,7 @@
     width: 24%; 
     background-color: #784011;
     color: white;
-    border: #B47C49 1px solid;
+    border: #000000 1px solid;
     margin: 1px;
 
     padding:10px;

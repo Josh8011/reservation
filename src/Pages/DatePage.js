@@ -102,11 +102,11 @@ export function DatePage(props){
       return(
           <div className='container d-flex'>
 
-            <div className='col-4'>
+            <div className='col-12 col-sm-4 pt-2'>
               {DateYearContainers}
             </div>
 
-            <div className='col-8'>
+            <div className='col-12 col-sm-8 pt-2'>
               {selectedMonth?calendar:"Please select a month"}
             </div>
 

@@ -5,30 +5,83 @@
     justify-content: center;
     align-items: center;
     font-size: 32px;
-    margin-top: 100px;
+    padding-top: 20px;
 }
 .PeopleSelectionContainer{
     display: flex;
-    /* width: 400px; */
     flex-direction: column;
     text-align: center;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     font-size: 16px;
+    max-width: 600px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
+
+.form-group{
+  display: inline-flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  box-shadow:0 0 15px 4px rgba(0,0,0,0.2);
+  transition: box-shadow 0.3s ease-in-out;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.form-group:focus-within{
+  box-shadow:0 0 15px 4px rgba(0,0,0,0.4);
+}
+
+
 
 .peopleInput{
   text-align: center;
-  background-color: #D9C7B2;
-  border-radius: 10px;
   border:0;
-  box-shadow:0 0 15px 4px rgba(0,0,0,0.2);
+  border-radius: 10px 0 0 10px;
+  width: 100%;
+  background-color: rgb(217, 199, 178, 0.45);
+  transition: background 0.3s ease-in-out;
+}
+
+.peopleInput:focus{
+  outline: none;
+  background-color: rgb(217, 199, 178, 0.9);
+}
+
+.btnMinus{
+  text-align: center;
+  border:0;
+  width: 50px;
+  height: 100%;
+  font-size: 30px;
+  border: 0;
+  background-color: #d9534f;
+  transition: background 0.3s ease-in-out;
+}
+
+.btnPlus{
+  text-align: center;
+  border-radius: 0 10px 10px 0;
+  width: 50px;
+  height: 100%;
+  font-size: 30px;
+  border: 0;
+  background-color: #5cb85c;
+  transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
   
 }
-.peopleInput:focus{
-  box-shadow:0 0 15px 4px rgba(0,0,0,0.4);
-  outline: none;
+
+.btnMinus:hover{
+background-color: #ad433f;
+color: #dddddd
+}
+
+.btnPlus:hover{
+background-color: #478d47;
+color: #dddddd
 }
 
 /* Remove arrows on number input */

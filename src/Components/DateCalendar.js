@@ -85,9 +85,9 @@ export function DateCalendar (props){
 
     return(
         <div className='DateCalendar'>
-            {title}
             <div className='Calendar'>
-            {calendarDates}
+                <h4 className='w-100'>{title}</h4>
+                {calendarDates}
             </div>
         </div>
     );

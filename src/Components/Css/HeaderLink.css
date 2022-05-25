@@ -9,6 +9,7 @@
     margin-right: 5vw;
     width: 90px;
     justify-content: center;
+    transition: background 0.25s ease-in-out, color 0.25s ease-in-out, border 0.25s ease-in-out;
 }
 
 .HeaderLink-Highlighted{
@@ -21,7 +22,11 @@
     border-radius: 5px;
     text-decoration: none;
     width: 90px;
-    justify-content: center;
+    justify-content: center;    
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(0, 0, 0, 0);
+    transition: background 0.25s ease-in-out, color 0.25s ease-in-out, border 0.25s ease-in-out;
 }
 
 .HeaderLink-Highlighted:hover, .HeaderLink-Link:hover{

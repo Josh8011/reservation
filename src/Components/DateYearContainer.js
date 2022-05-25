@@ -8,8 +8,8 @@ export function  DateYearContainer(props){
 
     return(
         <div className='container'> 
-            <div className='col-7' >{Year}</div>
-            <div className='col-7'>
+            <h4 className='col-6 pe-1' >{Year}</h4>
+            <div className='col-6 pe-1'>
                 {MonthSelectBtns}    
             </div>
         </div>
