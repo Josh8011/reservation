@@ -3,6 +3,7 @@ import { DateSelectionBtn, MonthSelectBtn , DateYearContainer , DateCalendar} fr
 import { useNavigate, useLocation} from 'react-router-dom';
 import "./Css/DatePage.css"
 import { fetchApi } from '../Services/Api'
+import { hasSelectionSupport } from '@testing-library/user-event/dist/utils';
 
 
 
@@ -30,12 +31,13 @@ export function DatePage(props){
     useEffect(()=>{
         (async()=>{
             await fetchApi.sittings.getDistinctAvailable(currentDate, endDate)
-              .then(data => {
-                setAvailableDates(...[data]);
-              });
+              .then (data => {
+                 setAvailableDates(...[data]);
+              })
         })();
-      setSelected(location.pathname.replace(/\//g,''))
+      setSelected(location.pathname.replace(/\//g,''));
       } ,[]);
+
 
 
       if(availableDates)
@@ -51,6 +53,7 @@ export function DatePage(props){
               Year={year}
               Month={dateObject.toLocaleString('default', { month: 'long'})}
               setSelectedMonth={() => setSelectedMonth({Month: dateObject.getMonth(), Year: year})}
+              //Create an is selected prop with session storage to check if date is selected and change classname of btn component?
               />);
             }
             DateYearContainers.push( <DateYearContainer
@@ -85,7 +88,6 @@ export function DatePage(props){
         }
       
         useEffect(() => { 
-          console.log(calendar)
           setCalendar(<DateCalendar
             SelectedMonth={selectedMonth}
             DateSelectionBtns={dateSelectionBtns}
@@ -101,13 +103,11 @@ export function DatePage(props){
           <div className='container d-flex'>
 
             <div className='col-4'>
-                  {DateYearContainers}
+              {DateYearContainers}
             </div>
 
             <div className='col-8'>
-              {calendar}
-                  {/* {calendar?"a":"b"}
-                  {console.log(calendar.props)} NO*/}
+              {selectedMonth?calendar:"Please select a month"}
             </div>
 
           </div>

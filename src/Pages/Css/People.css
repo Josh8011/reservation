@@ -1,19 +1,34 @@
 .PeopleBody{
     display: flex;
     flex-direction: column;
-    margin-top: 100px;
-    align-items: center;
-    justify-content: center;
     text-align: center;
+    justify-content: center;
+    align-items: center;
     font-size: 32px;
+    margin-top: 100px;
 }
 .PeopleSelectionContainer{
     display: flex;
-    width: 400px;
+    /* width: 400px; */
+    flex-direction: column;
+    text-align: center;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     font-size: 16px;
+}
+
+.peopleInput{
+  text-align: center;
+  background-color: #D9C7B2;
+  border-radius: 10px;
+  border:0;
+  box-shadow:0 0 15px 4px rgba(0,0,0,0.2);
+  
+}
+.peopleInput:focus{
+  box-shadow:0 0 15px 4px rgba(0,0,0,0.4);
+  outline: none;
 }
 
 /* Remove arrows on number input */

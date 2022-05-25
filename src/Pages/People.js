@@ -75,10 +75,15 @@ export function People(props){
             Number of Guests
             <div className='PeopleSelectionContainer'>
 
-                <div className="input-group w-75">
+                {/* <div className="input-group w-75">
                     <input value={numberOfPeople} onInput={onPeopleChange} type="number" className="form-control text-center " placeholder="Guests" onKeyDown={(evt) => ["e", "E", "+", "-", "."].includes(evt.key) && evt.preventDefault()}/>
                     <button className="btn btn-danger btn-lg" type="button" onClick={()=>buttonIncrement(-1)} >-</button>
                     <button className="btn btn-success btn-lg" type="button" onClick={()=>buttonIncrement(1)} >+</button>
+                </div> */}
+
+                <div className="input-group w-75">
+                    <input value={numberOfPeople} onInput={onPeopleChange} type="number" className="peopleInput" placeholder="Guests" onKeyDown={(evt) => ["e", "E", "+", "-", "."].includes(evt.key) && evt.preventDefault()}/>
+
                 </div>
                 
 
