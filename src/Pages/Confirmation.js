@@ -2,16 +2,17 @@ import React, { useEffect } from 'react';
 import { Row, Container, Col } from 'react-bootstrap';
 import { useLocation } from 'react-router-dom';
 
-export function Confirmation(){
+export function Confirmation(props){
     const location = useLocation();
     const res = location.state.newRes;
+    const setSelected = props.ResFunctions.setSelected;
     const sitting = res.sitting;
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     let currentDate = res.date
     const date =  `${currentDate.day}/${currentDate.month}/${currentDate.year}` ;
 
     useEffect(() => {
-
+        setSelected(location.pathname.replace(/\//g,''));
     }, []);
   
     return(

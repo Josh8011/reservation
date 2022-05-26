@@ -81,7 +81,7 @@ export function DatePage(props){
                 key={d}
                 date={d}
                 SubmitDate={() =>SubmitDate(selectedMonth.Year, currentMonth, d)}
-                isSelected = {d==selectedDay.day&&currentMonth==selectedDay.month&&selectedMonth.Year==selectedDay.year?true:false}
+                isSelected = {selectedDay?(d==selectedDay.day&&currentMonth==selectedDay.month&&selectedMonth.Year==selectedDay.year?true:false):false}
                 />
               ));
           }

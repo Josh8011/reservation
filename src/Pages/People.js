@@ -82,7 +82,7 @@ export function People(props){
                 </div> */}
 
                 <div className="input-group d-flex justify-content-center w-100">
-                    <div class="form-group">
+                    <div className="form-group">
                         <input value={numberOfPeople} onInput={onPeopleChange}
                             type="number" 
                             className="peopleInput" 

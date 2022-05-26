@@ -61,7 +61,9 @@ function App() {
   return (
     
     <div className="App">
+      {selected!=="Confirmation"?
       <Header ResFunctions={ReservationFunctions} Selected={selected}/>
+      :""}
       <Router ResFunctions={ReservationFunctions}/>
     </div>
   );
