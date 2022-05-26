@@ -31,7 +31,7 @@ export function Confirmation(props){
 
                         <br /> <br />
                         Reference Number: {res.referenceNo} <br />
-                        Status: Pending (HARDCODED) <br />
+                        Status: Pending <br />
                 </Col>
             </Row>
         </Container>

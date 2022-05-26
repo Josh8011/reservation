@@ -9,6 +9,8 @@ export function HeaderLink(props) {
     let Name = props.Name;
     let Path = props.Path;
     let ResInfo = props.ResInfo;
+    let imageLink = props.imageLink;
+    let selected = props.selected;
 
     let linkType = props.selected==Path? "HeaderLink-Highlighted": "HeaderLink-Link";
 
@@ -22,8 +24,15 @@ export function HeaderLink(props) {
 
     return(
         isClickable?
-        <div onClick={()=>navigate(`/${Path}`)} className={linkType}>{Name}</div>
-        :<div className={"HeaderLink-Unavailable"}>{Name}</div>
+        <div onClick={()=>navigate(`/${Path}`)} className={linkType}>
+            {Name}
+            <img className={selected==Path?'iconSelected':'icon'} src={imageLink}/>
+        </div>
+        :
+        <div className={"HeaderLink-Unavailable"}>
+            {Name}
+            <img className='iconUnavailable' src={imageLink}/>
+        </div>
     );
 }
 

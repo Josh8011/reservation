@@ -5,9 +5,10 @@
     padding: 10px;
     border-radius: 5px;
     text-decoration: none;
-    margin-left: 5vw;
-    margin-right: 5vw;
-    width: 90px;
+    margin-left: 2vw;
+    margin-right: 2vw;
+    width: 120px;
+    height: 44px;
     justify-content: center;
     transition: background 0.25s ease-in-out, color 0.25s ease-in-out, border 0.25s ease-in-out;
 }
@@ -17,11 +18,12 @@
     background-color: #594432;
     color: white;
     padding: 10px;
-    margin-left: 5vw;
-    margin-right: 5vw;
+    margin-left: 2vw;
+    margin-right: 2vw;
     border-radius: 5px;
     text-decoration: none;
-    width: 90px;
+    width: 120px;
+    height: 44px;
     justify-content: center;    
     border-style: solid;
     border-width: 1px;
@@ -37,6 +39,7 @@
     background-color: #594432;
     color: white;
     cursor: pointer;
+    height: 44px;
 }
 
 .HeaderLink-Unavailable{
@@ -46,8 +49,29 @@
     padding: 10px;
     border-radius: 5px;
     text-decoration: none;
-    margin-left: 5vw;
-    margin-right: 5vw;
-    width: 90px;
+    margin-left: 2vw;
+    margin-right: 2vw;
+    width: 120px;
     justify-content: center;
+    height: 44px;
+}
+
+.icon{
+    padding-left: 5px;  
+    transition: filter 0.25s ease-in-out;
+}
+
+.HeaderLink-Link:hover .icon{
+    padding-left: 5px;  
+    filter: invert(100%);
+    -webkit-filter: invert(100%);
+}
+
+.iconUnavailable{
+    padding-left: 5px;  
+}
+.iconSelected{
+    padding-left: 5px;  
+    filter: invert(100%);
+    -webkit-filter: invert(100%);
 }
