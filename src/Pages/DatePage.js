@@ -19,7 +19,7 @@ export function DatePage(props){
     //How many months ahead to display
     const totalMonthsIncluded = 12;
     //remove the date later
-    const currentDate = new Date(2022,1,1);
+    const currentDate = new Date();
     const endDate = new Date(currentDate).setMonth(currentDate.getMonth()+totalMonthsIncluded);
     
     const [availableDates, setAvailableDates] = useState();
