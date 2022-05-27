@@ -13,7 +13,7 @@ export function People(props){
     const [numberOfPeople, setNumberOfPeople] = useState('');
     const [peopleError, setPeopleError] = useState(false);
     //Configurable minimum total people, maximum total people, default people value
-    const peopleInfo = {min:1, max:12, default:2};
+    const peopleInfo = {min:1, max:10000, default:2};
 
     useEffect(()=>{
         setSelected(location.pathname.replace(/\//g,''))
@@ -75,12 +75,6 @@ export function People(props){
             Number of Guests
             <div className='PeopleSelectionContainer'>
 
-                {/* <div className="input-group w-75">
-                    <input value={numberOfPeople} onInput={onPeopleChange} type="number" className="form-control text-center " placeholder="Guests" onKeyDown={(evt) => ["e", "E", "+", "-", "."].includes(evt.key) && evt.preventDefault()}/>
-                    <button className="btn btn-danger btn-lg" type="button" onClick={()=>buttonIncrement(-1)} >-</button>
-                    <button className="btn btn-success btn-lg" type="button" onClick={()=>buttonIncrement(1)} >+</button>
-                </div> */}
-
                 <div className="input-group d-flex justify-content-center w-100">
                     <div className="form-group">
                         <input value={numberOfPeople} onInput={onPeopleChange}
@@ -97,8 +91,8 @@ export function People(props){
 
                 <div className="input-group d-flex justify-content-center">
                     
-                    {numberOfPeople===peopleInfo.max?
-                    <div>If you wish to make a reservation for more than {peopleInfo.max} people please contact the restaurant (LINK TO CONTACT PAGE)</div>
+                    {numberOfPeople>=200?
+                    <div>That's a lot of human 'beans'!</div>
                     :<div></div>}
                     {peopleError?
                     <div>Please enter a valid number of guests {peopleInfo.min}-{peopleInfo.max}.</div>
