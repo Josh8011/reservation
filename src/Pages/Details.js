@@ -18,6 +18,9 @@ export function Details(props){
     const location = useLocation();
 
     const [details, setDetails] = useState({firstName: "", lastName: "", phoneNumber: "", email: "", customerNotes: ""});
+    const [existingCustomer, setExistingCustomer] = useState(true);
+    const [searchData, setSearchData] = useState("");
+    const [customerList, setCustomerList] = useState();
 
     useEffect(()=>{
         setSelected(location.pathname.replace(/\//g,''))
@@ -76,68 +79,99 @@ export function Details(props){
         return num<10 ? '0'+num : num;
     }
 
+    function onSearchChange(event){
+        let input = event.target.value;
+        setSearchData(input)
+        if(input){
+            fetchApi.persons.findPeople(input)
+                .then(data => {
+                    setCustomerList(...[data]);
+                });
+            console.log(customerList);
+        }
+    }
+
     return(
-        <Container>
-            <Row>
-                <Col sm={12}>
-                    <Form onSubmit={onSubmit}>
-                        <FloatingLabel
-                            controlId="firstName"
-                            label="First Name"
-                            className="my-3">
-                            <Form.Control value={details.firstName} onInput={onDataChange} type="text" placeholder="John"/>
-                        </FloatingLabel>
+        <div>
 
-                        <FloatingLabel
-                            controlId="lastName"
-                            label="Last Name"
-                            className="mb-3">
-                            <Form.Control value={details.lastName} onInput={onDataChange} type="text" placeholder="Smith" />
-                        </FloatingLabel>
 
-                        <FloatingLabel
-                            controlId="phoneNumber"
-                            label="Phone Number"
-                            className="mb-3">
-                            <Form.Control value={details.phoneNumber} onInput={onDataChange} type="text" placeholder="04123456" />
-                        </FloatingLabel>
+            <div className='existingCustomer'>
+                <input value={searchData}
+                    onInput={onSearchChange}
+                    type="text" 
+                    className="searchInput" 
+                    placeholder="Search for customer..." 
+                    />
 
-                        <FloatingLabel
-                            controlId="email"
-                            label="Email Address"
-                            className="mb-3">
-                            <Form.Control value={details.email} onInput={onDataChange} type="email" placeholder="name@example.com" />
-                        </FloatingLabel>
+                <div>{customerList}</div>
 
-                        <FloatingLabel
-                            controlId="customerNotes"
-                            label="Notes"
-                            className="mb-3">
-                            <Form.Control 
-                                value={details.customerNotes} 
-                                onInput={onDataChange} 
-                                as="textarea"
-                                style={{ height: '100px' }}
-                                placeholder="E.g., One high chair please." 
-                            />
-                        </FloatingLabel>
+            </div>
+            
+            <div className='createNewCustomer'>
+                <Container>
+                    <Row>
+                        <Col sm={12}>
+                            <Form onSubmit={onSubmit}>
+                                <FloatingLabel
+                                    controlId="firstName"
+                                    label="First Name"
+                                    className="my-3">
+                                    <Form.Control value={details.firstName} onInput={onDataChange} type="text" placeholder="John"/>
+                                </FloatingLabel>
 
-                        <Row>
-                            <Col>
-                                <Button variant="success" type="submit" size="lg">
-                                    Submit
-                                </Button>
-                            </Col>
-                            <Col>
-                                <Button variant="danger" size="lg">
-                                    Cancel
-                                </Button>
-                            </Col>
-                        </Row>
-                    </Form>
-                </Col>
-            </Row>
-        </Container>
+                                <FloatingLabel
+                                    controlId="lastName"
+                                    label="Last Name"
+                                    className="mb-3">
+                                    <Form.Control value={details.lastName} onInput={onDataChange} type="text" placeholder="Smith" />
+                                </FloatingLabel>
+
+                                <FloatingLabel
+                                    controlId="phoneNumber"
+                                    label="Phone Number"
+                                    className="mb-3">
+                                    <Form.Control value={details.phoneNumber} onInput={onDataChange} type="text" placeholder="04123456" />
+                                </FloatingLabel>
+
+                                <FloatingLabel
+                                    controlId="email"
+                                    label="Email Address"
+                                    className="mb-3">
+                                    <Form.Control value={details.email} onInput={onDataChange} type="email" placeholder="name@example.com" />
+                                </FloatingLabel>
+
+                                <FloatingLabel
+                                    controlId="customerNotes"
+                                    label="Notes"
+                                    className="mb-3">
+                                    <Form.Control 
+                                        value={details.customerNotes} 
+                                        onInput={onDataChange} 
+                                        as="textarea"
+                                        style={{ height: '100px' }}
+                                        placeholder="E.g., One high chair please." 
+                                    />
+                                </FloatingLabel>
+
+                                <Row>
+                                    <Col>
+                                        <Button variant="success" type="submit" size="lg">
+                                            Submit
+                                        </Button>
+                                    </Col>
+                                    <Col>
+                                        <Button variant="danger" size="lg">
+                                            Cancel
+                                        </Button>
+                                    </Col>
+                                </Row>
+                            </Form>
+                        </Col>
+                    </Row>
+                </Container>
+            </div>
+        </div>
+        
     );
 
 }

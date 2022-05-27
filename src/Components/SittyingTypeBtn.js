@@ -15,14 +15,14 @@ export  function SittingTypeBtn (props){
 
     if(isSelected){totalGuests+=people;}
 
-    if (totalGuests<capacity){
-        iconClass='greenIcon'
+    if (totalGuests>capacity){
+        iconClass='redIcon'
     }
-    else if(totalGuests<=capacity*1.2){
+    else if(totalGuests>=capacity*0.8){
         iconClass='orangeIcon'
     }
     else{
-        iconClass='redIcon'
+        iconClass='greenIcon'
     }
 
     if(totalGuests > capacity){
