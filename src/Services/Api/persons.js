@@ -2,9 +2,8 @@ let baseUrl = "https://localhost:7271/api/persons";
 
 const findPeople = async (data) =>
 {
-    debugger;
     if(data){
-        return await fetch(`${baseUrl}/findPeople/${data}`)
+        return await fetch(`${baseUrl}/find-people/${data.replace(/\s+/g, '')}`)
                         .then( response => response.json());
     }
     else{

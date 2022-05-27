@@ -33,7 +33,21 @@ export function Details(props){
             else{
                 setDetails(resInfo.details)
             }
-            } ,[resInfo]);
+        } ,[resInfo]);
+
+        
+        useEffect(()=>{
+            if(searchData){
+                fetchApi.persons.findPeople(searchData)
+                    .then(data => {
+                setCustomerList(...[data]);
+                });
+            }
+            console.log(customerList);
+        } ,[searchData]);
+
+            
+
     
 
     function onDataChange(event){
@@ -82,13 +96,6 @@ export function Details(props){
     function onSearchChange(event){
         let input = event.target.value;
         setSearchData(input)
-        if(input){
-            fetchApi.persons.findPeople(input)
-                .then(data => {
-                    setCustomerList(...[data]);
-                });
-            console.log(customerList);
-        }
     }
 
     return(
@@ -102,8 +109,6 @@ export function Details(props){
                     className="searchInput" 
                     placeholder="Search for customer..." 
                     />
-
-                <div>{customerList}</div>
 
             </div>
             
