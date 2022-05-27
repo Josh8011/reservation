@@ -16,9 +16,6 @@ export function Header(props) {
         //return num.toString().padStart(2,'0');
         return num<10 ? '0'+num : num;
     }
-    
-    console.log(selected)
-
 
     return(
         <div className='Body'>

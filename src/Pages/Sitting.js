@@ -49,12 +49,16 @@ export function Sitting(props) {
     if(info)
     {
         var sittingTypeBtns = []
+        console.log(info);
         info.forEach((s, index) => sittingTypeBtns.push(
             <SittingTypeBtn 
             key={s.id}
             Type={s.type}
             SetSelectedSitting={() =>setSelectedSitting({ index: index, id:s.id } )}
             isSelected={selectedSitting?(index==selectedSitting.index&&s.id==selectedSitting.id?true:false):false}
+            TotalGuests = {s.totalGuests}
+            Capacity = {s.capacity}
+            ResPeople = {ResInfo.people}
             />))
     }
 
