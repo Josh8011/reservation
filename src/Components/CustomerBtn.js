@@ -8,9 +8,10 @@ export function CustomerBtn(props){
     let lastName = props.lastName;
     let phoneNumber = props.phoneNumber;
     let email = props.email;
+    let clickCustomerBtn = props.clickCustomerBtn;
 
     return(
-        <div className='person-container'>
+        <div className='person-container' onClick={clickCustomerBtn}>
             <div className='info-container'>
                 <div className='title'>Name:</div><div className='info'>{` ${firstName} ${lastName}`}</div>
             </div>

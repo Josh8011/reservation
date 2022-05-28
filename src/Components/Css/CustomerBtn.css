@@ -1,16 +1,22 @@
 .person-container{
     justify-content: center;
     border: rgb(0, 0, 0) 1px solid;
-    margin-top: 2px;
+    background-color: #e4ded7;
+    margin-top: 1px;
+    margin-bottom: 1px;
     overflow: hidden;
     transition: all 0.2s ease-in-out;
     border-radius: 5px;
+    margin-left: 12px;
+    margin-right: 12px;
+    height: 74px;
 }
 
 .person-container:hover{
-    background-color: rgb(60, 48, 40, 0.9);
+    background-color: #594432;
     color: beige;
     cursor: pointer;
+    border: 0px;
 }
 
 .info-container{

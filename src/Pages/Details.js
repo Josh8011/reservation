@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate, useLocation} from 'react-router-dom';
 import { Row, Form, Container, Col, FloatingLabel, Button } from 'react-bootstrap';
 import { fetchApi } from '../Services/Api';
 import { CustomerBtn} from '../Components';
+import "./Css/Details.css"
+import searchIcon from '../Components/Images/search.png'
+import closeIcon from '../Components/Images/close.png'
 import Storage from '../Services/storage';
 
 
@@ -17,9 +20,10 @@ export function Details(props){
     const sitting = resInfo.sitting;
     const navigate = useNavigate();
     const location = useLocation();
+    const searchRef = useRef(null);
 
-    const [details, setDetails] = useState({firstName: "", lastName: "", phoneNumber: "", email: "", customerNotes: ""});
-    const [existingCustomer, setExistingCustomer] = useState(true);
+    const [details, setDetails] = useState({firstName: "", lastName: "", phoneNumber: "", email: "", customerNotes: "", id: ""});
+    const [searchToggle, setSearchToggle] = useState(false);
     const [searchData, setSearchData] = useState("");
     const [customerList, setCustomerList] = useState();
     const [displayCustomers, setDisplayCustomers] = useState();
@@ -63,6 +67,7 @@ export function Details(props){
                         lastName = {c.lastName}
                         phoneNumber = {c.phoneNumber}
                         email = {c.email}
+                        clickCustomerBtn = {()=>clickCustomerBtn(c)}
                     />))
 
             // for(let customer in customerList){
@@ -80,7 +85,7 @@ export function Details(props){
             // setDisplayCustomers(customerArray);
             }
             console.log(displayCustomers)
-        } ,[customerList]);
+        } ,[customerList,details]);
 
     
 
@@ -88,6 +93,7 @@ export function Details(props){
         let newDetails = {...details, [event.target.id]:event.target.value};
         setDetails(newDetails);
         updateRes('details',newDetails);
+        console.log(details.customerNotes);
     }
     
         const onSubmit = (e) => {
@@ -132,21 +138,57 @@ export function Details(props){
         setSearchData(input)
     }
 
+    function clickCustomerBtn(customer){
+
+        setDetails({
+            firstName: customer.firstName, 
+            lastName: customer.lastName, 
+            phoneNumber: customer.phoneNumber, 
+            email: customer.email, 
+            id: customer.id});
+
+        toggleSearchBar();
+    }
+
+    function toggleSearchBar(){
+        setSearchData("");
+        setSearchToggle(!searchToggle);
+    }
+
+    
+    useEffect(()=>{
+        if(searchToggle){
+            searchRef.current.focus();
+        }
+    } ,[searchToggle]);
+
+
     return(
         <div className='container'>
-            <div className='existingCustomer'>
-                <input value={searchData}
-                    onInput={onSearchChange}
-                    type="text" 
-                    className="searchInput" 
-                    placeholder="Search for customer..." 
-                    />
-                <div>
+            <div className='searchCustomer'>
+                <div className={searchToggle?'searchBar':'searchBarHidden'}>
+                    <img className={searchToggle?"searchIconClose":"searchIcon"} src={searchIcon} onClick={()=>toggleSearchBar()}/>
+                    {searchToggle?
+                    <input value={searchData}
+                        ref={searchRef}
+                        onInput={onSearchChange}
+                        type="text" 
+                        className="searchInput" 
+                        placeholder="Search for customer..." 
+                        />
+                        :<div/>
+                    }
+                    {searchToggle?
+                        <img className="closeIcon" src={closeIcon} onClick={()=>toggleSearchBar()}/>
+                        :<div/>
+                    }
+                </div>
+                <div className='customerList'>
                     {displayCustomers}
                 </div>
             </div>
             
-            <div className='createNewCustomer'>
+            <div className={searchToggle?'customerDetailsHidden':'customerDetails'}>
                 <Container>
                     <Row>
                         <Col sm={12}>
