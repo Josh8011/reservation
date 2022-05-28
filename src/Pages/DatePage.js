@@ -54,14 +54,14 @@ export function DatePage(props){
             dateObject.setMonth(month - 1)
             MonthSelectBtns.push(
               <MonthSelectBtn
-              key={month}
-              Year={year}
-              Month={dateObject.toLocaleString('default', { month: 'long'})}
-              setSelectedMonth={() => setSelectedMonth({Month: dateObject.getMonth(), Year: year})}
-              isSelected = {year==selectedMonth.Year&&month-1==selectedMonth.Month?true:false}
-              //Create an is selected prop with session storage to check if date is selected and change classname of btn component?
+                key={month}
+                Year={year}
+                Month={dateObject.toLocaleString('default', { month: 'long'})}
+                setSelectedMonth={() => setSelectedMonth({Month: dateObject.getMonth(), Year: year})}
+                isSelected = {year==selectedMonth.Year&&month-1==selectedMonth.Month?true:false}
               />);
             }
+            console.log(MonthSelectBtns);
             DateYearContainers.push( <DateYearContainer
             key={year}
             Year={year}

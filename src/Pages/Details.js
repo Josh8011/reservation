@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation} from 'react-router-dom';
 import { Row, Form, Container, Col, FloatingLabel, Button } from 'react-bootstrap';
 import { fetchApi } from '../Services/Api';
+import { CustomerBtn} from '../Components';
 import Storage from '../Services/storage';
 
 
@@ -21,6 +22,7 @@ export function Details(props){
     const [existingCustomer, setExistingCustomer] = useState(true);
     const [searchData, setSearchData] = useState("");
     const [customerList, setCustomerList] = useState();
+    const [displayCustomers, setDisplayCustomers] = useState();
 
     useEffect(()=>{
         setSelected(location.pathname.replace(/\//g,''))
@@ -41,12 +43,44 @@ export function Details(props){
                 fetchApi.persons.findPeople(searchData)
                     .then(data => {
                 setCustomerList(...[data]);
+                console.log(data);
                 });
+            }
+            else{
+                setCustomerList([]);
             }
             console.log(customerList);
         } ,[searchData]);
+                
+        useEffect(()=>{
+            let customerArray = []
+            if(customerList){
+                setDisplayCustomers(customerList.map((c,i)=>
+                    <CustomerBtn
+                        key = {i}
+                        id = {c.id}
+                        firstName = {c.firstName}
+                        lastName = {c.lastName}
+                        phoneNumber = {c.phoneNumber}
+                        email = {c.email}
+                    />))
 
-            
+            // for(let customer in customerList){
+            //     customerArray.push(
+            //         <CustomerBtn
+            //             Id = {customer.Id}
+            //             FirstName = {customer.FirstName}
+            //             LastName = {customer.LastName}
+            //             PhoneNumber = {customer.PhoneNumber}
+            //             Email = {customer.Email}
+            //         /> 
+            //     )
+            // }
+            // console.log(customerArray);
+            // setDisplayCustomers(customerArray);
+            }
+            console.log(displayCustomers)
+        } ,[customerList]);
 
     
 
@@ -99,9 +133,7 @@ export function Details(props){
     }
 
     return(
-        <div>
-
-
+        <div className='container'>
             <div className='existingCustomer'>
                 <input value={searchData}
                     onInput={onSearchChange}
@@ -109,7 +141,9 @@ export function Details(props){
                     className="searchInput" 
                     placeholder="Search for customer..." 
                     />
-
+                <div>
+                    {displayCustomers}
+                </div>
             </div>
             
             <div className='createNewCustomer'>

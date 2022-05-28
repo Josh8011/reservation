@@ -1,0 +1,34 @@
+.person-container{
+    justify-content: center;
+    border: rgb(0, 0, 0) 1px solid;
+    margin-top: 2px;
+    overflow: hidden;
+    transition: all 0.2s ease-in-out;
+    border-radius: 5px;
+}
+
+.person-container:hover{
+    background-color: rgb(60, 48, 40, 0.9);
+    color: beige;
+    cursor: pointer;
+}
+
+.info-container{
+    display: flex;
+    margin-right: 25px;
+}
+
+.title{
+    display: flex;
+    margin-right: 5px;
+    margin-left: 15px;
+    width: 5%;
+    min-width: 50px;
+    font-weight: bold;
+}
+
+.info{
+    text-align: left;
+    display: flex;
+    margin-right: 25px;
+}
