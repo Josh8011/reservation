@@ -230,7 +230,7 @@ export function Details(props){
 
                                 <FloatingLabel
                                     controlId="customerNotes"
-                                    label="Notes"
+                                    label={details.customerNotes?`Notes ${details.customerNotes.length}/255`:"Notes"}
                                     className="mb-3">
                                     <Form.Control 
                                         value={details.customerNotes} 
@@ -238,6 +238,7 @@ export function Details(props){
                                         as="textarea"
                                         style={{ height: '100px' }}
                                         placeholder="E.g., One high chair please." 
+                                        maxlength="255"
                                     />
                                 </FloatingLabel>
 
