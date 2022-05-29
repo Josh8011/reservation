@@ -27,6 +27,7 @@ export function Details(props){
     const [searchData, setSearchData] = useState("");
     const [customerList, setCustomerList] = useState();
     const [displayCustomers, setDisplayCustomers] = useState();
+    const [isDisabled, setIsDisabled] = useState(false);
 
     useEffect(()=>{
         setSelected(location.pathname.replace(/\//g,''))
@@ -148,11 +149,17 @@ export function Details(props){
             id: customer.id});
 
         toggleSearchBar();
+        setIsDisabled(true);
     }
 
     function toggleSearchBar(){
         setSearchData("");
         setSearchToggle(!searchToggle);
+    }
+
+    function clearBtnClick(){
+        setDetails({firstName: "", lastName: "", phoneNumber: "", email: "", customerNotes: "", id: ""});
+        setIsDisabled(false);
     }
 
     
@@ -197,28 +204,28 @@ export function Details(props){
                                     controlId="firstName"
                                     label="First Name"
                                     className="my-3">
-                                    <Form.Control value={details.firstName} onInput={onDataChange} type="text" placeholder="John"/>
+                                    <Form.Control value={details.firstName} onInput={onDataChange} type="text" placeholder="John" disabled={isDisabled} required/>
                                 </FloatingLabel>
 
                                 <FloatingLabel
                                     controlId="lastName"
                                     label="Last Name"
                                     className="mb-3">
-                                    <Form.Control value={details.lastName} onInput={onDataChange} type="text" placeholder="Smith" />
+                                    <Form.Control value={details.lastName} onInput={onDataChange} type="text" placeholder="Smith" disabled={isDisabled} required/>
                                 </FloatingLabel>
 
                                 <FloatingLabel
                                     controlId="phoneNumber"
                                     label="Phone Number"
                                     className="mb-3">
-                                    <Form.Control value={details.phoneNumber} onInput={onDataChange} type="text" placeholder="04123456" />
+                                    <Form.Control value={details.phoneNumber} onInput={onDataChange} type="text" placeholder="04123456" disabled={isDisabled} required/>
                                 </FloatingLabel>
 
                                 <FloatingLabel
                                     controlId="email"
                                     label="Email Address"
                                     className="mb-3">
-                                    <Form.Control value={details.email} onInput={onDataChange} type="email" placeholder="name@example.com" />
+                                    <Form.Control value={details.email} onInput={onDataChange} type="email" placeholder="name@example.com" disabled={isDisabled} required/>
                                 </FloatingLabel>
 
                                 <FloatingLabel
@@ -236,13 +243,13 @@ export function Details(props){
 
                                 <Row>
                                     <Col>
-                                        <Button variant="success" type="submit" size="lg">
+                                        <Button variant="success" type="submit" size="lg" className="w-100">
                                             Submit
                                         </Button>
                                     </Col>
                                     <Col>
-                                        <Button variant="danger" size="lg">
-                                            Cancel
+                                        <Button variant="danger" size="lg" className="w-100" onClick={()=>clearBtnClick()}>
+                                            Clear
                                         </Button>
                                     </Col>
                                 </Row>
