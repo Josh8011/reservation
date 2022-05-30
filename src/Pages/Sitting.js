@@ -6,12 +6,13 @@ import { fetchApi } from '../Services';
 import './Css/Sittings.css'
 
 export function Sitting(props) {
-
+    debugger;
     var ResInfo = props.ResFunctions.reservationInfo
     var UpdateSitting = props.ResFunctions.UpdateReservationInfo
     var setSelected = props.ResFunctions.setSelected
     const location = useLocation();
     const navigate = useNavigate();
+    
     const[sittingTimeBtns, setSittingTimeBtns] = useState();
     const [selectedSitting, setSelectedSitting] = useState();
     const[info, setInfo] =  useState();

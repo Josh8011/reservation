@@ -11,10 +11,11 @@ import Storage from '../Services/storage';
 
 export function Details(props){
 
-    const updateRes = props.ResFunctions.UpdateReservationInfo;
-    const resInfo = props.ResFunctions.reservationInfo;
-    const setSelected = props.ResFunctions.setSelected;
-    const startDateTime = new Date(props.ResFunctions.reservationInfo.sitting.StartDateTime);
+    debugger;
+    var updateRes = props.ResFunctions.UpdateReservationInfo;
+    var resInfo = props.ResFunctions.reservationInfo;
+    var setSelected = props.ResFunctions.setSelected;
+    var startDateTime = new Date(props.ResFunctions.reservationInfo.sitting.StartDateTime);
     const noOfPeople = resInfo.people;
     const date = resInfo.date;
     const sitting = resInfo.sitting;
@@ -34,11 +35,11 @@ export function Details(props){
         } ,[]);
 
         useEffect(()=>{
-            if(!resInfo.details){
-                updateRes('details', details)
+            if(resInfo.details){
+                setDetails(resInfo.details)
             }
             else{
-                setDetails(resInfo.details)
+                updateRes('details', details)
             }
         } ,[resInfo]);
 
@@ -70,22 +71,7 @@ export function Details(props){
                         email = {c.email}
                         clickCustomerBtn = {()=>clickCustomerBtn(c)}
                     />))
-
-            // for(let customer in customerList){
-            //     customerArray.push(
-            //         <CustomerBtn
-            //             Id = {customer.Id}
-            //             FirstName = {customer.FirstName}
-            //             LastName = {customer.LastName}
-            //             PhoneNumber = {customer.PhoneNumber}
-            //             Email = {customer.Email}
-            //         /> 
-            //     )
-            // }
-            // console.log(customerArray);
-            // setDisplayCustomers(customerArray);
             }
-            console.log(displayCustomers)
         } ,[customerList,details]);
 
     
@@ -238,7 +224,7 @@ export function Details(props){
                                         as="textarea"
                                         style={{ height: '100px' }}
                                         placeholder="E.g., One high chair please." 
-                                        maxlength="255"
+                                        maxLength="255"
                                     />
                                 </FloatingLabel>
 
