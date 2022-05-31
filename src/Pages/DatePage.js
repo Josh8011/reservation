@@ -45,31 +45,34 @@ export function DatePage(props){
 
 
 
-      if(availableDates)
-      {
-        for(let year in availableDates){
-          for(let month in availableDates[year])
-          {
-            let dateObject = new Date()
-            dateObject.setMonth(month - 1)
-            MonthSelectBtns.push(
-              <MonthSelectBtn
+    if(availableDates)
+    {
+      for(let year in availableDates){
+        for(let month in availableDates[year])
+        {
+          let dateObject = new Date();
+          dateObject.setDate(1);
+          dateObject.setMonth(month - 1)
+          console.log(dateObject);
+          MonthSelectBtns.push(
+            <MonthSelectBtn
               key={month}
+              monthData = {month}
               Year={year}
               Month={dateObject.toLocaleString('default', { month: 'long'})}
               setSelectedMonth={() => setSelectedMonth({Month: dateObject.getMonth(), Year: year})}
               isSelected = {year==selectedMonth.Year&&month-1==selectedMonth.Month?true:false}
-              //Create an is selected prop with session storage to check if date is selected and change classname of btn component?
-              />);
-            }
-            DateYearContainers.push( <DateYearContainer
-            key={year}
-            Year={year}
-            MonthSelectBtns={MonthSelectBtns}
-            />)
-            MonthSelectBtns = [];
-        }
+            />);
+          }
+          console.log(MonthSelectBtns);
+          DateYearContainers.push( <DateYearContainer
+          key={year}
+          Year={year}
+          MonthSelectBtns={MonthSelectBtns}
+          />)
+          MonthSelectBtns = [];
       }
+    }
 
       useEffect(()=> {
           if(availableDates&&selectedMonth.Month&&selectedMonth.Year)
