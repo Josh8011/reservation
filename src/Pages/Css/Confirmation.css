@@ -1,0 +1,63 @@
+.confirmationContainer{
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+    }
+    
+    .receipt{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        width: 50%;
+        border: black 1px solid;
+        border-radius: 10px;
+        padding: 10px;
+        background-color: rgb(89,68,50,0.9);
+        color: rgb(228, 222, 215);
+        font-size: large;
+        transition: all 0.3s ease-in-out;
+        padding-bottom: 40px;
+    }
+    
+    .receiptTitle{
+        width: 100%;
+        font-size:xx-large;
+        margin: 10px;
+    }
+    
+    .receipt table{
+        text-align: left;
+    }
+    
+    .receipt table tr{
+        padding-bottom: 10px;
+    }
+    .receipt table th{
+        padding-right: 10px;
+        vertical-align: top;
+    }
+    
+    /* .receiptBody{
+    text-align: left;
+    display: flex;
+    width: 100%;
+    }
+    
+    .receiptDataTitle{
+        display: block;
+        width: 100px;
+    }
+    
+    .receiptData{
+        display: block;
+        width: 75%;
+        
+    }
+    
+    .receiptDataTitle p{
+        margin-bottom: 5px;
+    }
+    
+    .receiptData p{
+        margin-bottom: 5px;
+    } */
