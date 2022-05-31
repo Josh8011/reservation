@@ -111,7 +111,7 @@ export function Details(props){
 
                         <FloatingLabel
                             controlId="customerNotes"
-                            label="Notes"
+                            label={details.customerNotes?`Notes ${details.customerNotes.length}/255`:"Notes"}
                             className="mb-3">
                             <Form.Control 
                                 value={details.customerNotes} 
@@ -119,18 +119,19 @@ export function Details(props){
                                 as="textarea"
                                 style={{ height: '100px' }}
                                 placeholder="E.g., One high chair please." 
+                                maxLength="255"
                             />
                         </FloatingLabel>
 
                         <Row>
                             <Col>
-                                <Button variant="success" type="submit" size="lg">
+                                <Button variant="success" type="submit" size="lg" className="w-100">
                                     Submit
                                 </Button>
                             </Col>
                             <Col>
-                                <Button variant="danger" size="lg">
-                                    Cancel
+                                <Button variant="danger" size="lg" className="w-100" onClick={()=>setDetails({firstName: "", lastName: "", phoneNumber: "", email: "", customerNotes: ""})}>
+                                    Clear
                                 </Button>
                             </Col>
                         </Row>
