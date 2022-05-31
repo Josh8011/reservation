@@ -18,7 +18,7 @@ export function DatePage(props){
 
     //How many months ahead to display
     const totalMonthsIncluded = 12;
-    //remove the date later
+    //Current dateTime
     const currentDate = new Date();
     const endDate = new Date(currentDate).setMonth(currentDate.getMonth()+totalMonthsIncluded);
     
@@ -32,6 +32,7 @@ export function DatePage(props){
 
     useEffect(()=>{
       (async()=>{
+        
           await fetchApi.sittings.getDistinctAvailable(currentDate, endDate)
             .then (data => {
                setAvailableDates(...[data]);
@@ -50,11 +51,14 @@ export function DatePage(props){
         for(let year in availableDates){
           for(let month in availableDates[year])
           {
-            let dateObject = new Date()
+            let dateObject = new Date();
+            dateObject.setDate(1);
             dateObject.setMonth(month - 1)
+            console.log(dateObject);
             MonthSelectBtns.push(
               <MonthSelectBtn
                 key={month}
+                monthData = {month}
                 Year={year}
                 Month={dateObject.toLocaleString('default', { month: 'long'})}
                 setSelectedMonth={() => setSelectedMonth({Month: dateObject.getMonth(), Year: year})}

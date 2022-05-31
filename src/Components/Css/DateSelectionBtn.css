@@ -7,12 +7,13 @@
     height:40px;
     justify-content: center;
     align-items: center;
-    transition: background 0.3s ease-in-out, border 0.3s ease-in-out, color 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
 .DateSelectionBtn:hover{
     padding-top:8px;
-    background-color: #dbaa73;
+    background-color: rgb(89,68,50);
+    color: white;
     border: #000000 1px solid;
     width: 14.285%;
     height:40px;
@@ -21,7 +22,7 @@
 
 .DateSelectedBtn{
     padding-top:8px;
-    background-color: #784011;
+    background-color: rgb(89,68,50);
     color: white;
     border: #000000 1px solid;
     border-radius: 5px;
@@ -29,13 +30,13 @@
     height:40px;
     justify-content: center;
     align-items: center;
-    transition: background 0.3s ease-in-out, border 0.3s ease-in-out, color 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
 .DateSelectedBtn:hover{
     padding-top:8px;
-    background-color: #dbaa73;
-    color: #000000;
+    background-color: rgb(89,68,50);
+    color: #ffffff;
     border: #000000 1px solid;
     width: 14.285%;
     height:40px;

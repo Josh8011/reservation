@@ -9,13 +9,13 @@
     height:40px;
     justify-content: center;
     align-items: center;
-    transition: background 0.3s ease-in-out, color 0.3s ease-in-out, border 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
 .SittingTimeBtn:hover{
     border-radius: 5px;
     width: 24%; 
-    background-color: #784011;
+    background-color: rgb(89,68,50);
     color: white;
     border: #000000 1px solid;
     margin: 1px;
@@ -30,7 +30,7 @@
 .SittingTimeBtnSelected{
     border-radius: 5px;
     width: 24%; 
-    background-color: #784011;
+    background-color: rgb(89,68,50);
     color: white;
     border: #B47C49 1px solid;
     margin: 1px;
@@ -45,7 +45,7 @@
 .SittingTimeBtnSelected:hover{
     border-radius: 5px;
     width: 24%; 
-    background-color: #784011;
+    background-color: rgb(89,68,50);
     color: white;
     border: #000000 1px solid;
     margin: 1px;

@@ -6,7 +6,6 @@ import { fetchApi } from '../Services';
 import './Css/Sittings.css'
 
 export function Sitting(props) {
-    debugger;
     var ResInfo = props.ResFunctions.reservationInfo
     var UpdateSitting = props.ResFunctions.UpdateReservationInfo
     var setSelected = props.ResFunctions.setSelected

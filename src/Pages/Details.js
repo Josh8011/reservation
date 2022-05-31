@@ -10,8 +10,6 @@ import Storage from '../Services/storage';
 
 
 export function Details(props){
-
-    debugger;
     var updateRes = props.ResFunctions.UpdateReservationInfo;
     var resInfo = props.ResFunctions.reservationInfo;
     var setSelected = props.ResFunctions.setSelected;
