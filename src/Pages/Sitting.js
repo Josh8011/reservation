@@ -54,7 +54,7 @@ export function Sitting(props) {
             key={s.id}
             Type={s.type}
             SetSelectedSitting={() =>setSelectedSitting({ index: index, id:s.id } )}
-            isSelected={selectedSitting?(index==selectedSitting.index&&s.id==selectedSitting.id?true:false):false}
+            isSelected={selectedSitting?(index==selectedSitting.index&&s.id==selectedSitting.id):false}
             />))
     }
 
@@ -82,8 +82,7 @@ export function Sitting(props) {
                 btns.push(<SittingTimeBtn key={i}
                     Time={timeOutput}
                     SubmitTime={() => SubmitTime( info[index].id, timeOutput , info[index].type, timeString)}
-                    isSelected={previousSelectedSitting?(time==previousSelectedSitting.StartDateTime&&info[index].id==previousSelectedSitting.Id?
-                        true:false):false}
+                    isSelected={previousSelectedSitting?(time==previousSelectedSitting.StartDateTime&&info[index].id==previousSelectedSitting.Id):false}
                      />)
                 time.setMinutes(time.getMinutes() + interval)
             }

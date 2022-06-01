@@ -1,6 +1,12 @@
+/* :root{
+    --selectedColour: rgb(89,68,50);
+    --highlightColour: rgb(89,68,50);
+    --cellColour: #D9C7B2;
+} */
+
 .MonthSelectBtn{
     padding:8px;
-    background-color: #D9C7B2;
+    background-color: var(--cellColour);
     color: black;
     margin:5px;
     border-radius: 5px;
@@ -8,12 +14,12 @@
     width:100%;
     height:40px;
     min-width: 90px;
-    transition: background 0.25s ease-in-out, color 0.25s ease-in-out, border 0.25s ease-in-out;
+    transition: all 0.25s ease-in-out;
 }
 
 .MonthSelectBtn:hover{
     padding:8px;
-    background-color: #784011;
+    background-color: var(--highlightColour);
     color: white;
     margin:5px;
     border-radius: 5px;
@@ -26,7 +32,7 @@
 
 .MonthSelectedBtn{
     padding:8px;
-    background-color: #784011;
+    background-color: var(--selectedColour);
     color: white;
     margin:5px;
     border-radius: 5px;
@@ -34,12 +40,12 @@
     width:100%;
     height:40px;
     min-width: 90px;
-    transition: background 0.25s ease-in-out, color 0.25s ease-in-out, border 0.25s ease-in-out;
+    transition: all 0.25s ease-in-out;
 }
 
 .MonthSelectedBtn:hover{
     padding:8px;
-    background-color: #784011;
+    background-color: var(--highlightColour);
     color: white;
     margin:5px;
     border-radius: 5px;

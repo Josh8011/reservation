@@ -1,6 +1,6 @@
 .SittingTypeBtn{
     padding:7px;
-    background-color: #D9C7B2;
+    background-color: var(--cellColour);
     color: black;
     margin:5px;
     border-radius: 5px;
@@ -8,13 +8,13 @@
     width:50%;
     height:40px;
     min-width: 80px;
-    transition: background 0.3s ease-in-out, color 0.3s ease-in-out, border 0.3s ease-in-out;
+    transition: all 0.25s ease-in-out;
     
 }
 
 .SittingTypeBtn:hover{
     padding:7px;
-    background-color: #784011;
+    background-color: var(--highlightColour);
     color: white;
     margin:5px;
     border-radius: 5px;
@@ -28,7 +28,7 @@
 
 .SittingTypeBtnSelected{
     padding:7px;
-    background-color: #784011;
+    background-color: var(--selectedColour);
     color: white;
     margin:5px;
     border-radius: 5px;
@@ -36,13 +36,13 @@
     width:50%;
     height:40px;
     min-width: 80px;
-    transition: background 0.3s ease-in-out, color 0.3s ease-in-out, border 0.3s ease-in-out;
+    transition: all 0.25s ease-in-out;
     
 }
 
 .SittingTypeBtnSelected:hover{
     padding:7px;
-    background-color: #784011;
+    background-color: var(--highlightColour);
     color: white;
     margin:5px;
     border-radius: 5px;

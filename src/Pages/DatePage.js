@@ -61,7 +61,7 @@ export function DatePage(props){
               Year={year}
               Month={dateObject.toLocaleString('default', { month: 'long'})}
               setSelectedMonth={() => setSelectedMonth({Month: dateObject.getMonth(), Year: year})}
-              isSelected = {year==selectedMonth.Year&&month-1==selectedMonth.Month?true:false}
+              isSelected = {year==selectedMonth.Year&&month-1==selectedMonth.Month}
             />);
           }
           console.log(MonthSelectBtns);
@@ -84,7 +84,7 @@ export function DatePage(props){
                 key={d}
                 date={d}
                 SubmitDate={() =>SubmitDate(selectedMonth.Year, currentMonth, d)}
-                isSelected = {selectedDay?(d==selectedDay.day&&currentMonth==selectedDay.month&&selectedMonth.Year==selectedDay.year?true:false):false}
+                isSelected = {selectedDay?(d==selectedDay.day&&currentMonth==selectedDay.month&&selectedMonth.Year==selectedDay.year):false}
                 />
               ));
           }
