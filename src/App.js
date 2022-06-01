@@ -12,7 +12,7 @@ function App() {
   //information state storage and functions
   const [reservationInfo , setReservationInfo]= useState({})
   //page selection state
-  const [selected , setSelected] = useState();
+  const [selected , setSelected] = useState("people");
 
   useEffect(()=>{
     (async()=>{
