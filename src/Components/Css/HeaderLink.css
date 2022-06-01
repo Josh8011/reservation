@@ -1,6 +1,6 @@
 .HeaderLink-Link{
     display: flex;
-    background-color: #C7CFD9;
+    background-color: rgb(217, 199, 178);
     color: Black;
     padding: 10px;
     border-radius: 5px;
@@ -44,7 +44,7 @@
 
 .HeaderLink-Unavailable{
     display: flex;
-    background-color: #92969c;
+    background-color: rgb(128, 128, 128, 0.9);
     color: Black;
     padding: 10px;
     border-radius: 5px;
