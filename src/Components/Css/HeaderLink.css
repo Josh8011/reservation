@@ -10,7 +10,7 @@
     width: 120px;
     height: 44px;
     justify-content: center;
-    transition: background 0.25s ease-in-out, color 0.25s ease-in-out, border 0.25s ease-in-out;
+    transition: all 0.25s ease-in-out;
 }
 
 .HeaderLink-Highlighted{
@@ -28,7 +28,7 @@
     border-style: solid;
     border-width: 1px;
     border-color: rgb(0, 0, 0, 0);
-    transition: background 0.25s ease-in-out, color 0.25s ease-in-out, border 0.25s ease-in-out;
+    transition: all 0.25s ease-in-out;
 }
 
 .HeaderLink-Highlighted:hover, .HeaderLink-Link:hover{
