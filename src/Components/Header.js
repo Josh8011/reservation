@@ -21,7 +21,7 @@ export function Header(props) {
 
 
     return(
-        <div className='Body'>
+        <div className='header-body'>
             
             <HeaderLink selected={selected} Name={ResInfo.people? ResInfo.people: "People" } Path="people" ResInfo={ResInfo} imageLink={peopleIcon}/>
             <HeaderLink selected={selected} Name={ResInfo.date?
