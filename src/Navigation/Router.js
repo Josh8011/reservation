@@ -17,7 +17,7 @@ export function Router(props){
             <Route path='/Sitting' element={<Sitting ResFunctions={ResFunctions} />}></Route>
             <Route path='/Details' element={<Details ResFunctions={ResFunctions} />}></Route>
             <Route path='/Confirmation' element={<Confirmation ResFunctions={ResFunctions} />}></Route>
-            <Route path='/Contact' element={<Contact />}></Route>
+            <Route path='/Contact' element={<Contact ResFunctions={ResFunctions} />}></Route>
         </Routes>
     )
 }

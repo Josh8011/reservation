@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react';
 import { Row, Container, Col } from 'react-bootstrap';
-import { useLocation } from 'react-router-dom';
+import { useNavigate, useLocation} from 'react-router-dom';
 import "./Css/Confirmation.css"
 
 export function Confirmation(props){
     const location = useLocation();
+    const navigate = useNavigate();
     const res = location.state.newRes;
     const setSelected = props.ResFunctions.setSelected;
+    var clearRes = props.ResFunctions.loadReservationInfo;
     const sitting = res.sitting;
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     let currentDate = res.date
@@ -15,15 +17,32 @@ export function Confirmation(props){
     useEffect(() => {
         setSelected(location.pathname.replace(/\//g,''));
     }, []);
+
+    function newReservation(){
+        sessionStorage.clear()
+        clearRes();
+        navigate("/people");
+    }
+
+    function clearStoredData(){
+        let fields = ["people", "date", "sitting", "details"];
+        fields.forEach(item=>{
+            debugger;
+        })
+    }
   
     return(
         <div className='confirmationContainer'>
             <div className='receipt'>
                 <div className='receiptTitle'>
-                    Thank you <br/>
-                    {res.firstName} {res.lastName}
+                    Ref #: {res.referenceNo}
+                    <br/>
                 </div>
                 <table>
+                    <tr>
+                        <th>Name:</th>
+                        <td>{res.firstName} {res.lastName}</td>
+                    </tr>
                     <tr>
                         <th>Date:</th>
                         <td>{date}</td>
@@ -48,36 +67,10 @@ export function Confirmation(props){
                         <th>Notes:</th>
                         <td>{res.customerNotes}</td>
                     </tr>
-                    <tr>
-                        <th>Reference#:</th>
-                        <td>{res.referenceNo}</td>
-                    </tr>
                 </table>
-                {/* <div className='receiptBody'>
-                    <div className='receiptDataTitle'>
-                        <p>Date:</p>
-                        <p>Sitting:</p>
-                        <p>Email:</p>
-                        <p>Phone:</p>
-                        <p>Guests:</p>
-                        <p>Notes:</p>
-                        <br/>
-                        <p>Reference#:</p>
-                        <p>Status:</p>
-                    </div>
-                    <div className='receiptData'>
-                        <p>{date}</p>
-                        <p>{sitting.Start} {sitting.Type}</p>
-                        <p>{res.email}</p>
-                        <p>{res.phoneNumber}</p>
-                        <p>{res.noOfGuests}</p>
-                        <p>{res.customerNotes}</p>
-                        <br/>
-                        <p>{res.referenceNo}</p>
-                        
-                        Pending
-                    </div>
-                </div> */}
+            </div>
+            <div className='newResBtn'>
+                <button type="button" className="btn btn-primary btn-lg" onClick={newReservation}>New Reservation</button>
             </div>
         </div>
     );
