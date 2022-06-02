@@ -53,7 +53,7 @@ function App() {
   }
 
 
-  const ReservationFunctions = {reservationInfo, UpdateReservationInfo, setSelected, loadReservationInfo}
+  const ReservationFunctions = {reservationInfo, UpdateReservationInfo, setSelected}
 
   return (
     
