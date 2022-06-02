@@ -3,10 +3,11 @@ import './App.css';
 import Storage from './Services/storage';
 import {Router} from './Navigation'
 import {Header} from './Components'
-import {useLocation} from 'react-router-dom'
+import { useNavigate, useLocation} from 'react-router-dom';
 
 function App() {
   const location = useLocation();
+  const navigate = useNavigate();
   // array of pages/data to used for creating reservationInfo & selected objects
   const reservationArray = ["people", "date", "sitting", "details"];
   //information state storage and functions
@@ -20,14 +21,16 @@ function App() {
     })();
     let onReloadPage = location.pathname.replace(/\//g,'')
     setSelected(onReloadPage?onReloadPage:"people");
-    
+    //Clear sessions storage as hack fix
+    sessionStorage.clear()
+    navigate("/people");
   } ,[]);
 
   function loadReservationInfo(){
       //Get reservation info from session storage or create new
       let tempResInfo = Storage.getSessionItem('reservationInfo', reservationArray.reduce((obj, key) => ({ ...obj, [key]: null}), {}));
       //tempResInfo.date = tempResInfo.date? new Date(tempResInfo.date) : null
-      Storage.setSessionItem('reservationInfo', tempResInfo);
+      //Storage.setSessionItem('reservationInfo', tempResInfo);
       setReservationInfo(tempResInfo);
   }
 
@@ -61,9 +64,7 @@ function App() {
   return (
     
     <div className="App">
-      {selected!=="Confirmation"?
-      <Header ResFunctions={ReservationFunctions} Selected={selected}/>
-      :""}
+      {selected!=="Confirmation"? <Header ResFunctions={ReservationFunctions} Selected={selected}/> :""}
       <Router ResFunctions={ReservationFunctions}/>
     </div>
   );

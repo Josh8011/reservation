@@ -69,7 +69,6 @@ export function People(props){
             setPeopleError(true);
         }
     }
-
     return(
         <div className='PeopleBody'>
             Number of Guests
