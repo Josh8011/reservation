@@ -1,6 +1,6 @@
 .HeaderLink-Link{
     display: flex;
-    background-color: #C7CFD9;
+    background-color: rgb(217, 199, 178);
     color: Black;
     padding: 10px;
     border-radius: 5px;
@@ -10,7 +10,7 @@
     width: 120px;
     height: 44px;
     justify-content: center;
-    transition: background 0.25s ease-in-out, color 0.25s ease-in-out, border 0.25s ease-in-out;
+    transition: all 0.25s ease-in-out;
 }
 
 .HeaderLink-Highlighted{
@@ -28,7 +28,7 @@
     border-style: solid;
     border-width: 1px;
     border-color: rgb(0, 0, 0, 0);
-    transition: background 0.25s ease-in-out, color 0.25s ease-in-out, border 0.25s ease-in-out;
+    transition: all 0.25s ease-in-out;
 }
 
 .HeaderLink-Highlighted:hover, .HeaderLink-Link:hover{
@@ -44,7 +44,7 @@
 
 .HeaderLink-Unavailable{
     display: flex;
-    background-color: #92969c;
+    background-color: rgb(128, 128, 128, 0.9);
     color: Black;
     padding: 10px;
     border-radius: 5px;
