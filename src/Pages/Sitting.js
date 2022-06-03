@@ -85,7 +85,6 @@ export function Sitting(props) {
             for(let i = 0; i <= duration; i+=interval)
             {
                 let timeOutput = formatTime(time)
-                console.log(timeOutput);
                 let timeString = time.toString();
                 btns.push(<SittingTimeBtn key={i}
                     Time={timeOutput}
