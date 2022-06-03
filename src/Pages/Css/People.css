@@ -43,7 +43,7 @@
   border-radius: 10px 0 0 10px;
   width: 100%;
   background-color: rgb(217, 199, 178, 0.45);
-  transition: background 0.3s ease-in-out;
+  transition: all 0.25s ease-in-out;
 }
 
 .peopleInput:focus{
@@ -59,7 +59,7 @@
   font-size: 30px;
   border: 0;
   background-color: #d9534f;
-  transition: background 0.3s ease-in-out;
+  transition: all 0.25s ease-in-out;
 }
 
 .btnPlus{
@@ -70,7 +70,7 @@
   font-size: 30px;
   border: 0;
   background-color: #5cb85c;
-  transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+  transition: all 0.25s ease-in-out;
   
 }
 
