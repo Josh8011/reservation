@@ -1,9 +1,11 @@
 .App {
+  font-family: SaolDisplay,ui-serif,Georgia,Cambria,"Times New Roman",Times,serif;
   text-align: center;
   position: relative;
   width: auto;
   height: auto;
   overflow: hidden;
+  color: #212520;
 }
 
 
