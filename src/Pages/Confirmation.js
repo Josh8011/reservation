@@ -27,7 +27,6 @@ export function Confirmation(props){
     function clearStoredData(){
         let fields = ["people", "date", "sitting", "details"];
         fields.forEach(item=>{
-            debugger;
         })
     }
   
