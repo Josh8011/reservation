@@ -58,6 +58,13 @@ export function Sitting(props) {
             />))
     }
 
+    function formatTime(dateString, addMins) {
+        let date = new Date(dateString)
+        let hours = date.getHours() % 12 || 12;
+        let mins = date.getMinutes();
+        let ampm = date.getHours() < 12 ? "AM" : "PM";
+        return `${hours}:${mins<=9?'0'+mins:mins} ${ampm}`;
+    }
 
     useEffect(()=>{
         if(selectedSitting){
@@ -77,7 +84,8 @@ export function Sitting(props) {
 
             for(let i = 0; i <= duration; i+=interval)
             {
-                let timeOutput = `${time.getHours()}:${time.getMinutes().toString().length == 1? `${time.getMinutes()}${+0}`: time.getMinutes()}`
+                let timeOutput = formatTime(time)
+                console.log(timeOutput);
                 let timeString = time.toString();
                 btns.push(<SittingTimeBtn key={i}
                     Time={timeOutput}
@@ -99,29 +107,20 @@ export function Sitting(props) {
     }   
 
     return(
-        // <div className='SittingBody'>
-        //     <div className='SittingTypeContainer'>
-        //         {sittingTypeBtns}
-        //     </div>
-        //     <div className='SittingTimeContainer'>
-        //         {sittingTimeBtns}
-        //     </div>
-        // </div>
-
         
-    <div className='container d-flex'>
+    <div className='container d-sm-flex'>
 
-        <div className='col-4'>
+        <div className='col-12 col-sm-4 pt-2'>
             <div className='col-6'>
-                Sittings
+                <h4>Sittings</h4>
             </div>
             {sittingTypeBtns}
         </div>
 
-        <div className='col-8'>
+        <div className='col-12 col-sm-8 pt-2'>
          <div className='SittingTimeContainer'>
              <div className='col-12 d-flex justify-content-center'>
-                {sittingTimeBtns?"Times: ":"Please select a sitting"}
+                {sittingTimeBtns?<h4>Times:</h4>:<h4>Please select a sitting</h4>}
              </div>
              <div className='col-12 d-flex flex-wrap justify-content-start'>
                 {sittingTimeBtns}

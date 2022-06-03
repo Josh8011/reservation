@@ -8,6 +8,7 @@ export function SittingTimeBtn (props) {
     var SubmitTime = props.SubmitTime
     let isSelected = props.isSelected
 
+
     return(
         <div className={isSelected?'SittingTimeBtnSelected':'SittingTimeBtn'}  onClick={SubmitTime}>{Time}</div>    
     );
