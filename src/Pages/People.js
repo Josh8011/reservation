@@ -90,7 +90,7 @@ export function People(props){
                     
                     {numberOfPeople===peopleInfo.max?
                     <div>{`For reservations of groups larger than {peopleInfo.max} please `}
-                        <a id="contact-us-link">contact the restaurant</a>
+                        <a href="/home/contact" id="contact-us-link" >contact the restaurant</a>
                     </div>
                     :<div></div>}
                     {peopleError?
