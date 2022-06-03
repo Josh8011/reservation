@@ -27,9 +27,6 @@ export function People(props){
     function onPeopleChange(event){
         let input = event.target.value
         if(input!==''){
-                //if input < min default to people.min 
-                //else if input > max default to max
-                //else set to input value
             let total = input<peopleInfo.min ? peopleInfo.min : input>peopleInfo.max ? peopleInfo.max : Math.trunc(Math.abs(Number(input)))
             setNumberOfPeople(total);
             UpdatePeople('people', total);
@@ -72,14 +69,8 @@ export function People(props){
 
     return(
         <div className='PeopleBody'>
-            Number of Guests
+            <h3>Number of Guests</h3>
             <div className='PeopleSelectionContainer'>
-
-                {/* <div className="input-group w-75">
-                    <input value={numberOfPeople} onInput={onPeopleChange} type="number" className="form-control text-center " placeholder="Guests" onKeyDown={(evt) => ["e", "E", "+", "-", "."].includes(evt.key) && evt.preventDefault()}/>
-                    <button className="btn btn-danger btn-lg" type="button" onClick={()=>buttonIncrement(-1)} >-</button>
-                    <button className="btn btn-success btn-lg" type="button" onClick={()=>buttonIncrement(1)} >+</button>
-                </div> */}
 
                 <div className="input-group d-flex justify-content-center w-100">
                     <div className="form-group">
