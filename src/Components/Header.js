@@ -13,11 +13,8 @@ export function Header(props) {
     let selected = props.Selected
 
     function addPadding(num){
-        //return num.toString().padStart(2,'0');
         return num<10 ? '0'+num : num;
     }
-    
-    console.log(selected)
 
 
     return(

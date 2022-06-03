@@ -53,7 +53,6 @@ export function DatePage(props){
           let dateObject = new Date();
           dateObject.setDate(1);
           dateObject.setMonth(month - 1)
-          console.log(dateObject);
           MonthSelectBtns.push(
             <MonthSelectBtn
               key={month}
@@ -64,7 +63,6 @@ export function DatePage(props){
               isSelected = {year==selectedMonth.Year&&month-1==selectedMonth.Month}
             />);
           }
-          console.log(MonthSelectBtns);
           DateYearContainers.push( <DateYearContainer
           key={year}
           Year={year}

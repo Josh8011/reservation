@@ -49,35 +49,10 @@ export function Confirmation(props){
                         <td>{res.customerNotes}</td>
                     </tr>
                     <tr>
-                        <th>Reference#:</th>
+                        <th>Ref#:</th>
                         <td>{res.referenceNo}</td>
                     </tr>
                 </table>
-                {/* <div className='receiptBody'>
-                    <div className='receiptDataTitle'>
-                        <p>Date:</p>
-                        <p>Sitting:</p>
-                        <p>Email:</p>
-                        <p>Phone:</p>
-                        <p>Guests:</p>
-                        <p>Notes:</p>
-                        <br/>
-                        <p>Reference#:</p>
-                        <p>Status:</p>
-                    </div>
-                    <div className='receiptData'>
-                        <p>{date}</p>
-                        <p>{sitting.Start} {sitting.Type}</p>
-                        <p>{res.email}</p>
-                        <p>{res.phoneNumber}</p>
-                        <p>{res.noOfGuests}</p>
-                        <p>{res.customerNotes}</p>
-                        <br/>
-                        <p>{res.referenceNo}</p>
-                        
-                        Pending
-                    </div>
-                </div> */}
             </div>
         </div>
     );

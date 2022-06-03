@@ -44,12 +44,12 @@ function App() {
         newInfo[reservationArray[2]] = null;
       }
       setReservationInfo(newInfo);
-      Storage.setSessionItem('reservationInfo', newInfo);
+      //Storage.setSessionItem('reservationInfo', newInfo);
       
     }
-    else{
-      console.log(`reservationInfo object does not contain the property '${propertyAsString}'`)
-    }
+    // else{
+    //   console.log(`reservationInfo object does not contain the property '${propertyAsString}'`)
+    // }
   }
 
 
