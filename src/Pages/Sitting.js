@@ -62,6 +62,13 @@ export function Sitting(props) {
             />))
     }
 
+    function formatTime(dateString, addMins) {
+        let date = new Date(dateString)
+        let hours = date.getHours() % 12 || 12;
+        let mins = date.getMinutes();
+        let ampm = date.getHours() < 12 ? "AM" : "PM";
+        return `${hours}:${mins<=9?'0'+mins:mins} ${ampm}`;
+    }
 
     useEffect(()=>{
         if(selectedSitting){
@@ -81,7 +88,7 @@ export function Sitting(props) {
 
             for(let i = 0; i <= duration; i+=interval)
             {
-                let timeOutput = `${time.getHours()}:${time.getMinutes().toString().length == 1? `${time.getMinutes()}${+0}`: time.getMinutes()}`
+                let timeOutput = formatTime(time);
                 let timeString = time.toString();
                 btns.push(<SittingTimeBtn key={i}
                     Time={timeOutput}
