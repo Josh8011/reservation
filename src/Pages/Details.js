@@ -21,7 +21,7 @@ export function Details(props){
     const location = useLocation();
     const searchRef = useRef(null);
 
-    const [details, setDetails] = useState({firstName: "", lastName: "", phoneNumber: "", email: "", customerNotes: "", id: ""});
+    const [details, setDetails] = useState({firstName: "", lastName: "", phoneNumber: "", email: "", customerNotes: "", id: "", resStatus: "1", resOrigin: "1"});
     const [searchToggle, setSearchToggle] = useState(false);
     const [searchData, setSearchData] = useState("");
     const [customerList, setCustomerList] = useState();
@@ -47,13 +47,11 @@ export function Details(props){
                 fetchApi.persons.findPeople(searchData)
                     .then(data => {
                 setCustomerList(...[data]);
-                console.log(data);
                 });
             }
             else{
                 setCustomerList([]);
             }
-            console.log(customerList);
         } ,[searchData]);
                 
         useEffect(()=>{
@@ -78,7 +76,6 @@ export function Details(props){
         let newDetails = {...details, [event.target.id]:event.target.value};
         setDetails(newDetails);
         updateRes('details',newDetails);
-        console.log(details.customerNotes);
     }
     
         const onSubmit = (e) => {
@@ -89,8 +86,8 @@ export function Details(props){
             CustomerNotes: e.target.customerNotes.value,
             NoOfGuests : noOfPeople,
             SittingId: sitting.Id,
-            ReservationOriginId: 4, //Online
-            ReservationStatusId: 1, //Pending
+            ReservationOriginId: e.target.resOrigin.value, //Online
+            ReservationStatusId: e.target.resStatus.value, //Pending
             FirstName: e.target.firstName.value,
             LastName: e.target.lastName.value,
             Email: e.target.email.value,
@@ -142,7 +139,7 @@ export function Details(props){
     }
 
     function clearBtnClick(){
-        setDetails({firstName: "", lastName: "", phoneNumber: "", email: "", customerNotes: "", id: ""});
+        setDetails({firstName: "", lastName: "", phoneNumber: "", email: "", customerNotes: "", id: "", resStatus: "1", resOrigin: "1"});
         setIsDisabled(false);
     }
 
@@ -225,6 +222,36 @@ export function Details(props){
                                         maxLength="255"
                                     />
                                 </FloatingLabel>
+
+
+                                <div className="Container d-flex">
+                                    <div className='col-6 pe-1'>
+                                        <FloatingLabel
+                                            controlId="resOrigin"
+                                            label="Origin"
+                                            className="mb-3">
+                                            <Form.Select value={details.resOrigin} onChange={onDataChange} aria-label="Default select example">
+                                                <option value="1">In Person</option>
+                                                <option value="2">Email</option>
+                                                <option value="3">Phone</option>
+                                                <option value="4">Online</option>
+                                            
+                                            </Form.Select>
+                                        </FloatingLabel>
+                                    </div>
+                                    <div className='col-6 ps-1'>
+                                        <FloatingLabel
+                                            controlId="resStatus"
+                                            label="Status"
+                                            className="mb-3">
+                                            <Form.Select value={details.resStatus} onChange={onDataChange} aria-label="Default select example">
+                                                <option value="1">Pending</option>
+                                                <option value="2">Confirmed</option>
+                                                <option value="4">Seated</option>
+                                            </Form.Select>
+                                        </FloatingLabel>
+                                    </div>
+                                </div>
 
                                 <Row>
                                     <Col>
