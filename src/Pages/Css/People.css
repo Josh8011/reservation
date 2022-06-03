@@ -26,16 +26,45 @@
   justify-content: center;
   align-items: center;
   box-shadow:0 0 15px 4px rgba(0,0,0,0.2);
-  transition: all 0.25s ease-in-out;
   border-radius: 10px;
   width: 100%;
+  transition: all 0.25s ease-in-out;
 }
 
 .form-group:focus-within{
   box-shadow:0 0 15px 4px rgba(0,0,0,0.4);
 }
 
+.guest-message{
+  padding-top: 10px;
+  color: #000000;
+  font-size: 18px;
+}
+.guest-message a{
+  color: #594432;
+}
 
+.people-button{
+  display: flex;
+  background-color: rgb(217, 199, 178);
+  border-radius: 5px;
+  height: 44px;
+  justify-content: center;
+  transition: all 0.25s ease-in-out;
+  vertical-align: middle;
+  text-align: center;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #594432;
+  padding: 3px;
+  font-size: 24px;
+}
+
+.people-button:hover{
+  background-color: #594432;
+  color: white;
+  border-color: rgb(0, 0, 0);
+}
 
 .peopleInput{
   text-align: center;

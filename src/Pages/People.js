@@ -89,7 +89,7 @@ export function People(props){
                 <div className="input-group d-flex justify-content-center">
                     
                     {numberOfPeople===peopleInfo.max?
-                    <div>{`For reservations of groups larger than {peopleInfo.max} please `}
+                    <div className='guest-message'>{`For reservations of groups larger than ${peopleInfo.max} please `}
                         <a href="/home/contact" id="contact-us-link" >contact the restaurant</a>
                     </div>
                     :<div></div>}
@@ -100,7 +100,8 @@ export function People(props){
                 </div>
 
                 <div className="input-group row pt-2 d-flex justify-content-center">
-                    <button type="button" className="btn btn-primary btn-lg" onClick={onContinueClick} >Continue</button>
+                    {/* <button type="button" className="btn btn-primary btn-lg" onClick={onContinueClick} >Continue</button> */}
+                    <div type="button" class="people-button" onClick={onContinueClick}>Continue</div>
                 </div>
 
             </div>
