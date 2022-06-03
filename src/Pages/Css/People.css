@@ -41,7 +41,10 @@
   font-size: 18px;
 }
 .guest-message a{
-  color: #594432;
+  color: rgb(0, 0, 255);
+}
+.guest-message a:hover{
+  color: rgb(96, 96, 255);
 }
 
 .people-button{
