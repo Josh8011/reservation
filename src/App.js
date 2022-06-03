@@ -28,7 +28,8 @@ function App() {
 
   function loadReservationInfo(){
       //Get reservation info from session storage or create new
-      let tempResInfo = Storage.getSessionItem('reservationInfo', reservationArray.reduce((obj, key) => ({ ...obj, [key]: null}), {}));
+      // let tempResInfo = Storage.getSessionItem('reservationInfo', reservationArray.reduce((obj, key) => ({ ...obj, [key]: null}), {}));
+      let tempResInfo = reservationArray.reduce((obj, key) => ({ ...obj, [key]: null}), {});
       //tempResInfo.date = tempResInfo.date? new Date(tempResInfo.date) : null
       //Storage.setSessionItem('reservationInfo', tempResInfo);
       setReservationInfo(tempResInfo);
