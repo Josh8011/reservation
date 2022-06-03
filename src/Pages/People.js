@@ -89,7 +89,9 @@ export function People(props){
                 <div className="input-group d-flex justify-content-center">
                     
                     {numberOfPeople===peopleInfo.max?
-                    <div>If you wish to make a reservation for more than {peopleInfo.max} people please contact the restaurant (LINK TO CONTACT PAGE)</div>
+                    <div>{`For reservations of groups larger than {peopleInfo.max} please `}
+                        <a id="contact-us-link">contact the restaurant</a>
+                    </div>
                     :<div></div>}
                     {peopleError?
                     <div>Please enter a valid number of guests {peopleInfo.min}-{peopleInfo.max}.</div>
