@@ -100,7 +100,6 @@ export function People(props){
                 </div>
 
                 <div className="input-group row pt-2 d-flex justify-content-center">
-                    {/* <button type="button" className="btn btn-primary btn-lg" onClick={onContinueClick} >Continue</button> */}
                     <div type="button" class="people-button" onClick={onContinueClick}>Continue</div>
                 </div>
 
