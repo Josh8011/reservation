@@ -48,14 +48,26 @@ export function Sitting(props) {
     //if sitting is selected reder sitting type btns
     if(info)
     {
+        let currentDateTime = new Date();
+
         var sittingTypeBtns = []
-        info.forEach((s, index) => sittingTypeBtns.push(
-            <SittingTypeBtn 
-            key={s.id}
-            Type={s.type}
-            SetSelectedSitting={() =>setSelectedSitting({ index: index, id:s.id } )}
-            isSelected={selectedSitting?(index==selectedSitting.index&&s.id==selectedSitting.id):false}
-            />))
+        info.forEach((s, index) => {
+            //Get end time of sitting
+            let startTimeArr = s.start.split(":");
+            let selectedDateTime = new Date(ResInfo.date.year, ResInfo.date.month-1, ResInfo.date.day, startTimeArr[0], startTimeArr[1]);
+            selectedDateTime.setMinutes(selectedDateTime.getMinutes()+s.duration-s.cutoff)
+            //Maybe change this to give btn a class making it unclickable and grey
+            if(selectedDateTime>currentDateTime){
+                sittingTypeBtns.push(
+                    <SittingTypeBtn 
+                    key={s.id}
+                    Type={s.type}
+                    SetSelectedSitting={() =>setSelectedSitting({ index: index, id:s.id } )}
+                    isSelected={selectedSitting?(index==selectedSitting.index&&s.id==selectedSitting.id):false}
+                    />
+                )}
+            }
+        )
     }
 
     function formatTime(dateString, addMins) {
@@ -70,27 +82,27 @@ export function Sitting(props) {
         if(selectedSitting){
             let btns = [];
             let index = selectedSitting.index;
-            let start = info[index].start
-            let cutOff = 10;
-            let duration = info[index].duration - cutOff
-            let interval = 15;
+            let start = info[index].start;
+            let cutOff = info[index].cutoff;
+            let duration = info[index].duration;
+            let interval = info[index].interval;
             let time = new Date(ResInfo.date.year,ResInfo.date.month-1,ResInfo.date.day);
             time.setHours(start.slice(0,2),start.slice(3,5))
+            let currentTime = new Date();
             
-            if(cutOff< interval)
-            {
-                duration = duration - interval 
-            }
+            duration -= cutOff<interval?(interval):(cutOff)
 
             for(let i = 0; i <= duration; i+=interval)
             {
-                let timeOutput = formatTime(time)
-                let timeString = time.toString();
-                btns.push(<SittingTimeBtn key={i}
-                    Time={timeOutput}
-                    SubmitTime={() => SubmitTime( info[index].id, timeOutput , info[index].type, timeString)}
-                    isSelected={previousSelectedSitting?(time==previousSelectedSitting.StartDateTime&&info[index].id==previousSelectedSitting.Id):false}
-                     />)
+                if(time>currentTime){
+                    let timeOutput = formatTime(time)
+                    let timeString = time.toString();
+                    btns.push(<SittingTimeBtn key={i}
+                        Time={timeOutput}
+                        SubmitTime={() => SubmitTime( info[index].id, timeOutput , info[index].type, timeString)}
+                        isSelected={previousSelectedSitting?(time==previousSelectedSitting.StartDateTime&&info[index].id==previousSelectedSitting.Id):false}
+                        />)
+                }
                 time.setMinutes(time.getMinutes() + interval)
             }
             setSittingTimeBtns(btns);
