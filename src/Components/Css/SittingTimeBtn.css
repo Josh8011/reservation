@@ -39,6 +39,7 @@
     height:40px;
     justify-content: center;
     align-items: center;
+    position: relative;
     transition: background 0.3s ease-in-out, color 0.3s ease-in-out, border 0.3s ease-in-out;
 }
 
@@ -56,3 +57,92 @@
     align-items: center;
     cursor: pointer;
 }
+
+.SittingPastBtn{
+    border-radius: 5px;
+    width: 24%; 
+    background-color: #D9C7B2;
+    border: #ff0000 1px solid;
+    margin: 1px;
+    padding:7px;
+    border-radius: 5px;
+    height:40px;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+}
+
+.SittingPastBtn:hover{
+    border-radius: 5px;
+    width: 24%; 
+    background-color: rgb(89,68,50);
+    color: white;
+    border: #ff0000 1px solid;
+    margin: 1px;
+    padding:7px;
+    border-radius: 5px;
+    height:40px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+  /* Tooltip text */
+  .SittingPastBtn .tooltippast {
+    visibility: hidden;
+    width: 120px;
+    background-color: rgb(0, 0, 0, 0.8);
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: -15px;
+    left: 114%;
+    }
+    
+    .SittingPastBtn .tooltippast::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent rgb(0, 0, 0, 0.8) transparent transparent;
+    }
+      
+    .SittingPastBtn:hover .tooltippast {
+        visibility: visible;
+    }
+    
+    .SittingTimeBtnSelected .tooltippast {
+        visibility: hidden;
+        width: 120px;
+        background-color: rgb(0, 0, 0, 0.8);
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 0;
+        position: absolute;
+        z-index: 1;
+        top: -15px;
+        left: 114%;
+        }
+            
+    .SittingTimeBtnSelected .tooltippast::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: 100%;
+        margin-top: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: transparent rgb(0, 0, 0, 0.8) transparent transparent;
+        }
+          
+        .SittingTimeBtnSelected:hover .tooltippast {
+            visibility: visible;
+        }

@@ -75,16 +75,14 @@ export function Sitting(props) {
             let btns = [];
             let index = selectedSitting.index;
             let start = info[index].start
-            let cutOff = 10;
-            let duration = info[index].duration - cutOff
-            let interval = 15;
+            let cutOff = info[index].cutoff;
+            let duration = info[index].duration;
+            let interval = info[index].interval;
             let time = new Date(ResInfo.date.year,ResInfo.date.month-1,ResInfo.date.day);
             time.setHours(start.slice(0,2),start.slice(3,5))
+            let currentTime = new Date();
             
-            if(cutOff< interval)
-            {
-                duration = duration - interval 
-            }
+            duration -= cutOff<interval?interval:cutOff;
 
             for(let i = 0; i <= duration; i+=interval)
             {
@@ -95,6 +93,7 @@ export function Sitting(props) {
                     SubmitTime={() => SubmitTime( info[index].id, timeOutput , info[index].type, timeString)}
                     isSelected={previousSelectedSitting?(time==previousSelectedSitting.StartDateTime&&info[index].id==previousSelectedSitting.Id?
                         true:false):false}
+                    isPast = {time<currentTime}
                      />)
                 time.setMinutes(time.getMinutes() + interval)
             }
