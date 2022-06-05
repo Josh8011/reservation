@@ -16,6 +16,8 @@ export function Confirmation(props){
 
     useEffect(() => {
         setSelected(location.pathname.replace(/\//g,''));
+        sessionStorage.clear()
+        clearRes();
     }, []);
 
     function newReservation(){
