@@ -61,8 +61,9 @@
 .SittingPastBtn{
     border-radius: 5px;
     width: 24%; 
-    background-color: #D9C7B2;
-    border: #ff0000 1px solid;
+    background-color: #d9c7b2;
+    border: #ff000088 1px solid;
+    color: #cc0000;
     margin: 1px;
     padding:7px;
     border-radius: 5px;
@@ -77,7 +78,7 @@
     border-radius: 5px;
     width: 24%; 
     background-color: rgb(89,68,50);
-    color: white;
+    color: #ff6060;
     border: #ff0000 1px solid;
     margin: 1px;
     padding:7px;
