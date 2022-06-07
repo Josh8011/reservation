@@ -1,4 +1,4 @@
-let baseUrl = "https://localhost:7271/api/sittings";
+let baseUrl = "https://tas122.azurewebsites.net/api/sittings";
 
 const getAvailable = async (startDate, endDate) =>
 {
