@@ -1,4 +1,4 @@
-let baseUrl = "https://localhost:7271/api/persons";
+let baseUrl = "https://tas122.azurewebsites.net/api/persons";
 
 const findPeople = async (data) =>
 {

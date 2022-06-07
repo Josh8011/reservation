@@ -1,4 +1,4 @@
-let baseUrl = "https://localhost:7271/api/reservations";
+let baseUrl = "https://tas122.azurewebsites.net/api/reservations";
 
 //REQUIRES (obj with following properties): customerNotes, noOfGuests, sittingId, reservationOriginId, firstName, lastName, email, phoneNumber, restaurantId
 //API RETURNS: new reservation object that is created (Not currently utilised in this fetch).
