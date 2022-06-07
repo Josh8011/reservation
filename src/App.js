@@ -23,7 +23,7 @@ function App() {
     setSelected(onReloadPage?onReloadPage:"people");
     //Clear sessions storage as hack fix
     sessionStorage.clear()
-    navigate("/people");
+    navigate("/");
   } ,[]);
 
   function loadReservationInfo(){
