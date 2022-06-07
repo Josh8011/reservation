@@ -77,38 +77,46 @@ export function Details(props){
     }
 
     return(
-        <Container>
+        <div className="container">
             <Row>
                 <Col sm={12}>
                     <Form onSubmit={onSubmit}>
-                        <FloatingLabel
-                            controlId="firstName"
-                            label="First Name"
-                            className="my-3">
-                            <Form.Control value={details.firstName} onInput={onDataChange} type="text" placeholder="John"/>
-                        </FloatingLabel>
-
-                        <FloatingLabel
-                            controlId="lastName"
-                            label="Last Name"
-                            className="mb-3">
-                            <Form.Control value={details.lastName} onInput={onDataChange} type="text" placeholder="Smith" />
-                        </FloatingLabel>
-
-                        <FloatingLabel
-                            controlId="phoneNumber"
-                            label="Phone Number"
-                            className="mb-3">
-                            <Form.Control value={details.phoneNumber} onInput={onDataChange} type="text" placeholder="04123456" />
-                        </FloatingLabel>
-
-                        <FloatingLabel
-                            controlId="email"
-                            label="Email Address"
-                            className="mb-3">
-                            <Form.Control value={details.email} onInput={onDataChange} type="email" placeholder="name@example.com" />
-                        </FloatingLabel>
-
+                        <Row>
+                            <div className="col-6">
+                                <FloatingLabel
+                                    controlId="firstName"
+                                    label="First Name"
+                                    className="mb-3">
+                                    <Form.Control value={details.firstName} onInput={onDataChange} type="text" placeholder="John"/>
+                                </FloatingLabel>
+                            </div>
+                            <div className="col-6">
+                                <FloatingLabel
+                                    controlId="lastName"
+                                    label="Last Name"
+                                    className="mb-3">
+                                    <Form.Control value={details.lastName} onInput={onDataChange} type="text" placeholder="Smith" />
+                                </FloatingLabel>
+                            </div>
+                        </Row>
+                        <Row>
+                            <div className="col-6">
+                                <FloatingLabel
+                                    controlId="phoneNumber"
+                                    label="Phone Number"
+                                    className="mb-3">
+                                    <Form.Control value={details.phoneNumber} onInput={onDataChange} type="text" placeholder="04123456" />
+                                </FloatingLabel>
+                            </div>
+                            <div className="col-6">
+                                <FloatingLabel
+                                    controlId="email"
+                                    label="Email Address"
+                                    className="mb-3">
+                                    <Form.Control value={details.email} onInput={onDataChange} type="email" placeholder="name@example.com" />
+                                </FloatingLabel>
+                            </div>
+                        </Row>
                         <FloatingLabel
                             controlId="customerNotes"
                             label={details.customerNotes?`Notes ${details.customerNotes.length}/255`:"Notes"}
@@ -138,7 +146,7 @@ export function Details(props){
                     </Form>
                 </Col>
             </Row>
-        </Container>
+        </div>
     );
 
 }
