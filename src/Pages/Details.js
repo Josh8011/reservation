@@ -31,10 +31,11 @@ export function Details(props){
         } ,[]);
 
         useEffect(()=>{
+            debugger;
             if(userData){
                 setDetails({firstName: userData.firstName, lastName: userData.LastName, phoneNumber: userData.phoneNumber, email: userData.email, customerNotes: ""})
             }
-            else if(resInfo){
+            else if(resInfo?.details){
                 setDetails(resInfo.details)
             }
             else{
