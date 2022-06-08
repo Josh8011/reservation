@@ -31,18 +31,17 @@ export function Details(props){
         } ,[]);
 
         useEffect(()=>{
-            debugger;
-            console.log(userData);
-            } ,[userData]);
-
-        useEffect(()=>{
-            if(!resInfo.details){
-                updateRes('details', details)
+            if(userData){
+                setDetails({firstName: userData.firstName, lastName: userData.LastName, phoneNumber: userData.phoneNumber, email: userData.email, customerNotes: ""})
             }
-            else{
+            else if(resInfo){
                 setDetails(resInfo.details)
             }
-            } ,[resInfo]);
+            else{
+                updateRes('details', details)
+            }
+            } ,[userData]);
+
     
 
     function onDataChange(event){
