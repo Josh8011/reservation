@@ -16,12 +16,24 @@ export function Details(props){
     const sitting = resInfo.sitting;
     const navigate = useNavigate();
     const location = useLocation();
+    const [userData, setUserData] = useState();
 
     const [details, setDetails] = useState({firstName: "", lastName: "", phoneNumber: "", email: "", customerNotes: ""});
 
     useEffect(()=>{
+        (async()=>{
+            await fetchApi.persons.getUser()
+              .then (data => {
+                 setUserData(data);
+              })
+        })();
         setSelected(location.pathname.replace(/\//g,''))
         } ,[]);
+
+        useEffect(()=>{
+            debugger;
+            console.log(userData);
+            } ,[userData]);
 
         useEffect(()=>{
             if(!resInfo.details){
