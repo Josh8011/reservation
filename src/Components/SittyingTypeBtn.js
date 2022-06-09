@@ -34,7 +34,7 @@ export  function SittingTypeBtn (props){
             <div className={isSelected?'SittingTypeBtnSelected':'SittingTypeBtn'} onClick={SetSelectedSitting}>
                 {type}
             </div>
-            <div className='capacity'>
+            <div className='capacity text-white'>
                 <img className={iconClass} src={peopleIcon}/>
                 {`${totalGuests}/${capacity}`}
                 {totalGuests>capacity?

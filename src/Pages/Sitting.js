@@ -49,7 +49,6 @@ export function Sitting(props) {
     if(info)
     {
         var sittingTypeBtns = []
-        console.log(info);
         info.forEach((s, index) => sittingTypeBtns.push(
             <SittingTypeBtn 
             key={s.id}
@@ -123,7 +122,7 @@ export function Sitting(props) {
     <div className='container d-flex'>
 
         <div className='col-4'>
-            <div className='col-6'>
+            <div className='col-6 text-white'>
                 Sittings
             </div>
             {sittingTypeBtns}
@@ -131,7 +130,7 @@ export function Sitting(props) {
 
         <div className='col-8'>
          <div className='SittingTimeContainer'>
-             <div className='col-12 d-flex justify-content-center'>
+             <div className='col-12 d-flex justify-content-center text-white'>
                 {sittingTimeBtns?"Times: ":"Please select a sitting"}
              </div>
              <div className='col-12 d-flex flex-wrap justify-content-start'>

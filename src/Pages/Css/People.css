@@ -6,7 +6,9 @@
     align-items: center;
     font-size: 32px;
     padding-top: 20px;
+    color: whitesmoke;
 }
+
 .PeopleSelectionContainer{
     display: flex;
     flex-direction: column;
