@@ -32,8 +32,9 @@ export function Details(props){
 
         useEffect(()=>{
             debugger;
-            if(userData){
-                setDetails({firstName: userData.firstName, lastName: userData.LastName, phoneNumber: userData.phoneNumber, email: userData.email, customerNotes: ""})
+            if(userData?.length > 0){
+                setDetails({firstName: userData[0].firstName, lastName: userData[0].lastName, phoneNumber: userData[0].phoneNumber, email: userData[0].email, 
+                    customerNotes: ""})
             }
             else if(resInfo?.details){
                 setDetails(resInfo.details)
